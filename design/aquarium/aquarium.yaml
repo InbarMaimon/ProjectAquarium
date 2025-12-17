@@ -1,0 +1,49 @@
+# Aquarium YAML
+# length = x
+# width = y
+# depth = z
+
+aquarium:
+  main_box:
+    weight:
+    x_outer: 598.5
+    y_outer: 301
+    z_outer: 399
+    dx_outer: 1
+    dy_outer: 0.5
+    dz_outer: 2
+    x_inner: 586.5
+    y_inner: 289
+    z_inner: 394
+    dx_inner: 1
+    dy_inner: 0.5
+    dz_inner: 2
+    y_boxhole: 120
+    z_boxhole: 90
+    dy_boxhole: 1
+    dz_boxhole: 1
+    y_left: 94
+    y_right: 87
+    z_up: 100
+    z_down: 212
+    dy_left: 1
+    dy_right: 1
+    dz_up: 1
+    dz_down: 0.5
+  electronics_box:
+    x: 44
+    y: 140
+    z: 108
+    dx: 1
+    dy: 0.5
+    dz: 0.5
+    y_left: 80
+    y_right: 80
+    z_up: 89
+    z_down: 202
+    dy_left: 1
+    dy_right: 1
+    dz_up: 2
+    dz_down: 2
+
+...

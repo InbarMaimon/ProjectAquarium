@@ -1,0 +1,16 @@
+# Whole directories
+archive/
+data_proc/
+data_raw/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# LaTeX/LyX
+$*
+*~
+*.aux
+*.log
+*.out

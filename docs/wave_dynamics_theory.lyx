@@ -1,0 +1,1138 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsart
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children no
+\language american
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Wave Dynamics Theory
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "macros.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Terminology
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+UAV unmanned aerial vehicle (takes pictures)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+SSH sea surface height (i.e.
+ waves)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+FOV field of view
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+nadir op.
+ of zenith,
+ vertically downward facing
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+bathymetry underwater equivalent of topography
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+bathymetric read:
+ water body bottom
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+wave
+\begin_inset space ~
+\end_inset
+
+crest top of the wave
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+total
+\begin_inset space ~
+\end_inset
+
+coverage total field of view solid angle (of an optical detector /array)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+molecular
+\begin_inset space ~
+\end_inset
+
+interface the 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+SML (sea) surface microlayer (~50-100
+\begin_inset Formula $\mu m$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Langmuir
+\begin_inset space ~
+\end_inset
+
+trough A 
+\begin_inset CommandInset href
+LatexCommand href
+name "system"
+target "https://itn-snal.net/2014/10/langmuir-trough/"
+literal "false"
+
+\end_inset
+
+ to measure thin films
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+LSWG laser slope wave gauge,
+ a 
+\begin_inset CommandInset href
+LatexCommand href
+name "system"
+target "https://www.researchgate.net/profile/Xinan-Liu/publication/248804354/figure/fig1/AS:456969497649153@1485961426937/A-schematic-drawing-showing-the-laser-slope-gauge.png"
+literal "false"
+
+\end_inset
+
+ to measure slopes of waves
+\end_layout
+
+\begin_layout Section
+General
+\end_layout
+
+\begin_layout Subsection
+Incompressible gravity wave equation
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Then the surface function is
+\begin_inset Formula 
+\begin{align*}
+\partial_{t}\zeta & =\left.\partial_{z}f\right|_{z=0}\\
+\implies\zeta\left(\omega,k_{x},k_{y}\right) & =B\frac{\left|k\right|}{-i\omega}\sinh\left(h\left|k\right|\right).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+a & =\partial_{t}v+\left(v\cdot\nabla\right)v
+\end{align*}
+
+\end_inset
+
+is the acceleration of a water parcel.
+ Newton's second law for a non-viscous,
+ cohesive fluid:
+\begin_inset Formula 
+\begin{align}
+\rho a & =-\nabla p-\rho\nabla\Phi\nonumber \\
+\implies\partial_{t}v+\left(v\cdot\nabla\right)v & =-\rho^{-1}\nabla p-\nabla\Phi.\label{eq:2nd law for non-viscous fluids}
+\end{align}
+
+\end_inset
+
+Then the fluid is irrotational:
+\begin_inset Formula 
+\begin{align*}
+\omega & :=\nabla\times v,\\
+\left(\omega\times v\right)_{i} & =\epsilon_{jki}\epsilon_{jlm}v_{k}\partial_{l}v_{m}\\
+ & =\left(\delta_{kl}\delta_{im}-\delta_{km}\delta_{il}\right)v_{k}\partial_{l}v_{m}\\
+ & =v_{k}\partial_{k}v_{i}-v_{k}\partial_{i}v_{k}\\
+ & =\left(\left(v\cdot\nabla\right)v\right)_{i}-\left(\nabla\left(\frac{v^{2}}{2}\right)\right)_{i},
+\end{align*}
+
+\end_inset
+
+so
+\begin_inset Formula 
+\begin{align*}
+\partial_{t}\omega+\nabla\times\left(\omega\times v\right) & =0
+\end{align*}
+
+\end_inset
+
+entails
+\begin_inset Formula 
+\begin{align*}
+\omega\left(t\right) & =0
+\end{align*}
+
+\end_inset
+
+for all 
+\begin_inset Formula $t$
+\end_inset
+
+,
+ provided that 
+\begin_inset Formula $\omega=0$
+\end_inset
+
+ at some point in time.
+ Note that if 
+\begin_inset Formula $\rho=\rho\left(p\right)$
+\end_inset
+
+,
+ we have
+\begin_inset Formula 
+\begin{align*}
+\left(\nabla\times\left(g\left(p\right)\nabla p\right)\right)_{i} & =\epsilon_{ijk}\partial_{j}\left(g\left(p\right)\partial_{k}p\right)\\
+ & =\cancel{\epsilon_{ijk}g'\left(p\right)\partial_{j}p\partial_{k}p}+\cancel{\epsilon_{ijk}g\left(p\right)\partial_{j}\partial_{k}p}\\
+ & =0,
+\end{align*}
+
+\end_inset
+
+so a barotropic fluid is also irrotational given that 
+\begin_inset Formula $\omega=0$
+\end_inset
+
+ at some point in time.
+ What is more physically important,
+ in fluids with low compressibility and low relative motion,
+ the vorticity also remains low.
+\end_layout
+
+\begin_layout Standard
+Then 
+\begin_inset Formula $v=\nabla\velocityPotential$
+\end_inset
+
+ for some potential 
+\begin_inset Formula $\velocityPotential$
+\end_inset
+
+,
+ and we note that if 
+\begin_inset Formula $\nabla\cdot v=0$
+\end_inset
+
+ (the fluid is incompressible),
+ then 
+\begin_inset Formula $\velocityPotential$
+\end_inset
+
+ satisfies the Laplace eq.
+ 
+\begin_inset Formula $\nabla^{2}\velocityPotential\left(t,x,y,z\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We are interested in transversal waves in the plane.
+ Let 
+\begin_inset Formula $\hat{z}$
+\end_inset
+
+ be the upward direction,
+ and notice that for low velocities eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2nd law for non-viscous fluids"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ takes the linearized form
+\begin_inset Formula 
+\begin{align*}
+\rho\partial_{t}\nabla\velocityPotential & =-\nabla\left(p+\rho\Phi\right)\\
+\implies-\rho\partial_{t}\velocityPotential & =p+\rho\Phi
+\end{align*}
+
+\end_inset
+
+with the rotational additive being 0 because when the pressure balances the external forces exactly,
+ any rotational component of 
+\begin_inset Formula $f$
+\end_inset
+
+ will translate to a rotational component of 
+\begin_inset Formula $u$
+\end_inset
+
+,
+ which we assumed does not exist.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ be the height of the sea surface.
+ As a first step,
+ let's use this new notation to add to the forces equation 
+\series bold
+on the surface 
+\series default
+a surface tension term,
+ which in the direction perpendicular to the sea surface takes the form:
+\begin_inset Formula 
+\begin{align*}
+Tdxdy & =\surfaceTension\left(\left.\partial_{x}\zeta\right|_{x+dx}-\left.\partial_{x}\zeta\right|_{x}\right)dy+\surfaceTension\left(\left.\partial_{y}\zeta\right|_{y+dy}-\left.\partial_{y}\zeta\right|_{y}\right)dx\\
+ & =\surfaceTension\left(\partial_{x}^{2}\zeta+\partial_{y}^{2}\zeta\right)dxdy
+\end{align*}
+
+\end_inset
+
+For small slopes,
+ this is essentially downward.
+ Then to linear approximation (i.e.
+ small wave slopes),
+ 
+\begin_inset Formula 
+\begin{align*}
+-\rho\partial_{t}\velocityPotential & =p+\rho\Phi-\surfaceTension\left(\partial_{x}^{2}\zeta+\partial_{y}^{2}\zeta\right),\\
+\partial_{t}\zeta\left(t,x,y\right) & =u_{z}=\partial_{z}\velocityPotential
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $g$
+\end_inset
+
+ is earth's surface gravitational acceleration.
+\end_layout
+
+\begin_layout Standard
+Finally,
+ imposing 
+\begin_inset Formula $p\left(z=\zeta\right)=const$
+\end_inset
+
+ at the sea surface,
+ we have there
+\begin_inset Formula 
+\begin{align*}
+const & =\partial_{t}\velocityPotential+g\zeta-\frac{\surfaceTension}{\rho}\left(\partial_{x}^{2}\zeta+\partial_{y}^{2}\zeta\right)\\
+\implies0 & =\partial_{t}^{2}\velocityPotential+g\partial_{z}\velocityPotential-\frac{\surfaceTension}{\rho}\left(\partial_{x}^{2}+\partial_{y}^{2}\right)\partial_{z}\velocityPotential
+\end{align*}
+
+\end_inset
+
+which to leading order is the equation at the ideal sea surface 
+\begin_inset Formula $z=0$
+\end_inset
+
+.
+ This is the equation at the sea surface.
+\end_layout
+
+\begin_layout Standard
+At the sea bed,
+ 
+\begin_inset Formula $z=-h\left(x,y\right)$
+\end_inset
+
+ has some topography.
+ The bed-facing component of the velocity must vanish,
+ so
+\begin_inset Formula 
+\begin{align*}
+0 & =n\cdot\nabla\velocityPotential
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $n$
+\end_inset
+
+ is perpendicular to the manifold 
+\begin_inset Formula $h$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula 
+\begin{align*}
+0 & =h\left(x,y\right)+z\\
+\implies0 & =h\left(x+dx,y+dy\right)+\left(z+dz\right)\\
+\implies0 & =\partial_{x}h\left(x,y\right)dx+\partial_{y}h\left(x,y\right)dy+dz\\
+ & =\left(\partial_{x}h\left(x,y\right),\partial_{y}h\left(x,y\right),1\right)\cdot\left(dx,dy,dz\right)\\
+\implies n & =\frac{\left(\partial_{x}h,\partial_{y}h,1\right)}{\sqrt{1+\left(\partial_{x}h\right)^{2}+\left(\partial_{y}h\right)^{2}}}\\
+\implies0 & =\partial_{x}h\partial_{x}\velocityPotential+\partial_{y}h\partial_{y}\velocityPotential+\partial_{z}\velocityPotential
+\end{align*}
+
+\end_inset
+
+is the equation at the sea bed.
+\end_layout
+
+\begin_layout Standard
+So,
+ to sum up,
+ the three equations are,
+ Laplace for the bulk and two boundary conditions:
+\begin_inset Formula 
+\[
+\begin{cases}
+0=\partial_{t}^{2}\velocityPotential+g\partial_{z}\velocityPotential-\frac{\tau}{\rho}\left(\partial_{x}^{2}+\partial_{y}^{2}\right)\partial_{z}\velocityPotential & z=0\\
+0=\nabla^{2}\velocityPotential & -h\left(x,y\right)<z<0\\
+0=\partial_{x}h\partial_{x}\velocityPotential+\partial_{y}h\partial_{y}\velocityPotential+\partial_{z}\velocityPotential & z=-h\left(x,y\right)
+\end{cases}.
+\]
+
+\end_inset
+
+If 
+\begin_inset Formula $h\left(x,y\right)$
+\end_inset
+
+ is a constant,
+ we can Fourier transform these three equations along the 
+\begin_inset Formula $x,y$
+\end_inset
+
+ directions and in time,
+ to obtain (by abuse of notation I denote the Fourier coefficient by 
+\begin_inset Formula $\velocityPotential$
+\end_inset
+
+ also)
+\begin_inset Formula 
+\[
+\begin{cases}
+\omega^{2}\velocityPotential=\left(g+\frac{\surfaceTension}{\rho}\left|k\right|^{2}\right)\partial_{z}\velocityPotential & z=0\\
+\partial_{z}^{2}\velocityPotential=\left|k\right|^{2}\velocityPotential & -h\left(x,y\right)<z<0\\
+\partial_{z}\velocityPotential=0 & z=-h\left(x,y\right)
+\end{cases}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\left|k\right|=\sqrt{k_{x}^{2}+k_{y}^{2}}$
+\end_inset
+
+.
+ This system is solved by
+\begin_inset Formula 
+\begin{align*}
+\velocityPotential\left(\omega,k_{x},k_{y},z\right) & =B\left(k_{x},k_{y}\right)\cosh\left(\left|k\right|\left(z+h\right)\right)\delta\left(\omega-\sqrt{\left(g\left|k\right|+\frac{\surfaceTension}{\rho}\left|k\right|^{3}\right)\tanh\left(h\left|k\right|\right)}\right)
+\end{align*}
+
+\end_inset
+
+with a dispersion relation imposed by the sea surface boundary condition
+\begin_inset Formula 
+\begin{align}
+\omega^{2} & =\left(g\left|k\right|+\frac{\surfaceTension}{\rho}\left|k\right|^{3}\right)\tanh\left(h\left|k\right|\right).\label{eq:sea-water-dispersion-flat-bottom}
+\end{align}
+
+\end_inset
+
+Note that since each wavevector can have any independent amplitude whatsoever,
+ the only information in 
+\begin_inset Formula $f$
+\end_inset
+
+ that we actually obtained is contained in the 
+\begin_inset Formula $\cosh\left(\left|k\right|\left(z+h\right)\right)$
+\end_inset
+
+ part,
+ plus the dispersion relation.
+ Respectively,
+ the only thing that we learned about the c-g waveform 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ is the dispersion relation.
+ We do know now the exact relationship between 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ componentwise,
+ though.
+\end_layout
+
+\begin_layout Subsection
+Sound waves
+\end_layout
+
+\begin_layout Standard
+If on the other hand the fluid is indeed but slightly compressible,
+ let's have
+\begin_inset Formula 
+\begin{align*}
+\rho & =\rho_{0}+\delta\rho,\\
+p & =p_{0}+\delta p,\\
+v & =v_{0}+\delta v
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula $\rho_{0}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+ solving the barotropic mechanical steady state problem 
+\begin_inset Formula $\left(v_{0}\cdot\nabla\right)v_{0}=-\rho_{0}^{-1}\nabla p_{0}-\nabla\Phi$
+\end_inset
+
+.
+ Then we have,
+ to linear order,
+\begin_inset Formula 
+\begin{align*}
+\partial_{t}\delta v+\left(\delta v\cdot\nabla\right)v_{0}+\left(v_{0}\cdot\nabla\right)\delta v & =-\frac{1}{\rho_{0}+\delta\rho}\nabla\delta p\approx-\frac{1}{\rho_{0}}\left(1-\frac{\delta\rho}{\rho_{0}}\right)\nabla\delta p\\
+\implies\rho_{0}\left(\partial_{t}\delta v+\left(\delta v\cdot\nabla\right)v_{0}+\left(v_{0}\cdot\nabla\right)\delta v\right) & =-\nabla\delta p,
+\end{align*}
+
+\end_inset
+
+and we also have the the conservation of mass equation
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial\delta\rho}{\partial t} & =\nabla\cdot\left(\rho v\right)=\nabla\cdot\left(\rho_{0}v_{0}\right)+\rho_{0}\nabla\cdot\delta v+\nabla\delta\rho\cdot v_{0}.
+\end{align*}
+
+\end_inset
+
+But if the external potential 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ is only gravitation,
+ there is a mechanical equilibrium solution where the water is vertically stratified.
+ In this case 
+\begin_inset Formula $v_{0}=0$
+\end_inset
+
+.
+ And we also assume adiabaticity and constancy in time and space of 
+\begin_inset Formula $\left(\frac{\partial p}{\partial\rho}\right)_{\entropy}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\entropy$
+\end_inset
+
+ being the entropy,
+ to linear order.
+ So over all we have 
+\begin_inset Formula 
+\begin{align*}
+\rho_{0}\partial_{t}\delta v & =-\nabla\delta p,\\
+\frac{\partial\delta\rho}{\partial t} & =\rho_{0}\nabla\cdot\delta v,\\
+\delta p & =\left(\frac{\partial p}{\partial\rho}\right)_{\entropy}\delta\rho
+\end{align*}
+
+\end_inset
+
+and these three equations together give
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial^{2}\delta\rho}{\partial t^{2}} & =-\nabla^{2}\delta p=-\left(\frac{\partial p}{\partial\rho}\right)_{\entropy}\nabla^{2}\delta p.
+\end{align*}
+
+\end_inset
+
+Note that in this scenario,
+ with 
+\begin_inset Formula $\partial_{t}\delta v$
+\end_inset
+
+ being a gradient and the mechanical equilibrium vertically stratified,
+ 
+\begin_inset Formula 
+\begin{align*}
+\left(\partial_{t}\omega\right)_{i} & =\epsilon_{ijk}\partial_{j}\left(\rho_{0}^{-1}\right)\partial_{k}\delta p=\epsilon_{izk}\partial_{z}\left(\rho_{0}^{-1}\right)\partial_{k}\delta p\\
+\implies\partial_{t}\omega & =\partial_{z}\left(\rho_{0}^{-1}\right)\left(\partial_{x}\delta p\hat{y}-\partial_{y}\delta p\hat{x}\right).
+\end{align*}
+
+\end_inset
+
+Though since 
+\begin_inset Formula $\partial_{z}\left(\rho_{0}^{-1}\right)$
+\end_inset
+
+ is very small,
+ 
+\begin_inset Formula $\partial_{t}\omega$
+\end_inset
+
+ is small.
+\end_layout
+
+\begin_layout Section
+Some numbers
+\end_layout
+
+\begin_layout Standard
+See table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Sea-surface-properties"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ Introducing 
+\begin_inset Formula $k_{m}:=\sqrt{\frac{g\rho}{\tau}}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\omega_{m}^{2}:=2gk_{m}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\lambda_{m}=\frac{2\pi}{k_{m}}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $T_{m}=\frac{2\pi}{\omega_{m}}$
+\end_inset
+
+ eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sea-water-dispersion-flat-bottom"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ takes the form
+\begin_inset Formula 
+\begin{align*}
+\left(\frac{\omega}{\omega_{m}}\right)^{2} & =\frac{1}{2}\frac{k}{k_{m}}\left(1+\left(\frac{k}{k_{m}}\right)^{2}\right)\tanh\left(hk\right).
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $k_{m},\omega_{m}$
+\end_inset
+
+ quantify the relative contribution of gravity and capillary effects in producing the wave pattern.
+ At sea,
+ typically 
+\begin_inset Formula $\lambda_{m}\approx2cm$
+\end_inset
+
+,
+ so waves that are much longer than that (small 
+\begin_inset Formula $k$
+\end_inset
+
+) are dominated by gravity.
+ 
+\series bold
+At height 10 meters with angular accuracy of 0.02 degrees,
+ we have 3mm-3cm spatial accuracy,
+ so if the pixel count allows and there is no significant wind we should be allowed to measure ripples.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="12" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+quantity
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+approximate value
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $g$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $980\frac{cm}{s^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $p$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.01\cdot10^{5}Pa$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\rho$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.025\frac{g}{cm^{3}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $73.5\frac{g}{s^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $k_{m}=\sqrt{\frac{g\rho}{\surfaceTension}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3.7cm^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\omega_{m}=\left(\frac{4g^{3}\rho}{\surfaceTension}\right)^{1/4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $85s^{-1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\lambda_{m}=\frac{2\pi}{k_{m}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.7cm$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $t_{m}=\frac{2\pi}{\omega_{m}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.074s$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $c_{m}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $23\frac{cm}{s}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $v_{sound}=\sqrt{\left(\frac{\partial p}{\partial\rho}\right)_{\entropy}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1.5\cdot10^{5}\frac{cm}{s}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+wind-wave band
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5-30s$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sea surface properties,
+ estimation
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Sea-surface-properties"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

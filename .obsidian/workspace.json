@@ -1,0 +1,223 @@
+{
+  "main": {
+    "id": "bc0a09c6563458ed",
+    "type": "split",
+    "children": [
+      {
+        "id": "f5c7eef1ef687030",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "87c23aa6427cd54c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Tasks.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Tasks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "afc49eda3dfe387f",
+    "type": "split",
+    "children": [
+      {
+        "id": "3cae9e697913e414",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4461f0108488153d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "46823f468b36e0ba",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "437a26536b6a0416",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "37c955ce18093fbd",
+    "type": "split",
+    "children": [
+      {
+        "id": "d14d37f4d1178809",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "80d03df43bac5d83",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Tasks.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Tasks"
+            }
+          },
+          {
+            "id": "5e98d5c1cae8a77f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "cd6d09be8c6ef5b9",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "c09212044a223cec",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "151f80ceca2746a6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "obsidian-kanban:Create new board": false,
+      "obsidian-excalidraw-plugin:New drawing": false
+    }
+  },
+  "active": "87c23aa6427cd54c",
+  "lastOpenFiles": [
+    "components/wave_maker/First sketch.md",
+    "design/capacitive_wire_gauge/theory.lyx~",
+    "design/wave_maker/wave_maker.yaml",
+    "design/wave_maker/First sketch.md",
+    "design/aquarium/aquarium.yaml",
+    "design/aquarium/aquarium.FCStd",
+    "design/aquarium/aquarium.20251216-152651.FCBak",
+    "design/aquarium/aquarium-Body.step",
+    "design/aquarium/aquarium-Body.3mf",
+    "design/wave_maker",
+    "design/macros.lyx",
+    "design/capacitive_wire_gauge",
+    "docs/wave_maker/First sketch.md",
+    "components/wave_maker/docs/First sketch.md",
+    "docs/docs/First sketch.md",
+    "docs/capacitive_wire_gauge/Papers.md",
+    "docs/docs/Papers.md",
+    "images/aquarium/20251216_131820.jpg",
+    "images/aquarium/20251216_131736.jpg",
+    "images/aquarium/20251215_165300.jpg",
+    "images/aquarium/20251215_165256.jpg",
+    "images/aquarium/20251215_143728.jpg",
+    "images/aquarium/20251215_143713.jpg",
+    "images/images/20251216_131820.jpg",
+    "images/images/20251216_131736.jpg",
+    "images/images/20251215_165300.jpg",
+    "images/images/20251215_143713.jpg",
+    "README.md",
+    "2025-12-16.md",
+    "Tasks.md",
+    "components/wave_maker/docs/Design and fabrication of wave generator using an oscillating wedge (Lu Thi Yen Vu et al., 2019).md",
+    "components/capacitive_wire_gauge/Papers.md",
+    "components/capacitive_wire_gauge/docs/Papers.md",
+    "Untitled.md"
+  ]
+}
