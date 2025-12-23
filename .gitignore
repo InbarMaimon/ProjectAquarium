@@ -1,16 +1,52 @@
-# Whole directories
+# =========================
+# Directories
+# =========================
 archive/
 data_proc/
 data_raw/
-
-# Python
+.obsidian/
+docs/literature/
+*/sandbox/
 __pycache__/
-*.pyc
 .venv/
 
-# LaTeX/LyX
-$*
-*~
+# =========================
+# Python files
+# =========================
+*.py[cod]   # ignore all Python compiled/optimized/extension files, such as .pyc, .pyd, .pyo.
+*.so
+
+# =========================
+# LaTeX auxiliary files
+# =========================
 *.aux
 *.log
 *.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*#
+*~
+
+# =========================
+# PDFs / exported docs
+# =========================
+*.pdf
+*.dvi
+*.ps
+
+# =========================
+# Manual temporary
+# =========================
+temp*
+זמני*
+
+# =========================
+# Miscellaneous
+# =========================
+.bash_history

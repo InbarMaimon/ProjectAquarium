@@ -11,5 +11,6 @@ Structure:
 - design/       CAD, diagrams
 - docs/         Theory
 - images/       Photos of setup
+- notes/         lab notes
 - reports       Presentations, sum-ups, 
 - results/      Figures, tables

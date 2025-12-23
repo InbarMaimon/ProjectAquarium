@@ -1,8 +1,9 @@
 ### Administrative
-1. Safety and return a validation doc.
-2. Sexual offense courseware.
-3. OTP?
-4. Access to printer.
+1. Get access to uni. systems with the lab under Sprinzak.
+2. Safety and return a validation doc.
+3. Sexual offense courseware.
+4. OTP?
+5. Access to printer.
 
 ### General
 1. Return all the tools to Yosi. What's his surname?
@@ -20,10 +21,8 @@
 3. Talk to Tomer Brosh about the wave maker. Ask about Amir's idea.
 4. Buy stuff and get into the fucking work.
 
-### Capacitive wire gauge - second priority
-1. Read paper.
-2. How should we make it? sketch a road map of components and their manufacturing.
-3. Go to Dan Liberzon (Technion) with questions.
+### Height sensor
+1. Decide if we go for a capacitive wire gauge, a hypersonic sensor or a laser sensor.
 
 ### Camera
 1. Study camera software.
@@ -34,5 +33,8 @@
 ### Possible schedule clashes
 I think there should be none. The gauge should be non-intrusive, but the assemble is very simple.
 
-17/12
-- WM 1-3
+22/12
+- Elena for OTP and printer access?
+- Keys.
+- For Aviv: change garbage? Where do we get tantalum?
+- Call Yishay/Hanoch.

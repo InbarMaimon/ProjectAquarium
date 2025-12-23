@@ -1,0 +1,1270 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsart
+\begin_preamble
+\usepackage{pythontex}
+% [
+% makestderr=false,
+% makestdout=false,
+% makewarnings=false,
+% makepythontex=true
+% ]
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children no
+\language american
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Wave Maker Theory
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "../macros.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Terminology
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Electrolytic
+\begin_inset space ~
+\end_inset
+
+cell An aquatic system composed of a positively charged anode and a negatively charged cathode.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Anodize Coat with a protective oxide layer by an electrolytic process in which the metal forms the anode.
+\end_layout
+
+\begin_layout Section
+Models
+\end_layout
+
+\begin_layout Remark
+When introducing vertical disturbance to the water,
+ one can either solve the dispersion problem anew with updated upper boundary condition (no longer free surface),
+ or approximate the disturbance as conformal to the free surface eigenmodes and just compute the coefficients.
+\end_layout
+
+\begin_layout Subsection
+Paddle wave maker in long tunnel,
+ follows:
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Piston-wave-maker"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Complete Wave maker Theory for Plane Waves Produced by a Paddle 
+\begin_inset Newline newline
+\end_inset
+
+(WATER WAVE MECHANICS FOR ENGINEERS AND SCIENTISTS,
+ 1991,
+ sec.
+ 6.3)
+\end_layout
+
+\begin_layout Standard
+In linear theory,
+ there is no distinction in the analysis of simple vs.
+ mixed modes,
+ i.e.
+ modes that propagate along one of the rectangular container edges vs.
+ modes that mix two spatially orthogonal components.
+ Generating simple ones with a high finesse is easier,
+ though,
+ and so this is the setting we will analyze.
+ As before,
+ the liquid is assume to be incompressible and irrotational.
+\end_layout
+
+\begin_layout Subsubsection
+Basic equations
+\end_layout
+
+\begin_layout Standard
+Laplace:
+ we assume full translational symmetry in the 
+\begin_inset Formula $y$
+\end_inset
+
+ direction,
+ so the potential has only 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $z$
+\end_inset
+
+ (vertical) components.
+\begin_inset Formula 
+\begin{align*}
+\partial_{x}^{2}\velocityPotential+\partial_{z}^{2}\velocityPotential & =0.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The boundary conditions at the surface and at the bed are the same as before,
+\begin_inset Formula 
+\begin{align}
+0 & =\left(\partial_{t}^{2}+g\partial_{z}-\frac{\surfaceTension}{\sDensity}\partial_{x}^{2}\partial_{z}\right)\velocityPotential\left(t,x,z=0\right),\label{eq:b.c.-top}\\
+0 & =\partial_{z}\velocityPotential\left(t,x,z=-h\right).\label{eq:b.c.-bottom}
+\end{align}
+
+\end_inset
+
+Along the 
+\begin_inset Formula $x$
+\end_inset
+
+ direction,
+ we have the condition at infinity
+\begin_inset Formula 
+\begin{align}
+0 & =\left(\partial_{x}-ik_{0}\right)\velocityPotential\left(t,x\rightarrow\infty,z\right)\label{eq:b.c.-inf}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $k_{0}$
+\end_inset
+
+ is the wavenumber.
+ At the paddle surface we require that the velocity of the liquid perpendicular to that surface will equate the surface velocity itself.
+ If 
+\begin_inset Formula 
+\begin{align*}
+p\left(t,l\right) & =\left(x\left(t,l\right),z\left(t,l\right)\right)
+\end{align*}
+
+\end_inset
+
+is the position of the respective 
+\begin_inset Formula $y$
+\end_inset
+
+-line on the paddle at time 
+\begin_inset Formula $t$
+\end_inset
+
+ (the embedding function),
+ then it must be on a surface described by the paddle surface equation
+\begin_inset Formula 
+\begin{align*}
+P\left(t,x,z\right) & :=x-S\left(z\right)\sin\left(\omega_{p}t\right)=0,
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\omega_{p}$
+\end_inset
+
+ is the paddle frequency and 
+\begin_inset Formula $S$
+\end_inset
+
+ is the stroke function (usually linear).
+ That is,
+\begin_inset Formula 
+\begin{align*}
+P\left(t,x\left(t,l\right),z\left(t,l\right)\right) & =0.
+\end{align*}
+
+\end_inset
+
+Then each 
+\begin_inset Formula $y$
+\end_inset
+
+-line point must also satisfy the equation
+\begin_inset Formula 
+\begin{align*}
+\left(\partial_{t}P\left(t,x\left(t,l\right),z\left(t,l\right)\right)\right)_{l} & =0
+\end{align*}
+
+\end_inset
+
+or
+\begin_inset Formula 
+\begin{align*}
+0 & =\partial_{t}P\left(t,x\left(t,l\right),z\left(t,l\right)\right)+\partial_{x}P\left(t,x\left(t,l\right),z\left(t,l\right)\right)\partial_{t}x\left(t,l\right)+\partial_{z}P\left(t,x\left(t,l\right),z\left(t,l\right)\right)\partial_{t}z\left(t,l\right).
+\end{align*}
+
+\end_inset
+
+Now we can simply replace 
+\begin_inset Formula $x\left(t,l\right)$
+\end_inset
+
+,
+ 
+\begin_inset Formula $z\left(t,l\right)$
+\end_inset
+
+ by the liquid velocity at that point,
+ 
+\begin_inset Formula $\nabla\velocityPotential$
+\end_inset
+
+,
+ so that
+\begin_inset Formula 
+\begin{align*}
+\nabla\velocityPotential\cdot\nabla P & =-\partial_{t}P\left.\right|_{P=0}\\
+\implies\partial_{x}\velocityPotential-\partial_{z}S\left(z\right)\sin\left(\omega_{p}t\right)\partial_{z}\velocityPotential & =-S\left(z\right)\omega_{p}\cos\left(\omega_{p}t\right).
+\end{align*}
+
+\end_inset
+
+Now for small paddle velocities and amplitudes,
+ we can drop the second term in the l.h.s.
+ Moreover,
+ because 
+\begin_inset Formula $\partial_{x}\velocityPotential$
+\end_inset
+
+ is assumed small near the boundary we can replace its evaluation point with 
+\begin_inset Formula $x=0$
+\end_inset
+
+,
+ so that our fourth boundary condition takes the final form
+\begin_inset Formula 
+\begin{align}
+\partial_{x}\velocityPotential\left(t,0,z\right) & =-S\left(z\right)\omega_{p}\cos\left(\omega_{p}t\right).\label{eq:b.c.-paddle}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Solution
+\end_layout
+
+\begin_layout Standard
+For a linear 
+\begin_inset Formula $S\left(z\right)=A_{p}\left(z+h\right)$
+\end_inset
+
+,
+ the Laplace solution space allows for an inhomogeneous solution
+\begin_inset Formula 
+\begin{align*}
+\velocityPotential\left(t,x,z\right) & =A_{p}\cosh\left(\kTravel\left(z+h\right)\right)\sin\left(\kTravel x-\omega_{p}t+\phi_{p}\right)+Ax+\sum_{n}A_{s,n}\cos\left(k_{s,n}\left(z+h\right)\right)e^{-k_{s,n}x}\sin\left(\omega_{p}t+\phi_{s}\right)
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula $A=0$
+\end_inset
+
+,
+ forbidding a nontrivial base uniform flow which the paddle blocks.
+ Now plugging this into the boundary conditions,
+ we get from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:b.c.-top"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+0 & =\partial_{t}^{2}\velocityPotential+g\partial_{z}\velocityPotential-\frac{\surfaceTension}{\sDensity}\left(\partial_{x}^{2}+\partial_{y}^{2}\right)\partial_{z}\velocityPotential\\
+ & =-A_{p}\omega_{p}^{2}\cosh\left(\kTravel h\right)\sin\left(\kTravel x-\omega_{p}t+\phi_{p}\right)-\sum_{n}A_{s,n}\omega_{s}^{2}\cos\left(\kevanescentn h\right)e^{-\kevanescentn x}\cos\left(\omega_{p}t+\phi_{s,n}\right)\\
+ & +A_{p}gk_{p}\sinh\left(\kTravel h\right)\sin\left(\kTravel x-\omega_{p}t+\phi_{p}\right)-\sum_{n}A_{s,n}gk_{s,n}\sin\left(\kevanescentn h\right)e^{-\kevanescentn x}\cos\left(\omega_{p}t+\phi_{s,n}\right)\\
+ & +A_{p}\frac{\surfaceTension}{\rho}k_{p}^{3}\sinh\left(\kTravel h\right)\sin\left(\kTravel x-\omega_{p}t+\phi_{p}\right)+\sum_{n}A_{s,n}\frac{\surfaceTension}{\sDensity}k_{s,n}^{3}\sin\left(\kevanescentn h\right)e^{-\kevanescentn x}\cos\left(\omega_{p}t+\phi_{s,n}\right)\\
+\implies\omega_{p}^{2} & =\left(g\kTravel+\frac{\surfaceTension}{\sDensity}\kTravel^{3}\right)\tanh\left(k_{p}h\right)\\
+ & =\left(-g\kevanescentn+\frac{\surfaceTension}{\sDensity}\kevanescentn^{3}\right)\tan\left(\kevanescentn h\right).
+\end{align*}
+
+\end_inset
+
+The last equation can be solved by many different values of 
+\begin_inset Formula $\kevanescentn$
+\end_inset
+
+,
+ which is why we offered the subscript 
+\begin_inset Formula $n$
+\end_inset
+
+ to begin with.
+\end_layout
+
+\begin_layout Standard
+Next for the paddle condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:b.c.-paddle"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ we've got
+\begin_inset Formula 
+\begin{align*}
+-\omega_{p}S\left(z\right)\cos\left(\omega_{p}t\right) & =\partial_{x}\velocityPotential\left(t,0,z\right)\\
+ & =A_{p}\kTravel\cosh\left(\kTravel\left(z+h\right)\right)\cos\left(\omega_{p}t+\phi_{p}\right)-\sum_{n}A_{s,n}\kevanescentn\cos\left(\kevanescentn\left(z+h\right)\right)\cos\left(\omega_{p}t+\phi_{s,n}\right)
+\end{align*}
+
+\end_inset
+
+which,
+ since in general 
+\begin_inset Formula $S\left(z\right)\not\propto\cosh\left(k_{p}\left(z+h\right)\right)$
+\end_inset
+
+,
+ tells us that 
+\begin_inset Formula $\phi_{p}=0$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\phi_{s,n}=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Next,
+ we see that we must have
+\begin_inset Formula 
+\begin{align*}
+\omega_{p}S\left(z\right) & =-A_{p}\kTravel\cosh\left(k_{p}\left(z+h\right)\right)+\sum_{n}A_{s,n}\kevanescentn\cos\left(\kevanescentn\left(z+h\right)\right).
+\end{align*}
+
+\end_inset
+
+This reflects the fact that,
+ in particular,
+ a flat paddle cannot only excite a propagating wave in a Laplace liquid.
+\end_layout
+
+\begin_layout Standard
+Now the book claims that this problem is Sturm-Liouville analyzable,
+ so the components must be orthogonal and complete,
+ so they can span 
+\begin_inset Formula $S\left(z\right)$
+\end_inset
+
+ and the coefficients compute
+\begin_inset Formula 
+\begin{align*}
+A_{p} & =-\frac{\omega_{p}}{\kTravel}\frac{\int_{-h}^{0}S\left(z\right)\cosh\left(\kTravel\left(z+h\right)\right)dz}{\int_{-h}^{0}\cosh^{2}\left(\kTravel\left(z+h\right)\right)dz},\\
+A_{s,n} & =\frac{\omega_{p}}{\kevanescentn}\frac{\int_{-h}^{0}S\left(z\right)\cos\left(\kevanescentn\left(z+h\right)\right)dz}{\int_{-h}^{0}\cos^{2}\left(\kevanescentn\left(z+h\right)\right)dz}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Needle response in a rectangular box
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Needle-response"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let us reserve 
+\begin_inset Formula $k=\left(k_{x},k_{y}\right)$
+\end_inset
+
+ for the wavevector and using 
+\begin_inset Formula $\left|k\right|$
+\end_inset
+
+ for the wavenumber.
+ Recall the spectral form of g-c waves,
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\omega & =\sqrt{\left(g\left|k\right|+\frac{\surfaceTension}{\rho}\left|k\right|^{3}\right)\tanh\left(h\left|k\right|\right)},\\
+\zeta\left(\omega,k_{x},k_{y}\right) & =B\frac{\left|k\right|}{-i\omega}\sinh\left(h\left|k\right|\right).
+\end{align*}
+
+\end_inset
+
+Adding walls at 
+\begin_inset Formula $\pm\frac{L_{x}}{2},\pm\frac{L_{y}}{2}$
+\end_inset
+
+ merely quantizes the wavevector,
+ so we have 
+\begin_inset Formula $k_{x}=\frac{\pi}{L_{x}}\left(2m+1\right),k_{y}=\frac{\pi}{L_{y}}\left(2n+1\right)$
+\end_inset
+
+.
+ Then we can use the shorthand 
+\begin_inset Formula 
+\begin{align*}
+k_{m,n} & =\left(\frac{\pi}{L_{x}}\left(2m+1\right),\frac{\pi}{L_{y}}\left(2n+1\right)\right)
+\end{align*}
+
+\end_inset
+
+and 
+\begin_inset Formula $\zeta\left(t,x,y\right)$
+\end_inset
+
+ is a sum of cosine forms:
+\begin_inset Formula 
+\begin{align*}
+\zeta\left(t,x,y\right) & =i\sum_{m,n}B_{m,n}\frac{\left|k_{m,n}\right|}{\omega_{m,n}}\sinh\left(h\left|k_{m,n}\right|\right)\cos\left(k_{m,n}\cdot\hat{x}x\right)\cos\left(k_{m,n}\cdot\hat{y}y\right)e^{-\gamma_{m,n}t}\cos\left(\omega_{m,n}t+\phi_{m,n}\right),t>0
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $B_{m,n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi_{m,n}$
+\end_inset
+
+ specify the amplitude and phase of each component,
+ respectively.
+ We also manually added an imaginary component to 
+\begin_inset Formula $\omega_{m,n}$
+\end_inset
+
+,
+ so that we have some damping.
+ This manifests itself above as 
+\begin_inset Formula $e^{-\gamma_{m,n}t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To fully specify the solution,
+ we need a time boundary condition.
+ Let us try a poker with profile 
+\begin_inset Formula $F\left(x,y\right)$
+\end_inset
+
+.
+ Then if it relaxes inside the fluid and is then taken out fast enough,
+ what we have is essentially
+\begin_inset Formula 
+\begin{align*}
+F\left(x,y\right)=\zeta\left(0,x,y\right) & =\sum_{m,n}B_{m,n}\cos\left(k_{m,n}\cdot\hat{x}x\right)\cos\left(k_{m,n}\cdot\hat{y}y\right)\\
+\implies B_{m,n} & =\int_{\mathcal{B}}F\left(x,y\right)\cos\left(\frac{\pi}{L_{x}}\left(2m+1\right)x\right)\cos\left(\frac{\pi}{L_{y}}\left(2n+1\right)y\right)\frac{4dxdy}{L_{x}L_{y}}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathcal{B}=\left[-\frac{L_{x}}{2},\frac{L_{x}}{2}\right]\times\left[-\frac{L_{y}}{2},\frac{L_{y}}{2}\right]$
+\end_inset
+
+ is the box.
+ In particular,
+ a poker of the form
+\begin_inset Formula 
+\begin{align*}
+F\left(x,y\right) & =Ae^{-\frac{x^{2}+y^{2}}{2\sigma^{2}}}
+\end{align*}
+
+\end_inset
+
+with 
+\begin_inset Formula $\sigma\ll L_{x},L_{y}$
+\end_inset
+
+ returns
+\begin_inset Formula 
+\begin{align*}
+B_{m,n} & =A\int_{-1/2}^{1/2}\int_{-1/2}^{1/2}e^{-\frac{L_{x}^{2}x^{2}+L_{y}^{2}y^{2}}{2\sigma^{2}}}\exp\left(i2\pi\frac{\left(2m+1\right)x}{2}\right)\exp\left(i2\pi\frac{\left(2n+1\right)y}{2}\right)4dxdy\\
+ & \approx4A\left(\int_{-\infty}^{\infty}e^{-\frac{L_{x}^{2}x^{2}}{2\sigma^{2}}+i2\pi\frac{\left(2m+1\right)x}{2}}dx\right)\left(\int_{-\infty}^{\infty}e^{-\frac{L_{y}^{2}y^{2}}{2\sigma^{2}}+i2\pi\frac{\left(2n+1\right)y}{2}}dy\right)\\
+ & =A\frac{8\pi\sigma^{2}}{L_{x}L_{y}}e^{-\frac{\pi^{2}}{2}\left(\frac{\sigma^{2}\left(2m+1\right)^{2}}{L_{x}^{2}}+\frac{\sigma^{2}\left(2n+1\right)^{2}}{L_{y}^{2}}\right)}
+\end{align*}
+
+\end_inset
+
+so in this case the poker excites 
+\begin_inset Formula $O\left(\frac{\sigma}{L_{x}}+\frac{\sigma}{L_{y}}\right)$
+\end_inset
+
+ modes,
+ which is not what we want.
+\end_layout
+
+\begin_layout Subsection
+Rigid plunger wave maker in 
+\begin_inset Formula $y$
+\end_inset
+
+-symmetric long horizontal tunnel
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+In the following we neglect adhesion and assuming fast withdrawing,
+ so no wave upward follow in.
+ We also assume that the plunger is always partly submerged,
+ with a continuous segment in the water.
+\end_layout
+
+\begin_layout Standard
+We solve the same problem as in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Piston-wave-maker"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ with slightly different boundary conditions.
+ So we still have the basic equations
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+0 & =\partial_{x}^{2}\velocityPotential+\partial_{z}^{2}\velocityPotential,\\
+0 & =\left(\partial_{t}^{2}+g\partial_{z}-\frac{\surfaceTension}{\rho}\partial_{x}^{2}\partial_{z}\right)\velocityPotential\left(t,x,z=0\right),\\
+0 & =\partial_{z}\velocityPotential\left(t,x,z=-h\right),\\
+0 & =\left(\partial_{x}-ik_{0}\right)\velocityPotential\left(t,x\rightarrow\infty,z\right).
+\end{align*}
+
+\end_inset
+
+At the wave maker side,
+ we now have vertical motion.
+ The impenetrability boundary condition about 
+\begin_inset Formula $x=0$
+\end_inset
+
+ is therefore
+\begin_inset Formula 
+\begin{align*}
+\nabla f\left(t,x,z\right)\cdot\hat{n} & =\partial_{t}p\left(t,x\right)\cdot\hat{n},
+\end{align*}
+
+\end_inset
+
+where
+\begin_inset Formula 
+\begin{align*}
+p\left(t,x\right) & =\left(x\left(t\right),z\left(t,x\right)\right)
+\end{align*}
+
+\end_inset
+
+is the position of the respective 
+\begin_inset Formula $y$
+\end_inset
+
+-line on the plunger at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Note that I replaced the general parameter 
+\begin_inset Formula $l$
+\end_inset
+
+ from subsec.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Piston-wave-maker"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ by 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula 
+\begin{align*}
+p\left(t,x\right) & =\left(x,-d\left(t\right)+F\left(x\right)\right),
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $x$
+\end_inset
+
+ lost its time dependence because the motion is vertical,
+ 
+\begin_inset Formula $-d\left(t\right)$
+\end_inset
+
+ is the 
+\begin_inset Formula $x$
+\end_inset
+
+-averaged height of the 
+\begin_inset Formula $x=0$
+\end_inset
+
+ edge of the plunger,
+ and 
+\begin_inset Formula $F$
+\end_inset
+
+ reflects the topography of the plunger,
+ with the derived condition that 
+\begin_inset Formula $F\left(x\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To conclude,
+ the final boundary condition is the two part
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\nabla f\left(t,x,-d\left(t\right)+F\left(x\right)\right)\cdot\hat{n} & =\partial_{t}p\left(t,x\right)\cdot\hat{n}\label{eq:impenetrability-cond.}
+\end{align}
+
+\end_inset
+
+at 
+\begin_inset Formula $0<x$
+\end_inset
+
+,
+ 
+\begin_inset Formula $-d\left(t\right)+F\left(x\right)<0$
+\end_inset
+
+,
+ and
+\begin_inset Formula 
+\begin{align*}
+\partial_{x}f\left(t,0,z\right) & =0
+\end{align*}
+
+\end_inset
+
+at 
+\begin_inset Formula $-h<z<-d\left(t\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+If 
+\begin_inset Formula $F\left(x\right)$
+\end_inset
+
+ is constrained to have 0 mean or annul,
+ say,
+ at one surface edge,
+ another parameter 
+\begin_inset Formula $z_{0}$
+\end_inset
+
+ may be added to the above parentheses to handle the average height of the plunger.
+\end_layout
+
+\begin_layout Subsubsection
+Wedge
+\end_layout
+
+\begin_layout Standard
+Following Wu 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wu1988PlungerWavemaker"
+literal "false"
+
+\end_inset
+
+,
+ we specialize to the case of a right angle wedge,
+ with the slope facing the forward direction of the 
+\begin_inset Formula $x$
+\end_inset
+
+ axis.
+ That is,
+ the surface function of the plunger takes the form
+\begin_inset Formula 
+\begin{align*}
+F\left(x\right) & =\cot\alpha x,
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is the angle between the surface and the vertical line.
+ Therefore
+\begin_inset Formula 
+\begin{align*}
+p\left(t,x\right) & =\left(x,-d+S\sin\left(\omega_{p}t\right)+\cot\alpha x\right),
+\end{align*}
+
+\end_inset
+
+where we take the wedge to move harmonically at frequency 
+\begin_inset Formula $\omega_{p}$
+\end_inset
+
+.
+ Then the impenetrability boundary condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:impenetrability-cond."
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ takes the form
+\begin_inset Formula 
+\begin{align*}
+-S\omega_{p}\cos\left(\omega_{p}t\right) & =\cot\alpha\partial_{x}f\left(t,p\left(t,x\right)\right)-\partial_{z}f\left(t,p\left(t,x\right)\right)
+\end{align*}
+
+\end_inset
+
+at 
+\begin_inset Formula $0<x$
+\end_inset
+
+,
+ 
+\begin_inset Formula $-d\left(t\right)+F\left(x\right)<0$
+\end_inset
+
+,
+ and again
+\begin_inset Formula 
+\begin{align*}
+\partial_{x}f\left(t,0,z\right) & =0
+\end{align*}
+
+\end_inset
+
+at 
+\begin_inset Formula $-h<z<-d\left(t\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Before solving the problem,
+ we do two more simplifications:
+ on the wedge surface,
+ 
+\begin_inset Formula $\partial_{x}f$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\partial_{z}f$
+\end_inset
+
+ are small,
+ and the time dependence of 
+\begin_inset Formula $p$
+\end_inset
+
+,
+ 
+\begin_inset Formula $S$
+\end_inset
+
+,
+ is also a small quantity.
+ Therefore we may neglect it:
+ 
+\begin_inset Formula 
+\begin{align*}
+f\left(t,p\left(t,x\right)\right) & =f\left(t,x,-d+\cot\alpha x\right).
+\end{align*}
+
+\end_inset
+
+This in turn will allow us to drop the time dependence of the whole problem,
+ since the oscillatory forcing 
+\begin_inset Formula $S\omega_{p}\cos\left(\omega_{p}t\right)$
+\end_inset
+
+ determines the phase of all of the components of the generated disturbance.
+\end_layout
+
+\begin_layout Standard
+In the same vain,
+ and also for the sake of compatibility,
+ we neglect the time dependence in the impenetrability boundary condition.
+ Since 
+\begin_inset Formula $S$
+\end_inset
+
+ is small,
+ this is a another higher order correction for the motion.
+ Thus we replace 
+\begin_inset Formula $d\left(t\right)$
+\end_inset
+
+ with the average height 
+\begin_inset Formula $d$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Solution for the wedge problem;
+ preparations
+\end_layout
+
+\begin_layout Standard
+We demand that the general solution for the other boundary conditions
+\begin_inset Formula 
+\begin{align*}
+\velocityPotential\left(t,x,z\right) & =\Re\left(A_{p}\cosh\left(\kTravel\left(z+h\right)\right)e^{i\left(\kTravel x-\omega_{p}t\right)}+\sum_{n}A_{s,n}\cos\left(\kevanescentn\left(z+h\right)\right)e^{-\kevanescentn x}e^{-i\omega_{p}t}\right)
+\end{align*}
+
+\end_inset
+
+will match the wedge b.c.
+\end_layout
+
+\begin_layout Remark
+Assuming that 
+\begin_inset Formula $S$
+\end_inset
+
+ is small means that contributions to the actual dynamics come only from modes 
+\begin_inset Formula $k_{s,n}$
+\end_inset
+
+ for which 
+\begin_inset Formula $Sk_{s,n}\ll1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We note immediately that since the forcing is 
+\begin_inset Formula $\cos\left(\omega_{p}t\right)$
+\end_inset
+
+,
+ the problem can be divided to a cosine part and a sine part,
+ with the sine part being solved by 0 amplitudes.
+ (just migrate the wedge boundary condition to the edge 
+\begin_inset Formula $x=0$
+\end_inset
+
+,
+ and see that the analytical solution for this problem satisfies also the boundary solution on the wedge.) Since the the system of modes is complete,
+ this must be the only solution.
+ Therefore we are left with the time-independent general solution
+\begin_inset Formula 
+\begin{align*}
+\velocityPotential\left(x,z\right) & =\cosh\left(\kTravel\left(z+h\right)\right)\Re\left(A_{p}e^{i\kTravel x}\right)+\sum_{n}A_{s,n}\cos\left(\kevanescentn\left(z+h\right)\right)e^{-\kevanescentn x},
+\end{align*}
+
+\end_inset
+
+with slight abuse of notations.
+ I will actually abuse notations even further,
+ dropping the 
+\begin_inset Formula $\Re$
+\end_inset
+
+ symbol and taking 
+\begin_inset Formula $f\left(x,z\right)$
+\end_inset
+
+ to be complex.
+ The respective boundary conditions thus take the form
+\begin_inset Formula 
+\begin{align*}
+-S\omega_{p} & =\cot\alpha\partial_{x}f\left(\tan\alpha\left(z+d\right),z\right)-\partial_{z}f\left(\tan\alpha\left(z+d\right),z\right)\\
+ & =\cot\alpha\left(\cosh\left(k_{p}\left(z+h\right)\right)iA_{p}\kTravel e^{i\kTravel\tan\alpha\left(z+d\right)}-\sum_{n}A_{s,n}k_{s,n}\cos\left(\kevanescentn\left(z+h\right)\right)e^{-\kevanescentn\tan\alpha\left(z+d\right)}\right)\\
+ & -k_{p}\sinh\left(\kTravel\left(z+h\right)\right)A_{p}e^{i\kTravel\tan\alpha\left(z+d\right)}+\sum_{n}A_{s,n}\kevanescentn\sin\left(\kevanescentn\left(z+h\right)\right)e^{-\kevanescentn\tan\alpha\left(z+d\right)}\\
+ & =A_{p}\kTravel\left(i\cot\alpha\cosh\left(\kTravel\left(z+h\right)\right)-\sinh\left(\kTravel\left(z+h\right)\right)\right)e^{i\kTravel\tan\alpha\left(z+d\right)}\\
+ & +\sum_{n}A_{s,n}k_{s,n}\left(\sin\left(\kevanescentn\left(z+h\right)\right)-\cot\alpha\cos\left(\kevanescentn\left(z+h\right)\right)\right)e^{-\kevanescentn\tan\alpha\left(z+d\right)}
+\end{align*}
+
+\end_inset
+
+at 
+\begin_inset Formula $0<x$
+\end_inset
+
+,
+ 
+\begin_inset Formula $-d+F\left(x\right)<0$
+\end_inset
+
+,
+ and
+\begin_inset Formula 
+\begin{align*}
+0 & =\partial_{x}f\left(t,0,z\right)\\
+ & =\cosh\left(k_{p}\left(z+h\right)\right)iA_{p}\kTravel\\
+ & -\sum_{n}A_{s,n}\kevanescentn\cos\left(\kevanescentn\left(z+h\right)\right)
+\end{align*}
+
+\end_inset
+
+at 
+\begin_inset Formula $-h<z<-d$
+\end_inset
+
+.
+ The real part of an 
+\begin_inset Formula $f$
+\end_inset
+
+ that solves this problem,
+ solves the real linear problem.
+\end_layout
+
+\begin_layout Subsubsection
+Solution
+\end_layout
+
+\begin_layout Standard
+Following Wu,
+ we discretize the problem,
+ seeking an approximated solution.
+ That is,
+ let
+\begin_inset Formula 
+\begin{align*}
+\alpha\left(z\right) & =\begin{cases}
+\alpha & -d<z<0\\
+0 & -h<z<-d
+\end{cases}\\
+\implies B_{m0} & =k_{p}\left(i\cosh\left(\kTravel h\left(1+\frac{z_{m}}{h}\right)\right)-\tan\left(\alpha\left(z_{m}\right)\right)\sinh\left(\kTravel h\left(1+\frac{z_{m}}{h}\right)\right)\right)e^{i\kTravel h\tan\alpha\left(z_{m}\right)\left(\frac{d}{h}+\frac{z_{m}}{h}\right)},\\
+B_{mn} & =-k_{s,n}\left(\cos\left(\kevanescentn h\left(1+\frac{z_{m}}{h}\right)\right)-\tan\left(\alpha\left(z_{m}\right)\right)\sin\left(\kevanescentn h\left(1+\frac{z_{m}}{h}\right)\right)\right)e^{-\kevanescentn h\tan\alpha\left(z_{m}\right)\left(\frac{d}{h}+\frac{z_{m}}{h}\right)},\\
+A_{0} & =A_{p},\\
+A_{n} & =A_{s,n},\\
+D_{m} & =-S\omega_{p}\tan\left(\alpha\left(z_{m}\right)\right).
+\end{align*}
+
+\end_inset
+
+Then we require that the b.c.
+ will be satisfied exactly at each 
+\begin_inset Formula $z_{m}$
+\end_inset
+
+,
+ i.e.
+ we solve 
+\begin_inset Formula 
+\begin{align*}
+BA & =D.
+\end{align*}
+
+\end_inset
+
+Assuming that the number of sample points along the 
+\begin_inset Formula $x=0$
+\end_inset
+
+ edge,
+ 
+\begin_inset Formula $M$
+\end_inset
+
+,
+ is much larger than the number of modes actually involved in the linear-order dynamic,
+ 
+\begin_inset Formula $N$
+\end_inset
+
+,
+ the matrix 
+\begin_inset Formula $B^{T}B$
+\end_inset
+
+ is (in general) invertible and we compute
+\begin_inset Formula 
+\begin{align*}
+A & =\left(B^{T}B\right)^{-1}B^{T}D.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Estimation of the number of evanescent modes
+\end_layout
+
+\begin_layout Standard
+See accompanying Jupyter notebook,
+ under 
+\series bold
+evanescent modes
+\series default
+:
+\end_layout
+
+\begin_layout Standard
+This seems to mean that 
+\begin_inset Formula $30cm$
+\end_inset
+
+ away from the wave maker,
+ all but the first evanescent mode disappear.
+ E.g.
+ the second mode has 
+\begin_inset Formula $k\approx0.12cm^{-1}$
+\end_inset
+
+,
+ so 
+\begin_inset Formula $k\cdot30cm\approx3.6$
+\end_inset
+
+,
+ which means that the mode decayed by a factor of 
+\begin_inset Formula $e^{-3.6}\approx2\%$
+\end_inset
+
+ of the original amplitude.
+ The first mode,
+ on the other hand,
+ seems to be at 
+\begin_inset Formula $k\approx0.04cm^{-1}$
+\end_inset
+
+ and so 
+\begin_inset Formula $k\cdot30cm\approx1.2$
+\end_inset
+
+,
+ which is still dominant with 
+\begin_inset Formula $70\%$
+\end_inset
+
+ amplitude loss.
+ The traveling mode,
+ on the other hand,
+ say at the transition point with 
+\begin_inset Formula $\frac{\omega}{2\pi}=13.47Hz$
+\end_inset
+
+ and 
+\begin_inset Formula $v_{phase}\approx23\frac{cm}{s}$
+\end_inset
+
+ has 
+\begin_inset Formula $\alpha\approx0.3s^{-1}$
+\end_inset
+
+,
+ which means that at 
+\begin_inset Formula $30cm$
+\end_inset
+
+ it has lost about 
+\begin_inset Formula $33\%$
+\end_inset
+
+ of its amplitude,
+ which is not too bad.
+ At 
+\begin_inset Formula $20Hz$
+\end_inset
+
+,
+ on the other hand,
+ 
+\begin_inset Formula $\alpha\approx0.6$
+\end_inset
+
+ and the mode lost 
+\begin_inset Formula $\approx50\%$
+\end_inset
+
+ of its initial amplitude.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "/home/inbarm/ProjectAquarium/notes/references"
+options "bibtotoc,plain"
+encoding "default"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
