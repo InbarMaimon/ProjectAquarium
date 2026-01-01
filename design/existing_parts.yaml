@@ -1,8 +1,9 @@
-# Aquarium YAML
+# Measured parameters
+
+# Aquarium:
 # length = x
 # width = y
 # depth = z
-
 aquarium:
   main_box:
     weight:

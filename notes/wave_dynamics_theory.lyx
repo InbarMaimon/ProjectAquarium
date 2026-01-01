@@ -256,12 +256,17 @@ is the acceleration of a water parcel.
 \begin_inset Formula 
 \begin{align}
 \rho a & =-\nabla p-\rho\nabla\Phi\nonumber \\
-\implies\partial_{t}v+\left(v\cdot\nabla\right)v & =-\rho^{-1}\nabla p-\nabla\Phi.\label{eq:2nd law for non-viscous fluids}
+\implies\partial_{t}v+\left(v\cdot\nabla\right)v & =-\rho^{-1}\nabla p-\nabla\Phi,\label{eq:2nd law for non-viscous fluids}
 \end{align}
 
 \end_inset
 
-Then the fluid is irrotational:
+where 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ is the (per unit mass) external potential field in which the fluid resides.
+ Then the fluid is irrotational:
 \begin_inset Formula 
 \begin{align*}
 \omega & :=\nabla\times v,\\
@@ -420,7 +425,7 @@ For small slopes,
  
 \begin_inset Formula 
 \begin{align}
--\rho\partial_{t}\velocityPotential & =p+\rho\Phi-\surfaceTension\left(\partial_{x}^{2}\zeta+\partial_{y}^{2}\zeta\right),\nonumber \\
+-\rho\partial_{t}\velocityPotential & =p+\rho g\zeta-\surfaceTension\left(\partial_{x}^{2}\zeta+\partial_{y}^{2}\zeta\right),\nonumber \\
 \partial_{t}\zeta\left(t,x,y\right) & =u_{z}=\partial_{z}\velocityPotential\label{eq:mode-height-to-v.p.}
 \end{align}
 
@@ -519,7 +524,7 @@ If
 \end_inset
 
  is a constant,
- we can Fourier transform these three equations along the 
+ these three equations nicely Fourier transform along the 
 \begin_inset Formula $x,y$
 \end_inset
 
@@ -588,6 +593,49 @@ Note that since each wavevector can have any independent amplitude whatsoever,
 
  componentwise,
  though.
+\end_layout
+
+\begin_layout Subsubsection
+Evanescent modes
+\end_layout
+
+\begin_layout Standard
+The problem is not constrained enough to fix the 
+\begin_inset Formula $x,y$
+\end_inset
+
+ components of 
+\begin_inset Formula $f$
+\end_inset
+
+,
+ but we note that the original system is also solved by,
+ e.g.,
+\begin_inset Formula 
+\begin{align*}
+\velocityPotential\left(t,x,y,z\right) & =A'e^{-\left|k\right|x}\cos\left(\left|k\right|\left(z+h\right)\right)\cos\left(\omega t\right)
+\end{align*}
+
+\end_inset
+
+satisfying the free surface b.c.
+\begin_inset Formula 
+\begin{align*}
+\omega^{2} & =\left(-g\left|k\right|+\frac{\tau}{\rho}\left|k\right|^{3}\right)\tan\left(\left|k\right|h\right).
+\end{align*}
+
+\end_inset
+
+The corresponding height for such a mode is
+\begin_inset Formula 
+\begin{align*}
+\partial_{t}\zeta\left(t,x,y\right) & =-A'\left|k\right|e^{-\left|k\right|x}\sin\left(\left|k\right|h\right)\cos\left(\omega t\right)\\
+\implies\zeta\left(t,x,y\right) & =-A'\frac{\left|k\right|}{\omega}e^{-\left|k\right|x}\sin\left(\left|k\right|h\right)\sin\left(\omega t\right).
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection

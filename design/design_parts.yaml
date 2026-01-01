@@ -1,0 +1,13 @@
+# Intended parameters
+
+# Wave_maker
+wave_maker:
+  wedge:
+    height: 20
+    angle: 30
+  support:
+
+  motor:
+
+  carry:
+...

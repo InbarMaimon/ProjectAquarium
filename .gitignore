@@ -4,8 +4,10 @@
 archive/
 data_proc/
 data_raw/
+notes/*.pdf     
+notes/figures   # All generated pdfs and figures that I want to keep
+                # should be saved to their permanent storage folder.
 .obsidian/
-docs/literature/
 */sandbox/
 __pycache__/
 .venv/
@@ -13,7 +15,7 @@ __pycache__/
 # =========================
 # Python files
 # =========================
-*.py[cod]   # ignore all Python compiled/optimized/extension files, such as .pyc, .pyd, .pyo.
+*.py[cod]   # Ignore all Python compiled/optimized/extension files, such as .pyc, .pyd, .pyo.
 *.so
 
 # =========================

@@ -1024,33 +1024,25 @@ We note immediately that since the forcing is
 ,
  and see that the analytical solution for this problem satisfies also the boundary solution on the wedge.) Since the the system of modes is complete,
  this must be the only solution.
- Therefore we are left with the time-independent general solution
+ Therefore we are left with the time-independent general solution,
+ complexified:
 \begin_inset Formula 
 \begin{align*}
-\velocityPotential\left(x,z\right) & =\cosh\left(\kTravel\left(z+h\right)\right)\Re\left(A_{p}e^{i\kTravel x}\right)+\sum_{n}A_{s,n}\cos\left(\kevanescentn\left(z+h\right)\right)e^{-\kevanescentn x},
+\velocityPotential\left(x,z\right) & =A_{p}e^{-\kTravel h}\cosh\left(\kTravel\left(h+z\right)\right)e^{i\kTravel x}+\sum_{n}A_{s,n}\cos\left(\kevanescentn\left(z+h\right)\right)e^{-\kevanescentn x}
 \end{align*}
 
 \end_inset
 
-with slight abuse of notations.
- I will actually abuse notations even further,
- dropping the 
-\begin_inset Formula $\Re$
-\end_inset
-
- symbol and taking 
-\begin_inset Formula $f\left(x,z\right)$
-\end_inset
-
- to be complex.
+with some abuse of notations.
+ Note in particular that I extracted an exponent coefficient from the traveling mode velocity potential amplitude.
  The respective boundary conditions thus take the form
 \begin_inset Formula 
 \begin{align*}
--S\omega_{p} & =\cot\alpha\partial_{x}f\left(\tan\alpha\left(z+d\right),z\right)-\partial_{z}f\left(\tan\alpha\left(z+d\right),z\right)\\
- & =\cot\alpha\left(\cosh\left(k_{p}\left(z+h\right)\right)iA_{p}\kTravel e^{i\kTravel\tan\alpha\left(z+d\right)}-\sum_{n}A_{s,n}k_{s,n}\cos\left(\kevanescentn\left(z+h\right)\right)e^{-\kevanescentn\tan\alpha\left(z+d\right)}\right)\\
- & -k_{p}\sinh\left(\kTravel\left(z+h\right)\right)A_{p}e^{i\kTravel\tan\alpha\left(z+d\right)}+\sum_{n}A_{s,n}\kevanescentn\sin\left(\kevanescentn\left(z+h\right)\right)e^{-\kevanescentn\tan\alpha\left(z+d\right)}\\
- & =A_{p}\kTravel\left(i\cot\alpha\cosh\left(\kTravel\left(z+h\right)\right)-\sinh\left(\kTravel\left(z+h\right)\right)\right)e^{i\kTravel\tan\alpha\left(z+d\right)}\\
- & +\sum_{n}A_{s,n}k_{s,n}\left(\sin\left(\kevanescentn\left(z+h\right)\right)-\cot\alpha\cos\left(\kevanescentn\left(z+h\right)\right)\right)e^{-\kevanescentn\tan\alpha\left(z+d\right)}
+-S\omega_{p} & =\cot\alpha\partial_{x}f\left(\tan\alpha\left(d+z\right),z\right)-\partial_{z}f\left(\tan\alpha\left(d+z\right),z\right)\\
+ & =\cot\alpha\left(e^{-\kTravel h}\cosh\left(k_{p}\left(h+z\right)\right)iA_{p}\kTravel e^{i\kTravel\tan\alpha\left(d+z\right)}-\sum_{n}A_{s,n}k_{s,n}\cos\left(\kevanescentn\left(h+z\right)\right)e^{-\kevanescentn\tan\alpha\left(d+z\right)}\right)\\
+ & -k_{p}e^{-\kTravel h}\sinh\left(\kTravel\left(h+z\right)\right)A_{p}e^{i\kTravel\tan\alpha\left(d+z\right)}+\sum_{n}A_{s,n}\kevanescentn\sin\left(\kevanescentn\left(h+z\right)\right)e^{-\kevanescentn\tan\alpha\left(d+z\right)}\\
+ & =A_{p}\kTravel\left(i\cot\alpha\frac{e^{\kTravel z}+e^{-\kTravel\left(2h+z\right)}}{2}-\frac{e^{\kTravel z}-e^{-\kTravel\left(2h+z\right)}}{2}\right)e^{i\kTravel\tan\alpha\left(d+z\right)}\\
+ & +\sum_{n}A_{s,n}k_{s,n}\left(\sin\left(\kevanescentn\left(h+z\right)\right)-\cot\alpha\cos\left(\kevanescentn\left(h+z\right)\right)\right)e^{-\kevanescentn\tan\alpha\left(d+z\right)}
 \end{align*}
 
 \end_inset
@@ -1069,8 +1061,8 @@ at
 \begin_inset Formula 
 \begin{align*}
 0 & =\partial_{x}f\left(t,0,z\right)\\
- & =\cosh\left(k_{p}\left(z+h\right)\right)iA_{p}\kTravel\\
- & -\sum_{n}A_{s,n}\kevanescentn\cos\left(\kevanescentn\left(z+h\right)\right)
+ & =\cosh\left(k_{p}\left(h+z\right)\right)iA_{p}\kTravel\\
+ & -\sum_{n}A_{s,n}\kevanescentn\cos\left(\kevanescentn\left(h+z\right)\right)
 \end{align*}
 
 \end_inset
@@ -1086,6 +1078,59 @@ at
 
  that solves this problem,
  solves the real linear problem.
+\end_layout
+
+\begin_layout Standard
+Last,
+ in the deep water approximation,
+ 
+\begin_inset Formula $k_{p}h\gg1$
+\end_inset
+
+,
+ so if we are interested only in near-surface dynamics,
+ 
+\begin_inset Formula $\cosh\left(k_{p}\left(h+z\right)\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\sinh\left(k_{p}\left(h+z\right)\right)$
+\end_inset
+
+ can both be replaced with 
+\begin_inset Formula $e^{k_{p}\left(h+z\right)}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+-S\omega_{p}\tan\alpha & =A_{p}\frac{\kTravel}{2}\left(-\tan\alpha\left(e^{\kTravel z}-e^{-\kTravel\left(2h+z\right)}\right)+i\left(e^{\kTravel z}+e^{-\kTravel\left(2h+z\right)}\right)\right)e^{i\kTravel\tan\alpha\left(d+z\right)}\\
+ & -\sum_{n}A_{s,n}k_{s,n}\left(\cos\left(\kevanescentn\left(h+z\right)\right)-\tan\alpha\sin\left(\kevanescentn\left(h+z\right)\right)\right)e^{-\kevanescentn\tan\alpha\left(d+z\right)}
+\end{align*}
+
+\end_inset
+
+at 
+\begin_inset Formula $0<x$
+\end_inset
+
+,
+ 
+\begin_inset Formula $-d+F\left(x\right)<0$
+\end_inset
+
+,
+ and
+\begin_inset Formula 
+\begin{align*}
+0 & =\partial_{x}f\left(t,0,z\right)\\
+ & =iA_{p}\frac{1}{2}\kTravel\left(e^{\kTravel z}+e^{-\kTravel\left(2h+z\right)}\right)\\
+ & -\sum_{n}A_{s,n}\kevanescentn\cos\left(\kevanescentn\left(h+z\right)\right)
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -1104,8 +1149,8 @@ Following Wu,
 \alpha & -d<z<0\\
 0 & -h<z<-d
 \end{cases}\\
-\implies B_{m0} & =k_{p}\left(i\cosh\left(\kTravel h\left(1+\frac{z_{m}}{h}\right)\right)-\tan\left(\alpha\left(z_{m}\right)\right)\sinh\left(\kTravel h\left(1+\frac{z_{m}}{h}\right)\right)\right)e^{i\kTravel h\tan\alpha\left(z_{m}\right)\left(\frac{d}{h}+\frac{z_{m}}{h}\right)},\\
-B_{mn} & =-k_{s,n}\left(\cos\left(\kevanescentn h\left(1+\frac{z_{m}}{h}\right)\right)-\tan\left(\alpha\left(z_{m}\right)\right)\sin\left(\kevanescentn h\left(1+\frac{z_{m}}{h}\right)\right)\right)e^{-\kevanescentn h\tan\alpha\left(z_{m}\right)\left(\frac{d}{h}+\frac{z_{m}}{h}\right)},\\
+\implies B_{m0} & =\frac{\kTravel}{2}\left(-\tan\alpha\left(e^{\kTravel z_{m}}-e^{-\kTravel\left(2h+z_{m}\right)}\right)+i\left(e^{\kTravel z}+e^{-\kTravel\left(2h+z\right)}\right)\right)e^{i\kTravel\tan\alpha\left(z_{m}\right)\left(d+z_{m}\right)},\\
+B_{mn} & =-k_{s,n}\left(\cos\left(\kevanescentn\left(h+z_{m}\right)\right)-\tan\left(\alpha\left(z_{m}\right)\right)\sin\left(\kevanescentn\left(h+z_{m}\right)\right)\right)e^{-\kevanescentn\tan\alpha\left(z_{m}\right)\left(d+z_{m}\right)},\\
 A_{0} & =A_{p},\\
 A_{n} & =A_{s,n},\\
 D_{m} & =-S\omega_{p}\tan\left(\alpha\left(z_{m}\right)\right).
@@ -1152,6 +1197,91 @@ Assuming that the number of sample points along the
 \begin_inset Formula 
 \begin{align*}
 A & =\left(B^{T}B\right)^{-1}B^{T}D.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Comparison to Wu's paper
+\end_layout
+
+\begin_layout Standard
+He defines (remember that we extracted an exponent factor out of 
+\begin_inset Formula $A_{p}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+A_{1}' & =\frac{A_{0}e^{-hk_{p}}}{\omega_{p}Sh}
+\end{align*}
+
+\end_inset
+
+which is unitless.
+ He goes on to claim that in far field we have only a traveling wave:
+\begin_inset Formula 
+\begin{align*}
+f\left(t,x\rightarrow\infty,z\right) & =A_{p}\frac{1}{2}\left(e^{\kTravel z}+e^{-\kTravel\left(2h+z\right)}\right)e^{i\left(\kTravel x-\omega_{p}t\right)}.
+\end{align*}
+
+\end_inset
+
+and that Bernoulli's equation holds in the liquid,
+ including the disturbance.
+ This implies that
+\begin_inset Formula 
+\begin{align*}
+0 & =\partial_{t}v+\left(v\cdot\nabla\right)v+\frac{1}{\sDensity}\nabla p+g\\
+\implies0 & =\partial_{t}f+\cancelto{small}{\left|\nabla f\right|^{2}}+\frac{1}{\sDensity}p+gz+C\left(t\right)\\
+\implies0 & =\partial_{t}f+\frac{p_{atm}-\sTension\partial_{x}^{2}\zeta}{\sDensity}+g\zeta+C\left(t\right).
+\end{align*}
+
+\end_inset
+
+Allegedly,
+ we can now shift 
+\begin_inset Formula $f$
+\end_inset
+
+ by a homogeneous field 
+\begin_inset Formula $\tilde{C}\left(t\right)=\frac{p_{atm}}{\sDensity}+C\left(t\right)$
+\end_inset
+
+,
+ which we will not bother to include in the formal expression for 
+\begin_inset Formula $f$
+\end_inset
+
+;
+ so that now
+\begin_inset Formula 
+\begin{align*}
+\implies\partial_{x}^{2}\zeta-g\frac{\sDensity}{\sTension}\zeta & =\frac{\sDensity}{\sTension}\partial_{t}f\overset{x\rightarrow\infty}{=}-iA_{0}\frac{\omega_{p}\sDensity}{\sTension}\frac{1}{2}\left(e^{\kTravel z}+e^{-\kTravel\left(2h+z\right)}\right)_{z=0}e^{i\left(\kTravel x-\omega_{p}t\right)}\\
+\implies\left(-\left|\kTravel\right|^{2}-g\frac{\sDensity}{\sTension}\right)a & =-iA_{0}\frac{\omega_{p}\sDensity}{\sTension}\frac{1}{2}\left(1+e^{-2\kTravel h}\right)\\
+\implies a & =i\frac{\omega_{p}A_{0}}{\frac{\sTension}{\sDensity}\left|\kTravel\right|^{2}+g}=i\frac{\left|\kTravel\right|A_{0}}{\omega_{p}}
+\end{align*}
+
+\end_inset
+
+as required,
+ noting that for deep water,
+ 
+\begin_inset Formula $e^{-2hk_{p}}=0$
+\end_inset
+
+ in any physical sense,
+ as far as the linear approximation is concerned.
+ So
+\begin_inset Formula 
+\begin{align*}
+\frac{\left|a\right|}{S} & =\left|A_{1}'\right|h\left|\kTravel\right|e^{\left|\kTravel\right|h}
 \end{align*}
 
 \end_inset
@@ -1251,6 +1381,44 @@ This seems to mean that
 \end_inset
 
  of its initial amplitude.
+\end_layout
+
+\begin_layout Section
+Motors
+\end_layout
+
+\begin_layout Subsection
+Stepper
+\end_layout
+
+\begin_layout Standard
+Say we have a disc mounted on the motor axis,
+ and a conrod pinned at 
+\begin_inset Formula $r=1cm$
+\end_inset
+
+ on the disc and connected to a vertical piston on the other hand.
+ The penetration amplitude is 
+\begin_inset Formula $\sim1cm$
+\end_inset
+
+ at most,
+ since the lowest frequency we are interested in is 
+\begin_inset Formula $\sim5Hz$
+\end_inset
+
+,
+ at which the wavelength is 
+\begin_inset Formula $\sim5cm$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $m_{tot}$
+\end_inset
+
+ is the total weight of the system,
+ 
 \end_layout
 
 \begin_layout Standard
