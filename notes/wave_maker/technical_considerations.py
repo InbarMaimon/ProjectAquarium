@@ -184,5 +184,35 @@ def _(mo):
     return
 
 
+@app.cell
+def _(mo):
+    mo.md(r"""
+    # Height sensor
+
+    ### Technical considerations
+    1. Physical parameters:
+        1. Sub-millimeter height sensitivity.
+        2. 5-30mm height range (30mm is our 5Hz mode peak-to-peak distance).
+        3. Beam width < ~5mm.
+        4. Reflects well from water, sloped.
+        5. Mechanical resonances?
+    2. Electronics:
+        1. Connectivity: output compatible with wave maker's controller.
+        2. Sampling rate above 60Hz.
+
+    ### Alternatives to capacitive gauge:
+    1. LiDAR: Read paper. See if easy to construct.
+    2. Triangulation:
+       1. Verify that the product befits our slope measurement requirements.
+       2. Show Aviv the quote from Yaron.
+    3. Ultrasonic: wait for response from HTW and Baumer.
+    4. Confocal: answer from TronSight.
+    5. Slope measurement systems:
+       1. Polarimetric slope sensing (PSS),
+       2. Scanning laser slope gauge (SLSG).
+    """)
+    return
+
+
 if __name__ == "__main__":
     app.run()

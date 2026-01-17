@@ -25,7 +25,7 @@ def load_physical_constraints(yaml_file):
         params = yaml.safe_load(file)
     return params
 
-def createSketch_base(base, position, length, width):
+def createSketch_base(base, length, width):
     """Create base sketch with position and dimension parameters"""    
     # Create rectangle using shape-based approach
     # Bottom-left corner at position
@@ -33,7 +33,7 @@ def createSketch_base(base, position, length, width):
     p2 = Vector(length, 0, 0)
     p3 = Vector(length, width, 0)
     p4 = Vector(0, width, 0)
-    
+    print("p1, p2, p3, p4 = ", p1, p2, p3, p4)
     # Main rectangle
     geo12_idx = base.addGeometry(Part.LineSegment(p1, p2))  # Bottom edge
     geo23_idx = base.addGeometry(Part.LineSegment(p2, p3))  # Right edge
@@ -82,6 +82,7 @@ def createSketch_pocket_base(base, pocket_base, margin_length, margin_width):
     ref_obj, ref_edges = pocket_base.ExternalGeometry[0]
     edge41StartPoint = ref_obj.Shape.getElement(ref_edges[-1]).Vertexes[STARTIDX].Point
     edge41EndPoint = ref_obj.Shape.getElement(ref_edges[-1]).Vertexes[ENDIDX].Point
+    print("edge12StartPoint, edge12EndPoint, edge41StartPoint, edge41EndPoint = ", edge12StartPoint, edge12EndPoint, edge41StartPoint, edge41EndPoint)
 
     # 2. Compute inner rectangle    
     margin_displacement_M = Vector(margin_length, margin_width)
@@ -90,7 +91,7 @@ def createSketch_pocket_base(base, pocket_base, margin_length, margin_width):
     p2 = edge12EndPoint + margin_displacement_m
     p4 = edge41StartPoint - margin_displacement_m
     p3 = Vector(p2.x, p4.y, 0)
-
+    print("p1, p2, p3, p4 = ", p1, p2, p3, p4)
     # Create inner rectangle
     p_edge12_idx = pocket_base.addGeometry(Part.LineSegment(p1, p2))    
     p_edge23_idx = pocket_base.addGeometry(Part.LineSegment(p2, p3))
@@ -100,14 +101,14 @@ def createSketch_pocket_base(base, pocket_base, margin_length, margin_width):
     # Constraints
     pocket_base.addConstraint(Sketcher.Constraint(
         'DistanceX',
-        p_edge12_idx, 1,
         edge12_idx, 1,
+        p_edge12_idx, 1,
         App.Units.Quantity(f"{margin_length} mm")
         ))
     pocket_base.addConstraint(Sketcher.Constraint(
         'DistanceY',
-        p_edge12_idx, 1,
         edge12_idx, 1,
+        p_edge12_idx, 1,
         App.Units.Quantity(f"{margin_width} mm")
         ))
     pocket_base.addConstraint(Sketcher.Constraint('Coincident', p_edge41_idx, 2, p_edge12_idx, 1))
@@ -218,7 +219,6 @@ def make_aquarium(
     Body.addObject(base)
     base = createSketch_base(
         base=base,
-        position=position,
         length=length,
         width=width)
     base.AttachmentSupport = [(doc.getObject('XY_Plane'), '')]
@@ -239,25 +239,28 @@ def make_aquarium(
     # 1. Create frozen reference plane
     datum = doc.addObject('PartDesign::Plane', 'PadEndPlane')
     Body.addObject(datum)
-    gen_faces = aquarium.getGeneratedFaces("base")
-    print("gen_faces(base) = ", gen_faces)
     subname = f"Face{len(aquarium.Shape.Faces)}"
     datum.AttachmentSupport = [(aquarium, subname)]
     datum.MapMode = 'FlatFace'
-    # 2. Optional: hide helper geometry
+    # 2. Hide helper geometry
     datum.Visibility = False
     datum.ViewObject.Visibility = False
     # 3. Create pocket
     pocket_base = doc.addObject('Sketcher::SketchObject', 'pocket_base')
     Body.addObject(pocket_base)
     pocket_base.AttachmentSupport = [(datum, '')]
-    pocket_base = createSketch_pocket_base(base, pocket_base, margin_legnth, margin_width)
+    pocket_base.MapMode = 'FlatFace'
+    pocket_base = createSketch_pocket_base(
+        base, pocket_base, margin_legnth, margin_width
+        )
+
+    print("Datum placement:", datum.Placement)
+    print("Pocket_base placement:", pocket_base.Placement)
 
     Pocket = doc.addObject('PartDesign::Pocket', 'Pocket')
     Body.addObject(Pocket)
     Pocket.Profile = (pocket_base, [''])
     Pocket.Length = depth - floor_thickness
-    Pocket.Reversed = True
 
     Pocket.ReferenceAxis = (pocket_base, ['N_Axis'])
 
@@ -340,7 +343,7 @@ def main():
 
 # Create aquarium at default position (0, 0, 0)
 if __name__ == "__main__":
-    sys.stdout = open(join_path(PROJECT_PATH, DESIGN_DIR, "aquarium", "log_aquarium"), "a")
+    sys.stdout = open(join_path(PROJECT_PATH, DESIGN_DIR, "aquarium", "aquarium_model.log"), "a")
     main()
     sys.stdout.close()
 

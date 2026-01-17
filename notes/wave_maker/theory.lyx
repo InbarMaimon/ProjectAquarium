@@ -1017,7 +1017,7 @@ We note immediately that since the forcing is
 ,
  the problem can be divided to a cosine part and a sine part,
  with the sine part being solved by 0 amplitudes.
- (just migrate the wedge boundary condition to the edge 
+ (Just migrate the wedge boundary condition to the edge 
 \begin_inset Formula $x=0$
 \end_inset
 

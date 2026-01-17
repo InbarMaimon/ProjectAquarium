@@ -1,0 +1,392 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsart
+\begin_preamble
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children no
+\language american
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Subsection
+Snell's law for refraction
+\end_layout
+
+\begin_layout Standard
+We begin by working at a coordinate system that is aligned with the (local) water surface.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+s\left(t,x\right) & =A\cos\left(k\cdot x-\omega t\right)\\
+\implies k_{x}x+k_{y}y-\omega t & =k_{x}'x+k_{y}'y-\omega t
+\end{align*}
+
+\end_inset
+
+now without loss of generality,
+ assume that we hit the surface at 
+\begin_inset Formula $k_{y}=0$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $k_{x}=n\omega$
+\end_inset
+
+ and for all 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align*}
+k_{x} & =k_{x}'\\
+\implies\frac{\sqrt{k_{x}^{2}+k_{z}^{2}}}{n} & =\omega=\frac{\sqrt{k_{x}^{2}+\left(k_{z}'\right)^{2}}}{n'}\\
+\implies\frac{k_{x}/\left|k'\right|}{k_{x}/\left|k\right|} & =\frac{n}{n'}.
+\end{align*}
+
+\end_inset
+
+Let 
+\begin_inset Formula $\alpha,\alpha'$
+\end_inset
+
+ as the angles w.r.t.
+ the normal.
+ Then we get Snell's law,
+ 
+\begin_inset Formula 
+\begin{align*}
+\frac{n}{n'} & =\frac{\sin\alpha'}{\sin\alpha}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We put a camera at height 
+\begin_inset Formula $d$
+\end_inset
+
+ above the water surface,
+ and light source coming uniformly and perpendicularly from below.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $n'=1$
+\end_inset
+
+ be the air's refractive index,
+ and let 
+\begin_inset Formula $n$
+\end_inset
+
+ be the water's.
+ Let also 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ be the water local slope angle,
+ which equals the angle between the upcoming light and the surface's local normal,
+ and let 
+\begin_inset Formula $\alpha'$
+\end_inset
+
+ be the angle between the normal and the refracted ray in the air (positive for a 
+\begin_inset Formula $\hat{x}$
+\end_inset
+
+-ward propagating wave vector).
+ Then if 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is positive,
+ 
+\begin_inset Formula $\alpha'$
+\end_inset
+
+ is positive and larger,
+ and 
+\begin_inset Formula $\theta=\alpha'-\alpha$
+\end_inset
+
+ is the (positive) angle between the air-side ray vector and the vertical 
+\begin_inset Formula $\hat{z}$
+\end_inset
+
+ axis.
+\end_layout
+
+\begin_layout Standard
+Put 
+\begin_inset Formula $\alpha=\alpha\left(x\right)$
+\end_inset
+
+.
+ Then the light accumulating at a pixel of side length 
+\begin_inset Formula $\delta$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{align*}
+I_{i}= & \delta\int_{x_{i}}^{x_{i}+\delta}\int_{0}^{L}I\left(x-\left(x-\xi\right)\delta\left(\tan\left(\theta\left(\xi\right)\right)-\frac{x-\xi}{d}\right)\right)d\xi dx\\
+= & \delta\int_{x_{i}}^{x_{i}+\delta}I\left(x-\sum_{j}\left(x-\xi_{j}\left(x\right)\right)\frac{1}{\left(\frac{d\theta\left(\xi_{j}\left(x\right)\right)}{d\xi}\frac{1}{\cos^{2}\left(\theta\left(\xi_{j}\left(x\right)\right)\right)}+\frac{1}{d}\right)}\right)dx\\
+\approx & \delta^{2}I\left(x_{i}-\sum_{j}\left(x-\xi_{j}\left(x\right)\right)\frac{1}{\frac{d\theta\left(\xi_{j}\left(x\right)\right)}{d\xi}\frac{1}{\cos^{2}\left(\theta\left(\xi_{j}\left(x\right)\right)\right)}+\frac{1}{d}}\right)
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\xi_{j}\left(x\right)$
+\end_inset
+
+ are the zeros the function 
+\begin_inset Formula $g_{x}\left(\xi\right):=\tan\left(\theta\left(\xi\right)\right)-\frac{x-\xi}{d}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Small slopes approximation
+\end_layout
+
+\begin_layout Standard
+We have 
+\begin_inset Formula 
+\begin{align*}
+\alpha'=\tan\alpha'=\sin\alpha' & =\frac{n}{n'}\sin\alpha=\frac{n}{n'}\alpha\\
+\implies g_{x}\left(\xi\right) & =\theta\left(\xi\right)-\frac{x-\xi}{d}\\
+ & =\left(\frac{n}{n'}-1\right)\alpha\left(\xi\right)-\frac{x-\xi}{d}
+\end{align*}
+
+\end_inset
+
+Now the signal is monochromatic,
+ so it has a characteristic wavelength 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+ Let also 
+\begin_inset Formula $\alpha_{M}$
+\end_inset
+
+ be the maximum wave angle,
+ which is supposedly 
+\begin_inset Formula $\sim0.1$
+\end_inset
+
+ or smaller.
+\end_layout
+
+\begin_layout Standard
+We'd like 
+\begin_inset Formula $g_{x}\left(\xi\right)$
+\end_inset
+
+ to be monotonic in 
+\begin_inset Formula $\xi$
+\end_inset
+
+,
+ so that each pixel receives light from one source only.
+ Taking the derivative
+\begin_inset Formula 
+\begin{align*}
+\frac{\xi g_{x}\left(\xi\right)}{d\xi} & =\left(\frac{n}{n'}-1\right)\frac{d\alpha\left(\xi\right)}{d\xi}-\frac{1}{d},
+\end{align*}
+
+\end_inset
+
+this would never cross 
+\begin_inset Formula $0$
+\end_inset
+
+ if 
+\begin_inset Formula 
+\begin{align*}
+d< & \frac{1}{\max\left(\frac{d\alpha\left(\xi\right)}{d\xi}\right)\left(\frac{n}{n'}-1\right)}.
+\end{align*}
+
+\end_inset
+
+To simplify,
+ approximate 
+\begin_inset Formula $n'=1$
+\end_inset
+
+ and denote 
+\begin_inset Formula $\kappa_{M}=\max_{\xi}\left(\frac{d\alpha\left(\xi\right)}{d\xi}\right)$
+\end_inset
+
+,
+ which is the maximum curvature.
+ For our system this would be
+\begin_inset Formula 
+\begin{align*}
+\kappa_{M} & \sim\frac{2\pi}{\lambda}\alpha_{M}<0.2\cdot\frac{2\pi}{8\cdot10^{-3}}m^{-1}=147m^{-1},\\
+n & \approx\frac{4}{3}\\
+\implies d< & 20mm.
+\end{align*}
+
+\end_inset
+
+In this scenario the sum over 
+\begin_inset Formula $j$
+\end_inset
+
+ collapses to a single term,
+ the one that satisfies
+\begin_inset Formula 
+\begin{align*}
+\xi_{0}\left(x\right) & =x-d\left(\frac{n}{n'}-1\right)\alpha\left(\xi_{0}\left(x\right)\right),\\
+I_{i}= & \delta^{2}I\left(x_{i}-\frac{x_{i}-\xi_{0}\left(x\right)}{\frac{\left(n-1\right)}{1-\frac{1}{2}\left(\left(n-1\right)\alpha\left(\xi_{0}\left(x\right)\right)\right)^{2}}\frac{d\alpha\left(\xi_{0}\left(x\right)\right)}{d\xi}+\frac{1}{d}}\right)
+\end{align*}
+
+\end_inset
+
+which for a profile 
+\begin_inset Formula 
+\begin{align*}
+\zeta\left(x\right) & =Ae^{-\gamma x}\sin\left(kx-\omega t\right)\\
+\implies\alpha & =\tan\alpha=\frac{d\zeta}{dx}=Ae^{-\gamma x}\left(k\cos\left(kx-\omega t\right)-\gamma\sin\left(kx-\omega t\right)\right)\\
+\implies\frac{d\alpha}{dx} & =Ae^{-\gamma x}\left(-2\gamma k\cos\left(kx-\omega t\right)+\left(\gamma^{2}-k^{2}\right)\sin\left(kx-\omega t\right)\right)
+\end{align*}
+
+\end_inset
+
+takes the final form
+\begin_inset Formula 
+\begin{align*}
+\xi_{0}\left(x\right) & =x-Ade^{-\gamma\xi_{0}\left(x\right)}\left(n-1\right)\left(k\cos\left(k\xi_{0}\left(x\right)-\omega t\right)-\gamma\sin\left(k\xi_{0}\left(x\right)-\omega t\right)\right),\\
+I_{i}= & \delta^{2}I\left(x_{i}-\frac{x_{i}-\xi_{0}\left(x_{i}\right)}{\frac{\left(n-1\right)\left(Ae^{-\gamma\xi_{0}\left(x_{i}\right)}\left(-2\gamma k\cos\left(k\xi_{0}\left(x_{i}\right)-\omega t\right)+\left(\gamma^{2}-k^{2}\right)\sin\left(k\xi_{0}\left(x_{i}\right)-\omega t\right)\right)\right)}{1-\frac{1}{2}\left(n-1\right)^{2}Ae^{-2\gamma\xi_{0}\left(x_{i}\right)}\left(k\cos\left(k\xi_{0}\left(x_{i}\right)-\omega t\right)-\gamma\sin\left(k\xi_{0}\left(x_{i}\right)-\omega t\right)\right)^{2}}+\frac{1}{d}}\right).
+\end{align*}
+
+\end_inset
+
+Supposedly 
+\begin_inset Formula $Ak$
+\end_inset
+
+ is small,
+ and 
+\begin_inset Formula $A\gamma$
+\end_inset
+
+ is even smaller,
+ since we assume that the spatial decay happens over many wavelengths.
+ Then 
+\begin_inset Formula 
+\begin{align*}
+I_{i}\approx & \delta^{2}I\left(x_{i}-\frac{x_{i}-\xi_{0}\left(x_{i}\right)}{\frac{\left(n-1\right)\left(Ae^{-\gamma\xi_{0}\left(x_{i}\right)}\left(-2\gamma k\cos\left(k\xi_{0}\left(x_{i}\right)-\omega t\right)+\left(\gamma^{2}-k^{2}\right)\sin\left(k\xi_{0}\left(x_{i}\right)-\omega t\right)\right)\right)}{1-\frac{1}{2}\left(n-1\right)^{2}Ae^{-2\gamma\xi_{0}\left(x_{i}\right)}\left(k\cos\left(k\xi_{0}\left(x_{i}\right)-\omega t\right)-\gamma\sin\left(k\xi_{0}\left(x_{i}\right)-\omega t\right)\right)^{2}}+\frac{1}{d}}\right).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

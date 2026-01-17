@@ -8,26 +8,26 @@
 ### General
 1. Learn git and absorb into workflow.
 
+### Science
+1. Finish reading Zappa's paper about amplitudes/slopes of capillary waves.
+2. Update Yaron are reestimate requirements from wave maker and height sensor.
+
 ### Aquarium
-1. Find for it a permanent place.
+1. Measure the vibration amplitudes and decide required damping.
+2. Understand how you lock the aquarium in place, and width of bridges.
+3. Look in the internet for a good cheap stage:
+   1. Right proportions to hold the aquarium, bridge and locks.
+   2. Nice height.
 
 ### Wave maker
-1. On Sunday, talk to the guys at Abiry. 
-2. Once we settle on a complete solution, including exact parts, talk to Tomer Brosh again about it.
+1. Refind the servo motor that we found.
+2. Make a complete scheme of the plunger solution.
+3. Once we settle on a complete solution, including exact parts, talk to Tomer/Yosi again about it.
+4. Reach out to Itsik for construction
 
 ### Height sensor
-1. Decide if we go for a capacitive wire gauge or a laser sensor.
-   1. Physical parameters: 
-       1. Sub-millimeter height sensitivity,
-       2. 10-30mm height range (30mm is our 5Hz mode peak-to-peak distance),
-       3. Beam width < ~5mm.
-       4. Reflects well from water, sloped.
-       5. Mechanical resonances?.
-   2. Electronics:
-       1. Connectivity: output compatible with wave maker's controller.
-       2. Sampling rate above 60Hz.
-2. We can color the water to enlarge the relevant measuring systems. Maybe LIDAR
-   is an option? 
+1. Verify that the capacitive gauge satisfies our sensitivity requirements.
+2. 
 3. Capacitive gauge making:
     1. Decide length and number of wires.
     2. Derive length of trough.
@@ -42,21 +42,23 @@
     11. Put wires on holders and connect to terminal.
     12. Connect terminal to source.
     13. Observe result.
-    
-
  
 ```mermaid
 flowchart TD
     START[Start] --> HEIGHT([Height sensor: physical requirements & pricing])
-    START[Start] --> WM([wave making theory])
+    START[Start] --> WM_T([Wave making theory])
+    START[Start] --> STG[Permanent stage for the aquarium]
+
+    STG --> HB[Bridge for the height sensor]
+    STG --> WMB[Bridge for the wave maker]
 
     HEIGHT --> SENS_SEL{Select Sensor Type}
     
-    WM --> WM_SD[required stroke depth: ~2-20mm];
-    RG1[research goals: inspect strictly capillary waves] --> WM_GF[required frequencies: ~5-30Hz];
+    WM_T --> WM_SD[required stroke depth: ~2-20mm];
+    RG1[research goals: inspect gravity-capillary waves] --> WM_GF[required frequencies: ~5-30Hz];
     RG2[research goals regarding type of interactions] --> Meas_MD[measurement distance where standing waves vanish: 30cm is more than enough]
 
-    WM --> Meas_MD
+    WM_T --> Meas_MD
     WM_SD --> WM_CM[Choose motor];
     WM_GF --> WM_CM;
     WM_CM --> WM_F[Design system];
