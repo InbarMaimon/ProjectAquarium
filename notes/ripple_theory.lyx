@@ -379,8 +379,8 @@ For an incompressible fluid,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\sigma_{ij} & =-p\delta_{ij}+\rho\nu\left(\partial_{i}q_{j}+\partial_{j}q_{i}\right)\label{eq:fluid-stress}\\
-\implies\sigma_{xz} & =\rho\nu\left(\partial_{x}q_{z}+\partial_{z}q_{x}\right)\nonumber \\
+\sigma_{ij} & =-p\delta_{ij}+\rho\nu\left(\partial_{i}v_{j}+\partial_{j}v_{i}\right)\label{eq:fluid-stress}\\
+\implies\sigma_{xz} & =\rho\nu\left(\partial_{x}v_{z}+\partial_{z}v_{x}\right)\nonumber \\
  & =\rho\nu\left(2\partial_{x}\partial_{z}\phi+\left(\partial_{x}^{2}-\partial_{z}^{2}\right)\psi\right),\nonumber \\
 \sigma_{zz} & =-p+2\rho\nu\left(\partial_{z}^{2}\phi+\partial_{x}\partial_{z}\psi\right).\nonumber 
 \end{align}
@@ -482,11 +482,11 @@ The dispersion relation
 \begin_layout Standard
 We now put in the Fourier ansatz
 \begin_inset Formula 
-\begin{align*}
-\phi\left(t,x,z\right) & =Ae^{kz}e^{i\left(kx-\omega t\right)},\\
-\psi\left(t,x,z\right) & =Be^{mz}e^{i\left(kx-\omega t\right)},\\
-\delta c & =Ce^{nz}e^{i\left(kx-\omega t\right)}.
-\end{align*}
+\begin{align}
+\phi\left(t,x,z\right) & =Ae^{kz}e^{i\left(kx-\omega t\right)},\nonumber \\
+\psi\left(t,x,z\right) & =Be^{mz}e^{i\left(kx-\omega t\right)},\nonumber \\
+\delta c & =Ce^{nz}e^{i\left(kx-\omega t\right)}.\label{eq:Fourier-ansatz}
+\end{align}
 
 \end_inset
 
@@ -678,17 +678,398 @@ This has a nontrivial solution only if the determinant is zero.
 \end_layout
 
 \begin_layout Subsubsection
-Long traveling ripples
-\end_layout
+Alternative derivation by the Lucassen couple 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lucassen1970"
+literal "false"
 
-\begin_layout Standard
-\begin_inset Formula $ $
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+Assume that we deal with a planar wave form,
+ so that the 
+\begin_inset Formula $y$
+\end_inset
+
+ axis is inert.
+ Let us have a small imaginary rectangular prism just encapsulating a small part of the interface,
+ with its lower left edge at an interface point 
+\begin_inset Formula $\left(x,z\right)$
+\end_inset
+
+,
+ so that the prism is in the water with its slanted face is at the interface.
+ Let 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ be the stress tensor of the water,
+ defined so that 
+\begin_inset Formula $\sigma\left(t,x,y,z\right)\cdot\hat{u}$
+\end_inset
+
+ is the force acting on a small plane located at time and position 
+\begin_inset Formula $\left(t,x,y,z\right)$
+\end_inset
+
+,
+ along direction 
+\begin_inset Formula $\hat{u}$
+\end_inset
+
+,
+ 
+\series bold
+on 
+\series default
+the water - so positive if pulling along 
+\begin_inset Formula $\hat{u}$
+\end_inset
+
+,
+ negative if pushing against 
+\begin_inset Formula $\hat{u}$
+\end_inset
+
+.
+ Likewise,
+ let 
+\begin_inset Formula $\sigma'$
+\end_inset
+
+ be the stress tensor of the upper fluid.
+ For air,
+ this is simply 
+\begin_inset Formula 
+\begin{align*}
+\sigma' & =-\begin{pmatrix}p_{0} & 0 & 0\\
+0 & p_{0} & 0\\
+0 & 0 & p_{0}
+\end{pmatrix}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+ is earth's surface atmospheric pressure.
+ Let also 
+\begin_inset Formula $T$
+\end_inset
+
+ be the total force applied to the box by the interface layer.
+ If it exists,
+ and if the film cannot sustain shear,
+ this force must be proportional to the difference in tension (dilatational stress) on both sides of the interface patch,
+\begin_inset Formula 
+\begin{align*}
+Tdx & =\tau\left(x+dx\right)\frac{1}{\sqrt{1+\left(\partial_{x}\zeta\left(x+dx\right)\right)^{2}}}\begin{pmatrix}1\\
+\partial_{x}\zeta\left(x+dx\right)
+\end{pmatrix}-\tau\left(x\right)\frac{1}{\sqrt{1+\left(\partial_{x}\zeta\left(x\right)\right)^{2}}}\begin{pmatrix}1\\
+\partial_{x}\zeta\left(x\right)
+\end{pmatrix}
+\end{align*}
+
+\end_inset
+
+This is the total force acting on the slick along its plane,
+ but since the slick has no mass,
+ it is also the force exerted by the slick on the fluid box.
+ Now we take the small slope approximation and drop 
+\begin_inset Formula $\left(\partial_{x}\zeta\right)^{2}$
+\end_inset
+
+,
+ so
+\begin_inset Formula 
+\begin{align*}
+Tdx & =\begin{pmatrix}\partial_{x}\tau\\
+\partial_{x}\left(\tau\partial_{x}\zeta\left(x\right)\right)
+\end{pmatrix}dx.
+\end{align*}
+
+\end_inset
+
+Note that per my notational choice,
+ 
+\begin_inset Formula $T$
+\end_inset
+
+ is defined per horizontal length,
+ not per actual interface length.
+ Then by Newton's second law,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2}\rho\left(\partial_{t}v_{x}+\left(v\cdot\nabla\right)v_{x}\right)dxdz & =\hat{x}\cdot\sigma\left(x+dx,\zeta+\frac{1}{2}dz\right)\cdot\hat{x}dz-\hat{x}\cdot\sigma\left(x+\frac{1}{2}dx,\zeta\right)\cdot\hat{z}dx\\
+ & -\hat{x}\cdot\sigma'\left(x,\zeta+\frac{1}{2}dz\right)\cdot\hat{x}dz+\hat{x}\cdot\sigma'\left(x+\frac{1}{2}dx,\zeta+dz\right)\cdot\hat{z}dx\\
+ & +\hat{x}\cdot T\left(x+\frac{1}{2}dx,\zeta+\frac{1}{2}dz\right)dx
+\end{align*}
+
+\end_inset
+
+In a linear theory,
+ 
+\begin_inset Formula $dx\gg dz$
+\end_inset
+
+,
+ so
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2}\rho\left(\partial_{t}v_{x}+\left(v\cdot\nabla\right)v_{x}\right)dxdz & =\sigma_{xx}\partial_{x}\zeta dx+\frac{1}{2}\partial_{x}\sigma_{xx}dxdz\\
+ & -\sigma_{xz}dx+\frac{1}{2}\partial_{z}\sigma_{xz}dxdz\\
+ & -\sigma'_{xx}\partial_{x}\zeta dx+\frac{1}{2}\partial_{x}\sigma'_{xx}dxdz\\
+ & +\sigma_{xz}'dx+\frac{1}{2}\partial_{z}\sigma_{xz}'dxdz\\
+ & +\partial_{x}\tau dx.
+\end{align*}
+
+\end_inset
+
+We now promptly neglect the bulk terms,
+ so that we are left with an equation on the surface of
+\begin_inset Formula 
+\begin{align*}
+0 & =\left(\sigma_{xx}-\sigma'_{xx}\right)\partial_{x}\zeta+\left(\sigma_{xz}'-\sigma_{xz}\right)+\partial_{x}\tau.
+\end{align*}
+
+\end_inset
+
+For a light film,
+ the jump in the stress scales like the slope,
+ and likewise for the tension.
+ Therefore 
+\begin_inset Formula $\left(\sigma'_{xx}-\sigma_{xx}\right)\partial_{x}\zeta$
+\end_inset
+
+ is smaller than the two other terms by orders of magnitude and we may drop it.
+\end_layout
+
+\begin_layout Standard
+In the 
+\begin_inset Formula $z$
+\end_inset
+
+ direction we have,
+ respectively,
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{2}\rho\left(\partial_{t}v_{z}+\left(v\cdot\nabla\right)v_{z}\right)dxdz & =\hat{z}\cdot\sigma\left(x+dx,z+\frac{1}{2}dz\right)\cdot\hat{x}dz-\hat{z}\cdot\sigma'\left(x,z+\frac{1}{2}dz\right)\cdot\hat{x}dz\\
+ & -\hat{z}\cdot\sigma\left(x+\frac{1}{2}dx,z\right)\cdot\hat{z}dx+\hat{z}\cdot\sigma'\left(x+\frac{1}{2}dx,z+dz\right)\cdot\hat{z}dx\\
+ & +\hat{z}\cdot T\left(x+\frac{1}{2}dx,z+\frac{1}{2}dz\right)dx\\
+ & -\rho gdxdz\\
+\implies0 & =\left(\sigma_{xz}-\sigma_{xz}'\right)\partial_{x}\zeta+\left(\sigma_{zz}'-\sigma_{zz}\right)+\partial_{x}\tau\partial_{x}\zeta+\tau\partial_{x}^{2}\zeta.
+\end{align*}
+
+\end_inset
+
+Again the first term is presumably small,
+ and so is the third term,
+ since 
+\begin_inset Formula $\partial_{x}\tau$
+\end_inset
+
+ also scales linearly with 
+\begin_inset Formula $\partial_{x}\zeta$
+\end_inset
+
+.
+ Thus to linear order we get the two equations
+\begin_inset Formula 
+\begin{align}
+0 & =\left.\left(\sigma_{xz}'-\sigma_{xz}\right)\right|_{z=0}+\partial_{x}\tau,\nonumber \\
+0 & =\left.\left(\sigma_{zz}'-\sigma_{zz}\right)\right|_{z=0}+\tau\partial_{x}^{2}\zeta.\label{eq:continuity-conditions}
+\end{align}
+
+\end_inset
+
+These equations replace eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:shear-at-boundary"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pressure-at-boundary"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ from the former sections.
+ Next,
+ to linear order,
+ change in the slope goes with a change in the surface area of a surface droplet.
+ That is,
+ if 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ is the complex dilatational modulus of the film,
+ then
+\begin_inset Formula 
+\begin{align}
+\partial_{x}\tau & =\varepsilon\partial_{x}\ln\left(dA/dA_{0}\right),\nonumber \\
+dA/dA_{0}-1 & =\partial_{x}\xi,\nonumber \\
+\partial_{x}\tau & =\varepsilon\partial_{x}\ln\left(\partial_{x}\xi+1\right)\nonumber \\
+ & =\varepsilon\frac{\partial_{x}^{2}\xi}{\partial_{x}\xi+1}\nonumber \\
+ & \approx\varepsilon\partial_{x}^{2}\xi,\label{eq:traction-geometry}
+\end{align}
+
+\end_inset
+
+where the equation for the change in the area is already a first order approximation.
+ Now we remember that we deal with planar waves.
+ so from the definition of the velocity potential and stream function and from the Fourier ansatz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Fourier-ansatz"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ we get
+\begin_inset Formula 
+\begin{align*}
+\left.v_{x}\right|_{z=0} & =\left.\left(\partial_{x}\phi-\partial_{z}\psi\right)\right|_{z=0}\\
+ & =\left(ikA-mB\right)e^{i\left(kx-\omega t\right)}\\
+\implies\xi & =-\frac{kA+imB}{\omega}e^{i\left(kx-\omega t\right)},\\
+\left.v_{z}\right|_{z=0} & =\left.\left(\partial_{z}\phi+\partial_{x}\psi\right)\right|_{z=0}\\
+ & =\left(kA+ikB\right)e^{i\left(kx-\omega t\right)},\\
+\left.v_{z}'\right|_{z=0} & =\left.\left(\partial_{z}\phi'+\partial_{x}\psi'\right)\right|_{z=0}\\
+ & =\left(-kA'+ikB'\right)e^{i\left(kx-\omega t\right)},\\
+\implies\zeta & =i\frac{kA+ikB}{\omega}e^{i\left(kx-\omega t\right)}\\
+ & =-ik\frac{A'-iB'}{\omega}e^{i\left(kx-\omega t\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We complete the derivation of the dispersion equation by constructing a matrix similar to what we have above and equating its determinant to 0.
+ Indeed,
+ eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fluid-stress"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ reads
+\begin_inset Formula 
+\begin{align*}
+\sigma_{ij} & =-p\delta_{ij}+\rho\nu\left(\partial_{i}v_{j}+\partial_{j}v_{i}\right)
+\end{align*}
+
+\end_inset
+
+which combined with eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:continuity-conditions"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:traction-geometry"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:navier-stokes"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ gives us two equations
+\begin_inset Formula 
+\begin{align*}
+\left.\left(\sigma_{xz}'\right)\right|_{z=0} & =\left.\rho'\nu'\left(\partial_{x}v_{z}'+\partial_{z}v_{x}'\right)\right|_{z=0}\\
+ & =\left.\rho'\nu'\left(2\partial_{x}\partial_{z}\phi'+\partial_{x}^{2}\psi'-\partial_{z}^{2}\psi'\right)\right|_{z=0}\\
+ & =-\rho'\nu'\left(2ik^{2}A'e^{i\left(kx-\omega t\right)}+\left(k^{2}+\left(m'\right)^{2}\right)B'e^{i\left(kx-\omega t\right)}\right)
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+0 & =\left(2i\rho\nu k^{2}-\frac{\varepsilon k^{3}}{\omega}\right)A-\left(\rho\nu\left(k^{2}+m^{2}\right)+\frac{i\varepsilon k^{2}m}{\omega}\right)B\\
+ & +2i\rho'\nu'k^{2}A'+\rho'\nu'\left(k^{2}+\left(m'\right)^{2}\right)B'\\
+0 & =\left(2\rho\nu k^{2}+i\left(\rho\omega-\rho g\frac{k}{\omega}+\tau_{0}\frac{k^{3}}{\omega}\right)\right)A+\left(\left(\rho g-\tau_{0}k^{2}\right)\frac{k}{\omega}+i2\rho\nu mk\right)B\\
+ & +\left(-i\rho'g\frac{k}{\omega}-i\rho'\omega+2\rho'\nu'k^{2}\right)A'+\left(-\rho'g\frac{k}{\omega}+i2\rho'\nu'km'\right)B'.
+\end{align*}
+
+\end_inset
+
+The other two equations that we need are the velocity continuity equations,
+\begin_inset Formula 
+\begin{align*}
+\left.v_{x}\right|_{z=0} & =\left.v_{x}'\right|_{z=0},\\
+\left.v_{z}\right|_{z=0} & =\left.v_{z}'\right|_{z=0}\\
+\implies0 & =ikA-mB-ikA'-m'B',\\
+0 & =A+iB+A'-iB'.
+\end{align*}
+
+\end_inset
+
+Then we equate to 0 the system's determinant:
+\begin_inset Formula 
+\[
+0=\begin{vmatrix}2i\rho\nu k^{2}-\frac{\varepsilon k^{3}}{\omega} & -\rho\nu\left(k^{2}+m^{2}\right)-\frac{i\varepsilon k^{2}m}{\omega} & 2i\rho'\nu'k^{2} & \rho'\nu'\left(k^{2}+\left(m'\right)^{2}\right)\\
+2\rho\nu k^{2}+i\left(\rho\omega-\rho g\frac{k}{\omega}+\tau_{0}\frac{k^{3}}{\omega}\right) & \left(\rho g-\tau_{0}k^{2}\right)\frac{k}{\omega}+i2\rho\nu mk & -i\rho'g\frac{k}{\omega}-i\rho'\omega+2\rho'\nu'k^{2} & -\rho'g\frac{k}{\omega}+i2\rho'\nu'km'\\
+ik & -m & -ik & -m'\\
+1 & i & 1 & -i
+\end{vmatrix}.
+\]
+
+\end_inset
+
 
 \end_layout
 
@@ -697,7 +1078,7 @@ Nonlinear Theory
 \end_layout
 
 \begin_layout Subsection
-Resonance condition for harmonic generationc
+Resonance condition for harmonic generation
 \end_layout
 
 \begin_layout Standard

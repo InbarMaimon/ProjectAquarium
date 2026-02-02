@@ -1380,45 +1380,7 @@ This seems to mean that
 \begin_inset Formula $\approx50\%$
 \end_inset
 
- of its initial amplitude.
-\end_layout
-
-\begin_layout Section
-Motors
-\end_layout
-
-\begin_layout Subsection
-Stepper
-\end_layout
-
-\begin_layout Standard
-Say we have a disc mounted on the motor axis,
- and a conrod pinned at 
-\begin_inset Formula $r=1cm$
-\end_inset
-
- on the disc and connected to a vertical piston on the other hand.
- The penetration amplitude is 
-\begin_inset Formula $\sim1cm$
-\end_inset
-
- at most,
- since the lowest frequency we are interested in is 
-\begin_inset Formula $\sim5Hz$
-\end_inset
-
-,
- at which the wavelength is 
-\begin_inset Formula $\sim5cm$
-\end_inset
-
-.
- If 
-\begin_inset Formula $m_{tot}$
-\end_inset
-
- is the total weight of the system,
- 
+ of its initial amplitude
 \end_layout
 
 \begin_layout Standard

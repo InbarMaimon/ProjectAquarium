@@ -132,7 +132,7 @@ I think there should be none. The gauge should be non-intrusive, but the assembl
 ### git
 Edit → Add → Commit → Push
 
-This is your project backup workflow. All tracked files, including moved or renamed files, are preserved both locally and on GitHub.
+This is the project backup workflow. All tracked files, including moved or renamed files, are preserved both locally and on GitHub.
 
 1. Daily / session work
 Edit files as needed (code, documentation, data notes).
