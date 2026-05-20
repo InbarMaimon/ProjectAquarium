@@ -1,0 +1,10 @@
+weights of stuff:
+
+weight [kg] - type
+5.4 - 5 long plates
+7.0, 7.3 - 2 square plates
+5.5 - brown holed board
+4.1 - white board
+0.4, 0.4 - inner tubes
+~6 - aquarium (empty)
+

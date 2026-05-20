@@ -101,6 +101,17 @@ figs-within-sections
 Ripple Theory
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "macros.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Linear Theory
 \end_layout
@@ -216,22 +227,30 @@ Navier-Stokes
 Assume an incompressible water body.
  The derivation works with the velocity potential and the stream function,
  
-\begin_inset Formula $v=\nabla\phi+\nabla\times\psi$
+\begin_inset Formula $v=\nabla\phi+\nabla\times\vStream$
 \end_inset
 
 .
- For an irrotational fluid,
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+For an irrotational fluid,
  of course,
  
 \begin_inset Formula $\psi=0$
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+
  Navier-Stokes equations then take the form
 \begin_inset Formula 
 \begin{align*}
 \partial_{t}v & =-\nabla\left(\frac{1}{\rho}p+gz\right)+\nu\nabla^{2}v\\
-\implies\nabla\partial_{t}\phi+\nabla\times\partial_{t}\psi & =-\nabla\left(\frac{1}{\rho}p+gz\right)+\nu\nabla\times\left(\nabla^{2}\psi\right)
+\implies\nabla\partial_{t}\phi+\nabla\times\partial_{t}\vStream & =-\nabla\left(\frac{1}{\rho}p+gz\right)+\nu\nabla\times\left(\nabla^{2}\vStream\right)
 \end{align*}
 
 \end_inset
@@ -244,11 +263,11 @@ where we use the incompressibility condition
 \end_layout
 
 \begin_layout Standard
-We require that the two components of the velocity field take care separately for each physical effect:
+We require that the two components of the velocity field take care separately of each physical effect:
 \begin_inset Formula 
 \begin{align*}
 \nabla\partial_{t}\phi & =-\nabla\left(\frac{1}{\rho}p+gz\right),\\
-\nabla\times\partial_{t}\psi & =\nu\nabla\times\left(\nabla^{2}\psi\right).
+\nabla\times\partial_{t}\vStream & =\nu\nabla\times\left(\nabla^{2}\vStream\right).
 \end{align*}
 
 \end_inset
@@ -257,7 +276,7 @@ Clearly it is enough to demand that
 \begin_inset Formula 
 \begin{align}
 \partial_{t}\phi & =-\left(\frac{1}{\rho}\left(p-p_{0}\right)+gz\right),\label{eq:navier-stokes}\\
-\partial_{t}\psi & =\nu\nabla^{2}\psi,\nonumber 
+\partial_{t}\vStream & =\nu\nabla^{2}\vStream,\nonumber 
 \end{align}
 
 \end_inset
@@ -280,7 +299,7 @@ In the following I will abuse
 \begin_inset Formula $\hat{y}$
 \end_inset
 
- component of the vector potential - essentially a stream function.
+ component of the vector potential.
 \end_layout
 
 \begin_layout Subsubsection
@@ -294,7 +313,7 @@ We have two conservation of matter equation and one boundary condition:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\partial_{t}c & =D\left(\partial_{x}^{2}c+\partial_{z}^{2}c\right),\\
+\partial_{t}c & =D\left(\partial_{x}^{2}c+\partial_{z}^{2}c\right)-\partial_{x}\left(cv_{x}\left(t,x,z\right)\right)-\partial_{z}\left(cv_{z}\left(t,x,z\right)\right),\\
 \partial_{t}s & =-\partial_{x}\left(sv_{x}\left(t,x,0\right)\right)+r,\\
 c_{0}\left(z\right) & =c\left(x,z\rightarrow-\infty\right),
 \end{align*}
@@ -345,7 +364,9 @@ We assume both deviation from time averages and the fluid velocities are small,
 \end_inset
 
  is the first order proportion constant (where next order introduces variations).
- We also assume rather homogeneous,
+ We also assume a rather homogeneous,
+ dilute,
+ chemically and electrically quiet,
  and strictly static macroscopically,
  bulk,
  so the flux between bulk and surface is diffusion limited:
@@ -358,13 +379,17 @@ We assume both deviation from time averages and the fluid velocities are small,
 \begin_inset Formula 
 \begin{align}
 \partial_{t}\delta c & =D\left(\partial_{x}^{2}\delta c+\partial_{z}^{2}\delta c\right),\label{eq:linearized-concentration}\\
-\kappa\partial_{t}\delta c\left(t,x,0\right) & =-s_{0}\partial_{x}\left(\partial_{x}\phi\left(t,x,0\right)-\partial_{z}\psi\left(t,x,0\right)\right)-D\partial_{z}\delta c\left(t,x,0\right),\nonumber \\
+\kappa\partial_{t}\delta c\left(t,x,0\right) & =-s_{0}\partial_{x}\left(\partial_{x}\phi\left(t,x,0\right)-\partial_{z}\vStream\left(t,x,0\right)\right)-D\partial_{z}\delta c\left(t,x,0\right),\nonumber \\
 0 & =\delta c\left(x,z\rightarrow-\infty\right).\nonumber 
 \end{align}
 
 \end_inset
 
+Note that the linear convection term 
+\begin_inset Formula $c_{0}\left(\partial_{x}v_{x}\left(t,x,z\right)+\partial_{z}v_{z}\left(t,x,z\right)\right)$
+\end_inset
 
+ is dropped thanks to incompressibility.
 \end_layout
 
 \begin_layout Subsubsection
@@ -391,15 +416,25 @@ For an incompressible fluid,
 \end_layout
 
 \begin_layout Standard
-The elastic equation for the surface is derived thus:
- by conservation of matter and absence of flows,
- the total surfactant mass at each point is constant in time:
+Gemini claims that for typical sea surfactants,
+ concentration equilibration takes seconds to minutes.
+ We write theory for waves with frequency of higher order of magnitude,
+ so 
+\begin_inset Formula $5Hz$
+\end_inset
+
+ and above should be about fine,
+ though the theory was originally written for even higher frequencies.
+ In this ripple regime,
+ flux as described above is negligible w.r.t.
+ the elastic stretching of the surface film.
+ Then we get the conservation of matter condition:
 \begin_inset Formula 
 \begin{align*}
 sdA & =dM=const\\
 \implies s_{0}dA_{0} & =\left(s_{0}+\delta s\right)\left(dA_{0}+\delta dA\right)\\
-\implies\frac{\delta s}{s_{0}} & =-\frac{\delta dA}{dA_{0}},\\
-\frac{\partial_{t}s}{s_{0}} & =\frac{\partial_{t}dA}{dA_{0}}.
+\implies\frac{\delta s}{s_{0}} & =-\frac{\delta dA}{dA_{0}}=\kappa\frac{\delta c}{s_{0}},\\
+\frac{\partial_{t}\delta s}{s_{0}} & =-\frac{\partial_{t}dA}{dA_{0}}=-\kappa\frac{\partial_{t}\delta c}{s_{0}}.
 \end{align*}
 
 \end_inset
@@ -408,11 +443,11 @@ The surface tension per unit length at a point
 \begin_inset Formula $\left(x,y\right)$
 \end_inset
 
- is then 
+ is then to linear order
 \begin_inset Formula 
 \begin{align*}
 T & =T_{0}+k_{e}\delta dA/dA_{0}+k_{v}\frac{\partial_{t}dA}{dA_{0}}\\
- & =T_{0}-k_{e}\frac{\delta s}{s_{0}}-k_{v}\frac{\partial_{t}\delta s}{s_{0}},
+ & =T_{0}-k_{e}\kappa\frac{\delta c}{s_{0}}-k_{v}\kappa\frac{\partial_{t}\delta c}{s_{0}},
 \end{align*}
 
 \end_inset
@@ -433,26 +468,26 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\frac{dF}{dy} & =\sigma_{xz}dx-\partial_{x}Tdx\\
-\implies\frac{dF}{dA} & =\sigma_{xz}-\partial_{x}T.
+\frac{dF}{dy} & =-\sigma_{xz}dx+\partial_{x}Tdx\\
+\implies\frac{dF}{dA} & =-\sigma_{xz}+\partial_{x}T.
 \end{align*}
 
 \end_inset
 
 This would accelerate the small area of surfactant.
  But at the limit of a thin film,
- the (3D!) mass of this surfactant is small.
+ the (3D!) mass of this surfactant is minute.
  Therefore at normal excitation frequencies (finite accelerations),
  
 \begin_inset Formula $\frac{dF}{dA}$
 \end_inset
 
- is small,
+ is negligible,
  and
 \begin_inset Formula 
 \begin{align}
 \sigma_{xz} & =\partial_{x}T\label{eq:shear-at-boundary}\\
- & =-k_{e}s_{0}^{-1}\partial_{x}\delta s-k_{v}s_{0}^{-1}\partial_{x}\partial_{t}\delta s.\nonumber 
+ & =-k_{e}\kappa s_{0}^{-1}\partial_{x}\delta c-k_{v}\kappa s_{0}^{-1}\partial_{x}\partial_{t}\delta c.\nonumber 
 \end{align}
 
 \end_inset
@@ -467,7 +502,7 @@ Similarly,
 \begin_inset Formula 
 \begin{align}
 \sigma_{zz} & =-p_{0}-\rho g\zeta+T_{0}\partial_{x}^{2}\zeta\label{eq:pressure-at-boundary}\\
- & =-p_{0}-\rho g\int_{-\infty}^{t}\left(\partial_{z}\phi+\partial_{x}\psi\right)dt+T_{0}\int_{-\infty}^{t}\partial_{x}^{2}\left(\partial_{z}\phi+\partial_{x}\psi\right)dt.\nonumber 
+ & =-p_{0}-\rho g\int_{-\infty}^{t}\left(\partial_{z}\phi+\partial_{x}\vStream\right)dt+T_{0}\int_{-\infty}^{t}\partial_{x}^{2}\left(\partial_{z}\phi+\partial_{x}\vStream\right)dt.\nonumber 
 \end{align}
 
 \end_inset
@@ -476,10 +511,104 @@ Similarly,
 \end_layout
 
 \begin_layout Subsubsection
-The dispersion relation
+Recap
 \end_layout
 
 \begin_layout Standard
+To sum up,
+ we have now a bunch of equations we should mingle together:
+\begin_inset Formula 
+\begin{align}
+0 & =\partial_{x}^{2}\phi+\partial_{z}^{2}\phi,\label{eq:Hansen's-model}\\
+\frac{1}{\nu}\partial_{t}\psi & =\partial_{x}^{2}\psi+\partial_{z}^{2}\psi,\nonumber \\
+\frac{1}{D}\partial_{t}\delta c & =\partial_{x}^{2}\delta c+\partial_{z}^{2}\delta c,\nonumber \\
+\kappa\partial_{t}\delta c\left(t,x,0\right) & =-s_{0}\partial_{x}\left(\partial_{x}\phi\left(t,x,0\right)-\partial_{z}\psi\left(t,x,0\right)\right)-D\partial_{z}\delta c\left(t,x,0\right),\nonumber \\
+0 & =\rho\nu\left(2\partial_{x}\partial_{z}\phi\left(t,x,0\right)+\left(\partial_{x}^{2}-\partial_{z}^{2}\right)\psi\left(t,x,0\right)\right)+k_{e}\kappa s_{0}^{-1}\partial_{x}\delta c\left(t,x,0\right)+k_{v}\kappa s_{0}^{-1}\partial_{x}\partial_{t}\delta c\left(t,x,0\right),\nonumber \\
+0 & =\rho\partial_{t}\phi\left(t,x,0\right)+\rho g\int_{-\infty}^{t}\left(\partial_{z}\phi\left(t,x,0\right)+\partial_{x}\psi\left(t,x,0\right)\right)dt+2\rho\nu\left(\partial_{z}^{2}\phi\left(t,x,0\right)+\partial_{x}\partial_{z}\psi\left(t,x,0\right)\right)\nonumber \\
+ & +\rho g\int_{-\infty}^{t}\left(\partial_{z}\phi\left(t,x,0\right)+\partial_{x}\psi\left(t,x,0\right)\right)dt-T_{0}\int_{-\infty}^{t}\partial_{x}^{2}\left(\partial_{z}\phi\left(t,x,0\right)+\partial_{x}\psi\left(t,x,0\right)\right)dt,\nonumber \\
+c_{0}\left(z\right) & =c\left(x,z\rightarrow-\infty\right),\nonumber 
+\end{align}
+
+\end_inset
+
+where I already combined equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fluid-stress"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:shear-at-boundary"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pressure-at-boundary"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ and plugged the pressure expression as defined in eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:navier-stokes"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ directly into the vertical force balance equation.
+\end_layout
+
+\begin_layout Standard
+This incomplete model is enough for deriving a dispersion relation,
+ as we'll see hence.
+\end_layout
+
+\begin_layout Standard
+The assumptions made are:
+ incompressible lower fluid,
+ still upper fluid,
+ no chemical or electrical activity,
+ frequency higher than diffusion rate,
+ unsaturated surface film,
+ deep and still bottom,
+ taking everything to linear order (small slopes),
+ and finally,
+ Gibbs elasticity,
+ which will be expanded in the Lucassen derivation.
+\end_layout
+
+\begin_layout Subsubsection
+The dispersion relation
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The dispersion relation
+\end_layout
+
+\begin_layout Plain Layout
 We now put in the Fourier ansatz
 \begin_inset Formula 
 \begin{align}
@@ -514,7 +643,7 @@ nolink "false"
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Next,
  eq.
  
@@ -613,12 +742,12 @@ nolink "false"
 :
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{align*}
-0 & =\left(\left(-\frac{k}{\rho\nu}k_{v}-2\right)\omega\kappa-i\left(\frac{k\kappa}{\rho\nu}k_{e}+2Dn\right)\right)k^{2}A\\
- & -\left(\left(-k^{2}-m^{2}\right)\left(Dn-i\omega\kappa\right)-imk\frac{k\kappa}{\rho\nu}\left(-ik_{e}-k_{v}\omega\right)\right)B,\\
-\delta pe^{-i\left(kx-\omega t\right)}-\frac{k}{\omega}\left(\rho g+T_{0}k^{2}\right)\left(iA-B\right) & =2\rho\nu\left(k^{2}A+ikmB\right),
+0 & =\left(-\left(\frac{k}{\rho\nu}k_{v}+2\right)\omega\kappa-i\left(\frac{k\kappa}{\rho\nu}k_{e}+2Dn\right)\right)k^{2}A\\
+ & +\left(m\frac{\kappa k_{e}}{\rho\nu}k^{2}+\left(k^{2}+m^{2}\right)Dn-i\left(k_{v}m\frac{\kappa}{\rho\nu}k^{2}+\left(k^{2}+m^{2}\right)\kappa\right)\omega\right)B\\
+0 & =2\rho\nu\left(k^{2}A+ikmB\right)-\delta pe^{-i\left(kx-\omega t\right)}+\frac{k}{\omega}\left(\rho g+T_{0}k^{2}\right)\left(iA-B\right),
 \end{align*}
 
 \end_inset
@@ -637,7 +766,7 @@ nolink "false"
 ,
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{align*}
 \delta p & =-\rho g\zeta-\rho\partial_{t}\phi\\
@@ -655,7 +784,12 @@ so the normal condition above takes the form
 \end_inset
 
 We now established an inhomogeneous linear system.
- Dividing by 
+ Dividing the first equation by 
+\begin_inset Formula $\kappa Dk^{4}$
+\end_inset
+
+,
+ and the second equation by 
 \begin_inset Formula $T_{0}k^{3}/\omega$
 \end_inset
 
@@ -665,7 +799,7 @@ We now established an inhomogeneous linear system.
 \begin{align*}
 \begin{pmatrix}0\\
 0
-\end{pmatrix} & =\begin{pmatrix}\frac{\kappa\left(-\frac{k}{\rho\nu}k_{v}-2\right)\omega^{2}}{T_{0}k}-i\frac{\left(\frac{k\kappa}{\rho\nu}k_{e}+2Dn\right)\omega}{T_{0}k} & \frac{\left(k^{2}+m^{2}\right)\left(Dn-i\omega\kappa\right)\omega}{T_{0}k^{3}}+\frac{i\frac{\kappa}{\rho\nu}\left(k_{v}\omega+ik_{e}\right)m\omega}{T_{0}k}\\
+\end{pmatrix} & =\begin{pmatrix}\frac{\left(\frac{k_{v}}{\rho\nu}k+2\right)\omega}{Dk^{2}}+i\frac{\frac{k_{e}\kappa}{\rho\nu}k+2Dn}{\kappa Dk^{2}} & -\frac{\left(1+\frac{m^{2}}{k^{2}}\right)Dn+\frac{\kappa k_{e}}{\rho\nu}m}{\kappa Dk^{2}}+i\frac{\left(\left(1+\frac{m^{2}}{k^{2}}\right)+\frac{k_{v}}{\rho\nu}m\right)\omega}{Dk^{2}}\\
 \frac{2\rho\nu}{T_{0}}\frac{\omega}{k}+i\left(\frac{\rho\left(2kg-\omega^{2}\right)}{k^{3}T_{0}}+1\right) & i\left(\frac{2\rho\nu}{T_{0}}\frac{\omega m}{k^{2}}+i\left(\frac{2\rho g}{T_{0}}\frac{1}{k^{2}}+1\right)\right)
 \end{pmatrix}\begin{pmatrix}A\\
 B
@@ -675,6 +809,81 @@ B
 \end_inset
 
 This has a nontrivial solution only if the determinant is zero.
+\end_layout
+
+\begin_layout Subsubsection
+Verification -
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We now put in the Fourier ansatz
+\begin_inset Formula 
+\begin{align}
+\phi\left(t,x,z\right) & =Ae^{kz}e^{i\left(kx-\omega t\right)},\nonumber \\
+\psi\left(t,x,z\right) & =Be^{mz}e^{i\left(kx-\omega t\right)},\nonumber \\
+\delta c & =Ce^{nz}e^{i\left(kx-\omega t\right)}.\label{eq:Fourier-ansatz}
+\end{align}
+
+\end_inset
+
+System 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Hansen's-model"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ then takes the form 
+\begin_inset Formula 
+\begin{align*}
+-i\frac{1}{\nu}\omega & =-k^{2}+m^{2},\\
+-i\frac{1}{D}\omega & =-k^{2}+n^{2},\\
+-i\kappa\omega C & =-s_{0}\left(-k^{2}A-imkB\right)-DnC,\\
+0 & =-\rho\nu\left(k^{2}+m^{2}\right)B+k_{v}\kappa s_{0}^{-1}k\omega C+i2\rho\nu k^{2}A+ik_{e}\kappa s_{0}^{-1}kC,\\
+0 & =\rho\left(-i\omega\right)A+\rho g\left(\frac{k}{-i\omega}A+\frac{ik}{-i\omega}B\right)+2\rho\nu\left(k^{2}A+imkB\right)\\
+ & -T_{0}\frac{k^{3}}{\omega}B-\rho g\frac{k}{\omega}B+i\rho g\frac{k}{\omega}A+iT_{0}\frac{k^{3}}{\omega}A,
+\end{align*}
+
+\end_inset
+
+which entails
+\begin_inset Formula 
+\begin{align*}
+m & =\sqrt{k^{2}-i\frac{1}{\nu}\omega},\,\Re\left(m\right)>0,\\
+n & =\sqrt{k^{2}-i\frac{1}{D}\omega},\,\Re\left(n\right)>0,\\
+s_{0}^{-1}C & =\frac{\left(k^{2}A\right)}{Dn-i\kappa\omega}+i\frac{mkB}{Dn-i\kappa\omega},\\
+0 & =\left(\left(\frac{k_{v}}{\rho\nu}k+2\right)\omega+i\left(\frac{k_{e}}{\rho\nu}k+\frac{2D}{\kappa}n\right)\right)A\\
+ & +\left(-\frac{D}{\kappa}\left(\frac{m^{2}}{k^{2}}+1\right)n-\frac{k_{e}}{\rho\nu}m+i\left(\left(\frac{m^{2}}{k^{2}}+1\right)+\frac{k_{v}}{\rho\nu}m\right)\omega\right)B,\\
+0 & =\left(\frac{2\rho\nu\omega}{T_{0}k}+i\left(\frac{\rho\left(2gk-\omega^{2}\right)}{T_{0}k^{3}}+1\right)\right)A\\
+ & +\left(-\left(\frac{2\rho g}{T_{0}k^{2}}+1\right)+i\frac{2\rho\nu}{T_{0}}\frac{m\omega}{k^{2}}\right)B,
+\end{align*}
+
+\end_inset
+
+so we find ourselves with a matrix of the form
+\begin_inset Formula 
+\begin{align*}
+\begin{pmatrix}0\\
+0
+\end{pmatrix} & =\begin{pmatrix}\left(\frac{k_{v}}{\rho\nu}k+2\right)\omega+i\left(\frac{k_{e}}{\rho\nu}k+\frac{2D}{\kappa}n\right) & -\left(\frac{D}{\kappa}\left(\frac{m^{2}}{k^{2}}+1\right)n+\frac{k_{e}}{\rho\nu}m\right)+i\left(\left(\frac{m^{2}}{k^{2}}+1\right)+\frac{k_{v}}{\rho\nu}m\right)\omega\\
+\frac{2\rho\nu\omega}{T_{0}k}+i\left(\frac{\rho\left(2gk-\omega^{2}\right)}{T_{0}k^{3}}+1\right) & -\left(\frac{2\rho g}{T_{0}k^{2}}+1\right)+i\frac{2\rho\nu}{T_{0}}\frac{m\omega}{k^{2}}
+\end{pmatrix}\begin{pmatrix}A\\
+B
+\end{pmatrix}
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -690,7 +899,7 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Assume that we deal with a planar wave form,
+Assume again that we deal with a planar wave form,
  so that the 
 \begin_inset Formula $y$
 \end_inset
@@ -702,7 +911,7 @@ Assume that we deal with a planar wave form,
 \end_inset
 
 ,
- so that the prism is in the water with its slanted face is at the interface.
+ so that the prism is in the water with its slanted face at the interface.
  Let 
 \begin_inset Formula $\sigma$
 \end_inset
@@ -882,17 +1091,16 @@ Again the first term is presumably small,
 \end_inset
 
 .
- Thus to linear order we get the two equations
+ Thus to linear order we get the two force balance equations
 \begin_inset Formula 
 \begin{align}
 0 & =\left.\left(\sigma_{xz}'-\sigma_{xz}\right)\right|_{z=0}+\partial_{x}\tau,\nonumber \\
-0 & =\left.\left(\sigma_{zz}'-\sigma_{zz}\right)\right|_{z=0}+\tau\partial_{x}^{2}\zeta.\label{eq:continuity-conditions}
+0 & =\left.\left(\sigma_{zz}'-\sigma_{zz}\right)\right|_{z=0}+\tau\partial_{x}^{2}\zeta.\label{eq:force-balance-conditions}
 \end{align}
 
 \end_inset
 
-These equations replace eq.
- 
+These equations match the force balance equations 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:shear-at-boundary"
@@ -917,7 +1125,7 @@ nolink "false"
  from the former sections.
  Next,
  to linear order,
- change in the slope goes with a change in the surface area of a surface droplet.
+ change in the slope goes with a change in the surface area of a surface rectangular piece.
  That is,
  if 
 \begin_inset Formula $\varepsilon$
@@ -928,7 +1136,8 @@ nolink "false"
 \begin_inset Formula 
 \begin{align}
 \partial_{x}\tau & =\varepsilon\partial_{x}\ln\left(dA/dA_{0}\right),\nonumber \\
-dA/dA_{0}-1 & =\partial_{x}\xi,\nonumber \\
+\delta dA/dA_{0} & =dA/dA_{0}-1\nonumber \\
+ & =\partial_{x}\xi,\nonumber \\
 \partial_{x}\tau & =\varepsilon\partial_{x}\ln\left(\partial_{x}\xi+1\right)\nonumber \\
  & =\varepsilon\frac{\partial_{x}^{2}\xi}{\partial_{x}\xi+1}\nonumber \\
  & \approx\varepsilon\partial_{x}^{2}\xi,\label{eq:traction-geometry}
@@ -938,7 +1147,7 @@ dA/dA_{0}-1 & =\partial_{x}\xi,\nonumber \\
 
 where the equation for the change in the area is already a first order approximation.
  Now we remember that we deal with planar waves.
- so from the definition of the velocity potential and stream function and from the Fourier ansatz 
+ So from the definition of the velocity potential and stream function and from the Fourier ansatz 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:Fourier-ansatz"
@@ -995,7 +1204,7 @@ which combined with eq.
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:continuity-conditions"
+reference "eq:force-balance-conditions"
 plural "false"
 caps "false"
 noprefix "false"

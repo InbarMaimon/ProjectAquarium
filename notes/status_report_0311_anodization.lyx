@@ -1,0 +1,244 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsart
+\begin_preamble
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children no
+\language american
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Anodization process
+\end_layout
+
+\begin_layout Subsection
+Making the acid
+\end_layout
+
+\begin_layout Standard
+See 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+### Citric acid making protocol
+\end_layout
+
+\end_inset
+
+ in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+protocols.md
+\end_layout
+
+\end_inset
+
+ file.
+ 
+\end_layout
+
+\begin_layout Standard
+If tap water is used,
+ reaction between the carbon in the water and the acid might build pressure.
+ In the first time I put a sealed bottle on the shaker,
+ it (probably) exploded and broke one of the holder arms.
+\end_layout
+
+\begin_layout Standard
+Otherwise the acid should be completely safe,
+ having a citric acid concentration less than one hundredth that of natural lemon,
+ and no other ingredients.
+\end_layout
+
+\begin_layout Subsection
+Anodizing a wire
+\end_layout
+
+\begin_layout Standard
+See 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+### Anodization protocol
+\end_layout
+
+\end_inset
+
+ in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+protocols.md
+\end_layout
+
+\end_inset
+
+ file.
+\end_layout
+
+\begin_layout Standard
+The way I straightened the wires goes like this:
+ take the wire roll,
+ pull out the required length of tantalum with a fine spare.
+ Fix the tail (either with a bench vise,
+ a pliers pair or by another way),
+ hold the head with a pliers pair and pull abruptly.
+ Tantalum is (maybe exceptionally) malleable,
+ so it will straighten smoothly.
+ Note that the head might be torn,
+ but usually what's left is long enough to use.
+\end_layout
+
+\begin_layout Section
+Electronics configuration
+\end_layout
+
+\begin_layout Standard
+Electronics of the capacitance sensing system is expected to follow the structure of fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Electronics-diagram"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Electronics diagram
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Electronics-diagram"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

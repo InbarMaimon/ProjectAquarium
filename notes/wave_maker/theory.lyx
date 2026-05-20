@@ -193,7 +193,11 @@ Laplace:
 \end_inset
 
  direction,
- so the potential has only 
+ so the velocity potential 
+\begin_inset Formula $\velocityPotential$
+\end_inset
+
+ has only 
 \begin_inset Formula $x$
 \end_inset
 
@@ -202,6 +206,7 @@ Laplace:
 \end_inset
 
  (vertical) components.
+ Then
 \begin_inset Formula 
 \begin{align*}
 \partial_{x}^{2}\velocityPotential+\partial_{z}^{2}\velocityPotential & =0.

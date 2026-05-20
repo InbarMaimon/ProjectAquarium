@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Electronics Block Diagram</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+  <style>
+    body { background: #f8f6f0; display: flex; flex-direction: column; align-items: center; font-family: Georgia, serif; padding: 30px; }
+    h2 { color: #333; margin-bottom: 24px; }
+    .mermaid { background: white; border-radius: 10px; padding: 30px; box-shadow: 0 2px 12px #0001; }
+  </style>
+</head>
+<body>
+<h2>Aquarium Sensor — Electronics Block Diagram</h2>
+<div class="mermaid">
+flowchart TB
+
+  subgraph SENSORS["Sensors (in aquarium)"]
+    TA1["Ta wire 1\nCapacitor"]
+    TA2["Ta wire 2\nCapacitor"]
+    TA3["Ta wire 3\nCapacitor"]
+  end
+
+  subgraph BOX["Electronics box (on mounting plate)"]
+    CDC["CDC Board\nScioSense PCAP04\n\nMeasures capacitance\nof each Ta wire"]
+    PICO["PS2→USB Interpreter\nPicoprog\n\nConverts CDC output\nto USB HID"]
+  end
+
+  PC["Windows Computer\nReads USB HID data"]
+
+  TA1 -->|"analog\n(short wire)"| CDC
+  TA2 -->|"analog\n(short wire)"| CDC
+  TA3 -->|"analog\n(short wire)"| CDC
+
+  CDC -->|"SPI / I²C\n(digital)"| PICO
+  PICO -->|"USB\n(digital, long cable OK)"| PC
+
+  style SENSORS fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#333
+  style BOX fill:#e3f2fd,stroke:#01579b,stroke-width:2px,color:#333
+  style TA1 fill:#ffccbc,stroke:#bf360c,color:#333
+  style TA2 fill:#ffccbc,stroke:#bf360c,color:#333
+  style TA3 fill:#ffccbc,stroke:#bf360c,color:#333
+  style CDC fill:#bbdefb,stroke:#01579b,color:#333
+  style PICO fill:#bbdefb,stroke:#01579b,color:#333
+  style PC fill:#c8e6c9,stroke:#1b5e20,color:#333
+</div>
+</body>
+</html>

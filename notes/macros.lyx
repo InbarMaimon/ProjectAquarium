@@ -104,8 +104,8 @@ figs-within-sections
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\surfaceTension}{\tau}
-{\tau}
+\newcommand{\surfaceTension}{\sigma}
+{\sigma}
 \end_inset
 
 
@@ -140,6 +140,69 @@ figs-within-sections
 
 \begin_layout Standard
 \begin_inset FormulaMacro
+\newcommand{\stressTensor}{\tau}
+{\tau}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\surfacePressure}{p_{0}}
+{p_{0}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\sPressure}{\surfacePressure}
+{\surfacePressure}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\surfactantBulkConcentration}{c}
+{c}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\sBulkCo}{\surfactantBulkConcentration}
+{\surfactantBulkConcentration}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\surfactantSurfaceConcentration}{\Gamma}
+{\Gamma}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\sSurfCo}{\surfactantSurfaceConcentration}
+{\surfactantSurfaceConcentration}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
 \newcommand{\velocityPotential}{f}
 {f}
 \end_inset
@@ -149,7 +212,25 @@ figs-within-sections
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\kinematicViscousity}{v}
+\newcommand{\vPotential}{\phi}
+{\phi}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\vStream}{\psi}
+{\psi}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\kinematicViscosity}{\nu}
 {\nu}
 \end_inset
 
@@ -178,6 +259,69 @@ figs-within-sections
 \begin_inset FormulaMacro
 \newcommand{\kEvanescentn}{k_{e,n}}
 {k_{e,n}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\aquariumHeight}{H}
+{H}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\aquariumLength}{L}
+{L}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\aquariumWidth}{W}
+{W}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\aHeight}{\aquariumHeight}
+{\aquariumHeight}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\aLength}{\aquariumLength}
+{\aquariumLength}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\aWidth}{\aquariumWidth}
+{\aquariumWidth}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\baseVel}{u}
+{u}
 \end_inset
 
 

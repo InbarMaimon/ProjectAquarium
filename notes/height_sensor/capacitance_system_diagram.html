@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Aquarium Sensor Diagram</title>
+</head>
+<body style="background:#f8f6f0; margin:0; display:flex; justify-content:center;">
+<svg id="diagram" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif"></svg>
+
+<script>
+// ════════════════════════════════════════════════
+//  PHYSICAL CONSTANTS  (all in cm)
+// ════════════════════════════════════════════════
+const TANK_HEIGHT_CM   = 40;
+const WATER_HEIGHT_CM  = 20;
+const TA_LENGTH_CM     = 5;    // total tantalum wire length
+const TA_SUBMERGED_CM  = 2;    // how much dips below water surface
+const TA_COUNT         = 3;
+const TA_SPACING_CM    = 5;    // horizontal spacing between Ta wires
+
+// ════════════════════════════════════════════════
+//  LAYOUT CONSTANTS  (pixels)
+// ════════════════════════════════════════════════
+const SVG_W            = 620;
+const SVG_H            = 540;
+
+const TANK_LEFT        = 108;  // inner left wall x
+const TANK_WALL        = 8;    // wall thickness
+const TANK_WIDTH       = 244;  // inner width
+const TANK_TOP_Y       = 160;  // top of tank inner space
+const PX_PER_CM        = 7;    // scale: pixels per centimeter (40cm → 280px)
+
+// Derived tank geometry
+const TANK_HEIGHT_PX   = TANK_HEIGHT_CM * PX_PER_CM;
+const TANK_BOTTOM_Y    = TANK_TOP_Y + TANK_HEIGHT_PX;
+const WATER_HEIGHT_PX  = WATER_HEIGHT_CM * PX_PER_CM;
+const WATER_SURFACE_Y  = TANK_BOTTOM_Y - WATER_HEIGHT_PX;
+
+// Ta wire geometry
+const TA_LENGTH_PX     = TA_LENGTH_CM * PX_PER_CM;
+const TA_SUBMERGED_PX  = TA_SUBMERGED_CM * PX_PER_CM;
+const TA_TIP_Y         = WATER_SURFACE_Y + TA_SUBMERGED_PX;
+const TA_TOP_Y         = TA_TIP_Y - TA_LENGTH_PX;  // = plate bottom
+const TA_SPACING_PX    = TA_SPACING_CM * PX_PER_CM;
+
+// Ta wire x positions (centered in tank)
+const TA_CENTER_X      = TANK_LEFT + TANK_WIDTH / 2;
+const TA_X = Array.from({length: TA_COUNT}, (_, i) =>
+  TA_CENTER_X + (i - (TA_COUNT - 1) / 2) * TA_SPACING_PX
+);
+
+// Mounting plate
+const PLATE_H          = 10;
+const PLATE_LEFT       = TANK_LEFT;
+const PLATE_WIDTH      = TANK_WIDTH;
+const PLATE_TOP_Y      = TA_TOP_Y - PLATE_H;
+const PLATE_BOTTOM_Y   = TA_TOP_Y;
+
+// CDC box (sits on top of plate)
+const BOX_W            = 104;
+const BOX_H            = 30;
+const BOX_LEFT         = TANK_LEFT + (TANK_WIDTH - BOX_W) / 2;
+const BOX_TOP_Y        = PLATE_TOP_Y - BOX_H;
+const BOX_BOTTOM_Y     = PLATE_TOP_Y;
+const BOX_MID_Y        = (BOX_TOP_Y + BOX_BOTTOM_Y) / 2;
+
+// Suspension rods (connect bridge to plate ends)
+const ROD_LEFT_X       = TANK_LEFT + 28;
+const ROD_RIGHT_X      = TANK_LEFT + TANK_WIDTH - 28;
+
+// Bridge
+const BRIDGE_TOP_Y     = 68;
+const BRIDGE_H         = 18;
+const BRIDGE_BOTTOM_Y  = BRIDGE_TOP_Y + BRIDGE_H;
+const BRIDGE_LEFT      = 60;
+const BRIDGE_RIGHT     = BRIDGE_LEFT + 340;
+
+// Bridge legs (vertical supports outside tank)
+const LEG_W            = 12;
+const LEG_LEFT_X       = BRIDGE_LEFT;
+const LEG_RIGHT_X      = BRIDGE_RIGHT - LEG_W;
+
+// Cable path: box → right rod → along bridge → down to computer
+const CABLE_ROD_X      = ROD_RIGHT_X;
+const CABLE_BRIDGE_Y   = BRIDGE_TOP_Y + BRIDGE_H / 2;
+const CABLE_RIGHT_X    = 540;
+
+// Computer box
+const COMP_X           = 495;
+const COMP_Y           = 468;
+const COMP_W           = 90;
+const COMP_H           = 50;
+
+// ════════════════════════════════════════════════
+//  HELPERS
+// ════════════════════════════════════════════════
+const SVG_NS = "http://www.w3.org/2000/svg";
+const svg = document.getElementById("diagram");
+svg.setAttribute("viewBox", `0 0 ${SVG_W} ${SVG_H}`);
+svg.setAttribute("width", SVG_W);
+svg.setAttribute("height", SVG_H);
+
+function el(tag, attrs, text) {
+  const e = document.createElementNS(SVG_NS, tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  if (text !== undefined) e.textContent = text;
+  return e;
+}
+function add(tag, attrs, text) {
+  return svg.appendChild(el(tag, attrs, text));
+}
+function line(x1, y1, x2, y2, attrs={}) {
+  return add("line", {x1, y1, x2, y2, ...attrs});
+}
+function rect(x, y, w, h, attrs={}) {
+  return add("rect", {x, y, width:w, height:h, ...attrs});
+}
+function circle(cx, cy, r, attrs={}) {
+  return add("circle", {cx, cy, r, ...attrs});
+}
+function text(x, y, str, attrs={}) {
+  return add("text", {x, y, ...attrs}, str);
+}
+function annotBrace(x, y1, y2, label1, label2, color="#999", side=1) {
+  // vertical brace annotation
+  const tx = x;
+  line(x, y1, x, y2, {stroke:color, "stroke-width":1});
+  line(x, y1, x - side*5, y1, {stroke:color, "stroke-width":1});
+  line(x, y2, x - side*5, y2, {stroke:color, "stroke-width":1});
+  const my = (y1 + y2) / 2;
+  text(tx, my - 4, label1, {
+    "font-size":10, fill:color, "text-anchor": side>0 ? "start" : "end",
+    transform: `rotate(90,${tx},${my})` });
+  if (label2) text(tx+12, my - 4, label2, {
+    "font-size":9, fill:color, "font-style":"italic",
+    "text-anchor": side>0 ? "start" : "end",
+    transform: `rotate(90,${tx+12},${my})` });
+}
+
+// ════════════════════════════════════════════════
+//  DRAW
+// ════════════════════════════════════════════════
+
+// Background
+rect(0, 0, SVG_W, SVG_H, {fill:"#f8f6f0"});
+
+// Title
+text(SVG_W/2, 28, "Aquarium Water-Level Sensor — Conceptual Layout", {
+  "text-anchor":"middle", "font-size":15, "font-weight":"bold", fill:"#333"});
+
+// ── Bridge ──
+rect(BRIDGE_LEFT, BRIDGE_TOP_Y, BRIDGE_RIGHT - BRIDGE_LEFT, BRIDGE_H,
+  {rx:4, fill:"#8B6914", stroke:"#5a4008", "stroke-width":1.5});
+text((BRIDGE_RIGHT+BRIDGE_LEFT)/2, BRIDGE_TOP_Y - 10, "bridge",
+  {"font-size":11, fill:"#5a4008", "font-style":"italic"});
+
+// Bridge legs
+rect(LEG_LEFT_X,  BRIDGE_BOTTOM_Y, LEG_W, PLATE_TOP_Y - BRIDGE_BOTTOM_Y, {fill:"#8B6914"});
+rect(LEG_RIGHT_X, BRIDGE_BOTTOM_Y, LEG_W, PLATE_TOP_Y - BRIDGE_BOTTOM_Y, {fill:"#8B6914"});
+
+// ── Suspension rods ──
+line(ROD_LEFT_X,  BRIDGE_BOTTOM_Y, ROD_LEFT_X,  PLATE_TOP_Y, {stroke:"#555", "stroke-width":2.5});
+line(CABLE_ROD_X, BRIDGE_BOTTOM_Y, CABLE_ROD_X, PLATE_TOP_Y, {stroke:"#555", "stroke-width":2.5});
+// rod → plate connectors
+line(ROD_LEFT_X,  PLATE_TOP_Y, PLATE_LEFT,             PLATE_TOP_Y, {stroke:"#555", "stroke-width":2});
+line(CABLE_ROD_X, PLATE_TOP_Y, PLATE_LEFT + PLATE_WIDTH, PLATE_TOP_Y, {stroke:"#555", "stroke-width":2});
+text(TANK_LEFT - 52, (BRIDGE_BOTTOM_Y + PLATE_TOP_Y)/2, "suspension rods",
+  {"font-size":9, fill:"#777", "font-style":"italic",
+   transform:`rotate(-90,${TANK_LEFT-52},${(BRIDGE_BOTTOM_Y+PLATE_TOP_Y)/2})`});
+
+// ── Cable: box → right rod → along bridge → down to computer ──
+const CABLE_STYLE = {stroke:"#2c7a2c", "stroke-width":2.5, "stroke-dasharray":"6,3"};
+// short hop from box to rod
+line(BOX_LEFT + BOX_W, BOX_MID_Y, CABLE_ROD_X, BOX_MID_Y, {...CABLE_STYLE, "stroke-dasharray":"4,2"});
+// up the rod to bridge
+line(CABLE_ROD_X, BOX_MID_Y, CABLE_ROD_X, CABLE_BRIDGE_Y, CABLE_STYLE);
+// along bridge to right
+line(CABLE_ROD_X, CABLE_BRIDGE_Y, CABLE_RIGHT_X, CABLE_BRIDGE_Y, CABLE_STYLE);
+// down to computer
+line(CABLE_RIGHT_X, CABLE_BRIDGE_Y, CABLE_RIGHT_X, COMP_Y + COMP_H/2, CABLE_STYLE);
+text(CABLE_RIGHT_X + 8, 270, "USB cable",
+  {"font-size":9, fill:"#2c7a2c", "font-style":"italic",
+   transform:`rotate(90,${CABLE_RIGHT_X+8},270)`});
+text(CABLE_RIGHT_X + 20, 270, "(digital signal)",
+  {"font-size":9, fill:"#2c7a2c", "font-style":"italic",
+   transform:`rotate(90,${CABLE_RIGHT_X+20},270)`});
+
+// ── Aquarium walls ──
+rect(TANK_LEFT - TANK_WALL, TANK_TOP_Y, TANK_WALL, TANK_HEIGHT_PX,
+  {fill:"#a8d8ea", stroke:"#5b9fb8", "stroke-width":1});  // left
+rect(TANK_LEFT + TANK_WIDTH, TANK_TOP_Y, TANK_WALL, TANK_HEIGHT_PX,
+  {fill:"#a8d8ea", stroke:"#5b9fb8", "stroke-width":1});  // right
+rect(TANK_LEFT - TANK_WALL, TANK_BOTTOM_Y, TANK_WIDTH + 2*TANK_WALL, TANK_WALL,
+  {fill:"#a8d8ea", stroke:"#5b9fb8", "stroke-width":1});  // bottom
+
+// ── Water ──
+rect(TANK_LEFT, WATER_SURFACE_Y, TANK_WIDTH, WATER_HEIGHT_PX,
+  {fill:"#a8d8ea", opacity:0.55});
+line(TANK_LEFT, WATER_SURFACE_Y, TANK_LEFT + TANK_WIDTH, WATER_SURFACE_Y,
+  {stroke:"#3a9fd5", "stroke-width":2, "stroke-dasharray":"6,3"});
+text(TANK_LEFT + TANK_WIDTH + TANK_WALL + 5, WATER_SURFACE_Y + 4, "water surface",
+  {"font-size":10, fill:"#3a9fd5", "font-style":"italic"});
+
+// ── Mounting plate ──
+rect(PLATE_LEFT, PLATE_TOP_Y, PLATE_WIDTH, PLATE_H,
+  {rx:2, fill:"#ccc", stroke:"#888", "stroke-width":1.5});
+text(PLATE_LEFT + PLATE_WIDTH + 5, PLATE_TOP_Y + 8, "mounting plate",
+  {"font-size":10, fill:"#666", "font-style":"italic"});
+
+// Holes in plate at Ta wire x positions
+for (const x of TA_X) circle(x, PLATE_BOTTOM_Y - PLATE_H/2, 3, {fill:"#888"});
+
+// ── CDC + Picoprog box ──
+rect(BOX_LEFT, BOX_TOP_Y, BOX_W, BOX_H,
+  {rx:5, fill:"#01579b", stroke:"#013a6b", "stroke-width":1.5});
+text(BOX_LEFT + BOX_W/2, BOX_TOP_Y + 13, "CDC (PCAP04)",
+  {"text-anchor":"middle", "font-size":9, fill:"white", "font-weight":"bold"});
+text(BOX_LEFT + BOX_W/2, BOX_TOP_Y + 25, "+ Picoprog",
+  {"text-anchor":"middle", "font-size":9, fill:"#cce5ff"});
+
+// ── Tantalum wires ──
+for (const x of TA_X) {
+  // air portion
+  line(x, PLATE_BOTTOM_Y, x, WATER_SURFACE_Y,
+    {stroke:"#c0392b", "stroke-width":2.5});
+  // submerged portion
+  line(x, WATER_SURFACE_Y, x, TA_TIP_Y,
+    {stroke:"#922b21", "stroke-width":2.5});
+  // tip dot
+  circle(x, TA_TIP_Y, 4, {fill:"#922b21"});
+}
+
+// Ta wire annotation brace
+const BRACE_X = TA_X[TA_COUNT-1] + 18;
+line(BRACE_X, PLATE_BOTTOM_Y, BRACE_X, TA_TIP_Y, {stroke:"#c0392b", "stroke-width":1});
+line(BRACE_X, PLATE_BOTTOM_Y, BRACE_X - 5, PLATE_BOTTOM_Y, {stroke:"#c0392b", "stroke-width":1});
+line(BRACE_X, TA_TIP_Y,       BRACE_X - 5, TA_TIP_Y,       {stroke:"#c0392b", "stroke-width":1});
+text(TA_X[0] - 50, (PLATE_BOTTOM_Y + WATER_SURFACE_Y)/2 + 3, `Ta wires`,
+  {"font-size":10, fill:"#c0392b"});
+text(BRACE_X + 5, PLATE_BOTTOM_Y + 15, `${TA_LENGTH_CM} cm total`,
+  {"font-size":9, fill:"#922b21", "font-style":"italic"});
+text(BRACE_X + 5, PLATE_BOTTOM_Y + 35, `${TA_SUBMERGED_CM} cm submerged`,
+  {"font-size":9, fill:"#922b21", "font-style":"italic"});
+
+// ── Annotations: tank height, water height, air gap ──
+const ANN_LEFT = TANK_LEFT - TANK_WALL - 26;
+
+// Tank total height
+annotBrace(ANN_LEFT, TANK_TOP_Y, TANK_BOTTOM_Y,
+  `${TANK_HEIGHT_CM} cm`, null, "#999", -1);
+
+// Water height
+annotBrace(ANN_LEFT - 18, WATER_SURFACE_Y, TANK_BOTTOM_Y,
+  `${WATER_HEIGHT_CM} cm`, null, "#3a9fd5", -1);
+
+// Air gap
+// annotBrace(ANN_LEFT - 18, TANK_TOP_Y, WATER_SURFACE_Y,
+//   `air`, `${TANK_HEIGHT_CM - WATER_HEIGHT_CM} cm`, "#f39c12", -1);
+
+// ── Computer ──
+rect(COMP_X, COMP_Y, COMP_W, COMP_H,
+  {rx:6, fill:"#2d6a2d", stroke:"#1a3f1a", "stroke-width":1.5});
+text(COMP_X + COMP_W/2, COMP_Y + 20, "Computer",
+  {"text-anchor":"middle", "font-size":10, fill:"white", "font-weight":"bold"});
+text(COMP_X + COMP_W/2, COMP_Y + 34, "(Windows)",
+  {"text-anchor":"middle", "font-size":9, fill:"#a8d8a8"});
+
+</script>
+</body>
+</html>

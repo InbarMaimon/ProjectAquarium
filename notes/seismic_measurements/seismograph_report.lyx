@@ -1,0 +1,4865 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsart
+\begin_preamble
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{float}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children no
+\language american
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_formatted_ref 1
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 1cm
+\rightmargin 1cm
+\bottommargin 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Vibrations - Short Analysis
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "/home/inbarm/ProjectAquarium/notes/macros.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Inbar Maimon
+\end_layout
+
+\begin_layout Date
+13/3/2026
+\end_layout
+
+\begin_layout Section
+Preamble
+\end_layout
+
+\begin_layout Standard
+Following is an analysis of seismographic measurements conducted in January 2026 at the Physical Oceanography in Multiple Scales (POMS) lab.
+ The report covers daily variability,
+ channel-to-channel differences,
+ and some noise distributions.
+\end_layout
+
+\begin_layout Standard
+The 
+\series bold
+goal
+\series default
+ of the analysis was to estimate the mechanical spectrum of the environment toward conducting experiments in capillary wave sensing by optical camera in a tabletop aquarium.
+ We wanted to understand whether the background noise would drown our signal of down to 100
+\begin_inset Formula $\mu m$
+\end_inset
+
+ high ripples.
+ The expected velocity and acceleration of the capillary waves should be about the velocity and acceleration of the wedge plunger that will excite them,
+ i.e.
+ at the order of 
+\begin_inset Formula $10\frac{mm}{s}$
+\end_inset
+
+ and 
+\begin_inset Formula $1000\frac{mm}{s^{2}}$
+\end_inset
+
+,
+ respectively.
+\end_layout
+
+\begin_layout Section
+Setting
+\end_layout
+
+\begin_layout Standard
+On Wednesday,
+ January 14,
+ 2026,
+ two seismographs (
+\begin_inset CommandInset href
+LatexCommand href
+name "smart solo IGU-BD3C-5"
+target "https://smartsolo.com/sc/IGU-BD3C-5.pdf"
+literal "false"
+
+\end_inset
+
+,
+ see specifications also in tables 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Typical-Node-Specifications"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Sensor-Specifications"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Acquisition-Ch.-Specifications"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+;
+ consult table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Sensor-Specifications"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ specifically for sensitivity) were deployed:
+\end_layout
+
+\begin_layout Itemize
+Unit 
+\series bold
+579
+\series default
+ was placed in the POMS lab (room 11,
+ south wing,
+ Institute of Earth Sciences),
+ inside a cabinet near the inner (main) door.
+\end_layout
+
+\begin_layout Itemize
+Unit 
+\series bold
+583
+\series default
+ was placed in the POMS shed
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Located in the small parking yard behind the complex,
+ across from the lab room.
+\end_layout
+
+\end_inset
+
+ on the long desk there (see fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Seismographs-first-config."
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Deployment notes:
+\end_layout
+
+\begin_layout Standard
+Deployment instructions can be found in 
+\series bold
+sections 3.3.2-4
+\series default
+ of the User Manual (v1.2).
+ Note that data acquisition will not begin until GPS contact is made,
+ so one might want to initialize the units in an open area with clear sky visibility.
+ Once the green GPS light is confirmed,
+ the units can be moved to their indoor deployment locations without interrupting the acquisition cycle.
+\end_layout
+
+\begin_layout Standard
+According to the data,
+ unit 583 began recording at approximately 13:30,
+ and unit 579 began roughly one hour later,
+ at about 14:30,
+ due to a nondestructive technical deployment mishap by me,
+ which delayed acquiring the GPS signal.
+ 
+\end_layout
+
+\begin_layout Standard
+A manual intervention was performed to "
+\series bold
+mark
+\series default
+" the timeline.
+ While originally intended as a calibration (moving the sensors at 
+\begin_inset Formula $1\frac{m}{s}$
+\end_inset
+
+ along each axis),
+ the sensors were instead moved exactly one meter in each direction at a nonspecific velocity.
+ Consequently,
+ these events serve as time markers rather than formal calibrations (see Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:marking-times"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+;
+ Should have happened every day,
+ but I repeatedly forgot to do it).
+\end_layout
+
+\begin_layout Subsection
+Relocation
+\end_layout
+
+\begin_layout Standard
+On January 18,
+ immediately after the marking,
+ I replaced the seismographs (and,
+ regrettably,
+ didn't take photos).
+ The 579 was placed in the corner near the wall,
+ just out of the cabinet,
+ and the 583 was placed on the floor right below its former position on the desk.
+\end_layout
+
+\begin_layout Standard
+The seismographs were deactivated and collected by Aviv on the afternoon of Thursday,
+ January 22.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/images/seismographs/579-in-cabinet.jpeg
+	lyxscale 23
+	scale 23
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/images/seismographs/579-in-cabinet-closeup.jpeg
+	lyxscale 23
+	scale 23
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/images/seismographs/583-on-desk.jpeg
+	lyxscale 18
+	scale 18
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/images/seismographs/583-on-desk-closeup.jpeg
+	lyxscale 23
+	scale 23
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Top:
+ Seismograph no.
+ 579 in the upper shelf of the rightmost northern cabinet (below table) in the lab.
+\begin_inset Newline newline
+\end_inset
+
+Bottom:
+ Seismograph no.
+ 583 on the right side of the desk in the shed.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Seismographs-first-config."
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Table 1:
+ Typical Node Specifications
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{|l|l|}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Parameter} & 
+\backslash
+textbf{Specification} 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Seismic Data Channels & 3 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Size & $
+\backslash
+Phi 158 
+\backslash
+times 160$ mm (without spike) 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Weight & 2.8 kg (including internal battery and spike) 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Ingress Protection & IP 68 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Operating Temperature & -40°C $
+\backslash
+sim$ +70°C 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Charging Temperature Range & +3°C $
+\backslash
+sim$ +45°C 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Charging Time & <7.5 hrs,
+ Fully charged (standard battery) 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Operating Life @ 25°C & 30 days @ 2 ms,
+ 24 hrs/day operation 
+\backslash
+
+\backslash
+ 
+\backslash
+cline{2-2} 
+\end_layout
+
+\begin_layout Plain Layout
+
+ & 60 days @ 2 ms,
+ 12 hrs/day operation 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Data Storage & 64 GB (expandable to 128 GB) 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+GNSS Mode & Support GPS,
+ BEIDOU,
+ GLONASS (single/double mode optional) 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Data Harvesting & USB 3.0 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Bluetooth QC & Available 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+External Power Supply & 7 -- 15 V DC (single supply) 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Typical Node Specifications
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Typical-Node-Specifications"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Table 2:
+ Sensor Specifications
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{|l|l|}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Parameter} & 
+\backslash
+textbf{Specification} 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Frequency Bandwidth & 0.2 Hz $
+\backslash
+sim$ 150 Hz 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Distortion & <0.1
+\backslash
+% @ 12 Hz 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+ & (0° $
+\backslash
+sim$ 10°) vertical tilt,
+ (0° $
+\backslash
+sim$ 3°) horizontal tilt 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Sensitivity & 200 V/m/s (5.08 V/in/s) 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sensor Specifications (+22°C)
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Sensor-Specifications"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Table 3:
+ Acquisition Channel Specifications
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{|l|l|}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textbf{Parameter} & 
+\backslash
+textbf{Specification} 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+ADC Resolution & 32 bits 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Sample Interval & 0.25,
+ 0.5,
+ 1,
+ 2,
+ 4,
+ 8,
+ 10,
+ 20 ms 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Instrument Self-noise & Whole frequency band lower than the NHNM curve 
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+ & 5 s $
+\backslash
+sim$ 1 Hz lower than the NLNM curve 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Maximum Input Signal & $
+\backslash
+pm$ 2.5 V peak @ 0 dB 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Instantaneous Dynamic Range & 120 dB @ 2 ms 0 dB 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Common Mode Rejection & >100 dB 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Gain Accuracy & <1
+\backslash
+% 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+GPS Time Standard & 1 ppm 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Timing Accuracy & $
+\backslash
+pm$ 10 $
+\backslash
+mu$s,
+ GPS disciplined 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Cross Feed & <-110 dB 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Inter-channel Phase Offset & <0.1 ms 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Transverse Vibration Rejection & Better than 0.1
+\backslash
+% 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Inter-channel Amplitude Coherence & 5
+\backslash
+% 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+System Dynamic Range & 145 dB 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+Frequency Response & 0 -- 1652 Hz @ 0.25 ms 
+\backslash
+
+\backslash
+ 
+\backslash
+hline
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Acquisition Channel Specifications
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Acquisition-Ch.-Specifications"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+date
+\backslash
+ID
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+579
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+583
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13:51
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13:54
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13:55
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13:53
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+21.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13:58
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13:56
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Times of marking
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:marking-times"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Nine days,
+ one axis
+\end_layout
+
+\begin_layout Standard
+Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:14/1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ through 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:22/1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ display nine consecutive days of measurements.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Time correction:
+ 
+\series default
+The clock as documented in the raw files seems to be Greenwich,
+ so all times were manually shifted by 2 hours for the subsequent analysis and plotting.
+\end_layout
+
+\begin_layout Standard
+Note that data from 
+\begin_inset Formula $14/1$
+\end_inset
+
+'s noon until 20:00 and from the 
+\begin_inset Formula $22/1$
+\end_inset
+
+'s 8:00 until afternoon were left out of this presentation.
+ The data exists.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Orientation:
+ 
+\series default
+Both units were aligned as follows:
+ the 
+\begin_inset Formula $Z$
+\end_inset
+
+-axis was directed along the zenith (vertical up),
+ and the 
+\begin_inset Formula $N$
+\end_inset
+
+-axis (refer to the orientation markings in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Seismographs-first-config."
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) was directed toward the northern wall.
+ Note that this alignment follows the local building grid and is not aligned with magnetic north.
+ The two buildings are parallel,
+ though,
+ and also we expect symmetry of the noise to rotations in the plane (though observations are not overwhelmingly in support of this expectation,
+ see plots in the next section).
+\end_layout
+
+\begin_layout Standard
+All plots presented in this section represent 
+\begin_inset Formula $Z$
+\end_inset
+
+-axis data.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Sampling:
+ 
+\series default
+The sampling frequency was 
+\begin_inset Formula $f_{s}=1kHz$
+\end_inset
+
+ throughout the acquisition in both units.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Periodic noise
+\series default
+:
+ Both units show a 12–13 minute cycle,
+ likely originating from an engine in the adjacent shed.
+ Unit 583 records show it prominently in all days,
+ while at unit 579 it shows much weaker and rather buried in the random background,
+ though it is still clearly observable e.g.
+ in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:16/1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000579.0002.2026.01.14.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000583.0001.2026.01.14.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+14/1
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:14/1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+alignment center
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000579.0003.2026.01.15.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000583.0002.2026.01.15.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+15/1,
+ marking at 
+\begin_inset Formula $\sim13:52$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:15/1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000579.0004.2026.01.16.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000583.0003.2026.01.16.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+16/1
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:16/1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000579.0005.2026.01.17.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000583.0004.2026.01.17.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+17/1
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:17/1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000579.0006.2026.01.18.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000583.0005.2026.01.18.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+18/1,
+ marking at 
+\begin_inset Formula $\sim13:55$
+\end_inset
+
+,
+ replaced the seismographs on the floor.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:18/1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000579.0007.2026.01.19.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000583.0006.2026.01.19.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+19/1
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:19/1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000579.0008.2026.01.20.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000583.0007.2026.01.20.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+20/1
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:20/1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000579.0009.2026.01.21.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000583.0008.2026.01.21.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+21/1,
+ marking at 
+\begin_inset Formula $\sim13:57$
+\end_inset
+
+,
+ and put them back on the floor.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:21/1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000579.0010.2026.01.22.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000583.0009.2026.01.22.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+22/1
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:22/1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Multi-Axis Comparison
+\end_layout
+
+\begin_layout Standard
+Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:16/1-Z"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ through 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:19/1-E"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ compare the three axes across two representative days.
+ The dates chosen represent different configurations:
+ Jan.
+ 16,
+ when the shed seismograph was on the table and the lab seismograph was in a cabinet;
+ and Jan.
+ 19,
+ when both units were on the floor.
+\end_layout
+
+\begin_layout Standard
+Note how both units,
+ at their high positions,
+ present 
+\begin_inset Formula $Z$
+\end_inset
+
+-axis vibrations much stronger than 
+\begin_inset Formula $N$
+\end_inset
+
+ and 
+\begin_inset Formula $E$
+\end_inset
+
+ vibrations.
+ The disparity vanished once the seismographs were moved to the floor,
+ suggesting that both supporting structures (table,
+ cabinet) amplify selectively vertical motion.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000579.0004.2026.01.16.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000583.0003.2026.01.16.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+16/1,
+ 
+\begin_inset Formula $Z$
+\end_inset
+
+ component
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:16/1-Z"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000579.0004.2026.01.16.N.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000583.0003.2026.01.16.N.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+16/1,
+ 
+\begin_inset Formula $N$
+\end_inset
+
+ component
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:16/1-N"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000579.0004.2026.01.16.E.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000583.0003.2026.01.16.E.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+16/2,
+ 
+\begin_inset Formula $E$
+\end_inset
+
+ component
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:16/1-E"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000579.0007.2026.01.19.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000583.0006.2026.01.19.Z.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+19/1,
+ 
+\begin_inset Formula $Z$
+\end_inset
+
+ component
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:19/1-Z"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000579.0007.2026.01.19.N.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000583.0006.2026.01.19.N.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+19/1,
+ 
+\begin_inset Formula $N$
+\end_inset
+
+ component
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:19/1-N"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000579.0007.2026.01.19.E.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/p590000583.0006.2026.01.19.E.png
+	lyxscale 7
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+19/1,
+ 
+\begin_inset Formula $E$
+\end_inset
+
+ component
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:19/1-E"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Noise distributions
+\end_layout
+
+\begin_layout Subsection
+Day-night variations
+\end_layout
+
+\begin_layout Standard
+Comparing night time noise levels,
+ represented by the 
+\begin_inset Formula $0:30-6:00$
+\end_inset
+
+ window of January 15 series in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:15/2 dist. quiet"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ to day noise levels as represented by the 
+\begin_inset Formula $11:55-12:00$
+\end_inset
+
+ window of January 17 series in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:17/2 dist. between cycles"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ we see no significant difference in strength,
+ even in the shed.
+ The night time was somewhat arbitrarily chosen to be fully outside the working hours (see the enhancement of noise at about this time in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:15/1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ and similar pattern in other days).
+ The day time window was chosen so that it falls between the periodic source high noise cycles (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:17/1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Since the time span is very different,
+ I don't attribute significance to the difference in the qualitative shape of the distribution between the days.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:15/2 dist. quiet"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:15/2 dist. work hours"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ 2D spectral estimations are depicted.
+ Long window averaging is given only to stress the difference between night and day variabilities - while the night noise of fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:15/2 dist. quiet"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ (also true for the calm work hours of fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:21th-morning"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ data,
+ not depicted) is stable,
+ so different hours produce similar noise,
+ busy work hours noise produce highly variable hourly PSDs,
+ as depicted in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:15/2 dist. work hours"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Shed-lab variations
+\end_layout
+
+\begin_layout Standard
+Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:15/2 dist. work hours"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ representing normal work hours noise,
+ is typical in that we see that even though the lab environment is in general quieter than the shed's,
+ it is not profoundly so.
+ See also fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:21th-morning"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ which depicts distribution of noise during the morning of Wednesday,
+ Jan.
+ 21.
+ Note that only the morning hours were included because the marking at two o'clock skewed the overall RMS of the work hours this day.
+\end_layout
+
+\begin_layout Subsection
+Few remarks about the spectral distributions
+\end_layout
+
+\begin_layout Standard
+First,
+ we also see how work hours background noise can be much higher than the high-end earth base depicted by the upper gray lines (Peterson's high).
+\end_layout
+
+\begin_layout Standard
+Second,
+ the low tail that crosses the lower gray line (Peterson's low) is attributed to sensor response.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/hist_590000579_Z_202601150030-202601150600_-0.0281-0.0279.png
+	scale 30
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/hist_590000583_Z_202601150030-202601150600_-0.0675-0.0681.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/ppsd_579_Z__01150030-01150600_60.0_0.5.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/ppsd_583_Z__01150030-01150600_60.0_0.5.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/ppsd_579_Z__01150030-01150600_3600.0_0.5.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/ppsd_583_Z__01150030-01150600_3600.0_0.5.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Night time.
+ Top:
+ histogram,
+ 
+\begin_inset Formula $2ms$
+\end_inset
+
+ bin width.
+ Middle:
+ PPSD,
+ average over 60
+\begin_inset Formula $s$
+\end_inset
+
+ windows,
+ 
+\begin_inset Formula $50\%$
+\end_inset
+
+ overlap.
+ Bottom:
+ PPSD,
+ average over 1 hour window,
+ 
+\begin_inset Formula $50\%$
+\end_inset
+
+ overlap.
+ Color indicates pixel's total probability mass for a given period (column).
+ Details are in the main text.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:15/2 dist. quiet"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/hist_590000579_Z_202601150815-202601151645_-0.1745-0.1385.png
+	scale 30
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/hist_590000583_Z_202601150815-202601151645_-0.1745-0.2153.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/ppsd_579_Z__01150815-01151645_60.0_0.5.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/ppsd_583_Z__01150815-01151645_60.0_0.5.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/ppsd_579_Z__01150815-01151645_3600.0_0.5.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/ppsd_583_Z__01150815-01151645_3600.0_0.5.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Work hours,
+ noisy.
+ Top:
+ histogram,
+ 
+\begin_inset Formula $2ms$
+\end_inset
+
+ bin width.
+ Middle:
+ PPSD,
+ average over 60
+\begin_inset Formula $s$
+\end_inset
+
+ windows,
+ 
+\begin_inset Formula $50\%$
+\end_inset
+
+ overlap.
+ Bottom:
+ PPSD,
+ average over 1 hour window,
+ 
+\begin_inset Formula $50\%$
+\end_inset
+
+ overlap.
+ Color indicates pixel's total probability mass for a given period (column).
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:15/2 dist. work hours"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/hist_590000579_Z_202601171155-202601171200_-0.0233-0.0237.png
+	scale 30
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/hist_590000583_Z_202601171155-202601171200_-0.0307-0.0307.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Noise between periodic source high cycles.
+ Histogram,
+ 
+\begin_inset Formula $2ms$
+\end_inset
+
+ bin width.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:17/2 dist. between cycles"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/hist_590000579_Z_202601210830-202601211330_-0.0493-0.0495.png
+	scale 30
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/hist_590000583_Z_202601210830-202601211330_-0.0131-0.0133.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/ppsd_579_Z__01210830-01211330_60.0_0.5.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/inbarm/ProjectAquarium/data_proc/seismic/figures/ppsd_583_Z__01210830-01211330_60.0_0.5.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Work hours,
+ calm.
+ Top:
+ Histogram,
+ 
+\begin_inset Formula $2ms$
+\end_inset
+
+ bin width.
+ Bottom:
+ PPSD,
+ average over 60
+\begin_inset Formula $s$
+\end_inset
+
+ windows,
+ 
+\begin_inset Formula $50\%$
+\end_inset
+
+ overlap.
+ Bottom:
+ PPSD,
+ average over 1 hour window,
+ 
+\begin_inset Formula $50\%$
+\end_inset
+
+ overlap.
+ Color indicates pixel's total probability mass for a given period (column).
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:21th-morning"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+RMS and Quantiles
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+579/table
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+579/floor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+583/table
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+583/floor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+583/q.s.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Z$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.043$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.039$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.040$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.051$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.008$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.041$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.044$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.033$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.034$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.002$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.043$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.034$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.038$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.041$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.013$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+RMS per seismograph per position in 
+\begin_inset Formula $\frac{mm}{s}$
+\end_inset
+
+.
+ Stats for the quiet segment (q.s.) were computed from 
+\begin_inset Formula $15/2$
+\end_inset
+
+,
+ 2:55-3:05 o'clock.
+ 
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:RMS-per-seismograph"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+579/table
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.75$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.95$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.99$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Z$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0039$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0001$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0039$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0107$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0165$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0059$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0001$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0059$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0171$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0267$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0061$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0001$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0061$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0163$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0257$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+583/table
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.75$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.95$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.99$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Z$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0075$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0001$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0075$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0215$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0375$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0021$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0001$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0021$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0069$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0131$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0023$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0001$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0023$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0073$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0125$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+579/floor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.75$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.95$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.99$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Z$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0009$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0001$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0009$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0021$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0031$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0015$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0001$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0015$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0045$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0081$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0009$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0001$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0009$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0025$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0039$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+583/floor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.75$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.95$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.99$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Z$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0009$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0001$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0009$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0027$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0043$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $N$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0013$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0001$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0013$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0035$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0053$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0039$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-0.0001$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0039$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0133$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.0241$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Quantiles (in 
+\begin_inset Formula $\frac{mm}{sec}$
+\end_inset
+
+) per seismograph per axis per position.
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Quantiles-per-seismograph"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Discussion
+\end_layout
+
+\begin_layout Standard
+The seismic activity here overviewed is related to a resulting capillary waves signal via the relevant transfer function.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Accuracy
+\end_layout
+
+\begin_layout Plain Layout
+The measurement inaccuracy is divided to a systematic 
+\begin_inset Formula $1\%$
+\end_inset
+
+ uncertainty in the gain (table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Acquisition-Ch.-Specifications"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ ) and a random instrument error.
+ With sensitivity of 
+\begin_inset Formula $200V/\left(m/s\right)$
+\end_inset
+
+,
+ an instantaneous dynamic range of 
+\begin_inset Formula $120dB$
+\end_inset
+
+,
+ and maximum signal of 
+\begin_inset Formula $2.5V$
+\end_inset
+
+,
+ the random error of the measurement process is 
+\begin_inset Formula 
+\begin{align*}
+\text{random error}=\frac{2.5\cdot10^{-6}V}{200V/\left(m/s\right)} & =1.25\cdot10^{-5}\frac{mm}{s}.
+\end{align*}
+
+\end_inset
+
+The error of the RMS of a large sample with independent small noise is proportional to the 
+\series bold
+value squared
+\series default
+ of the noise:
+\begin_inset Formula 
+\begin{align*}
+RMS & =\sqrt{\frac{1}{n}\sum_{i}\left(s_{i}+b+e_{i}\right)^{2}}\\
+ & =\sqrt{\frac{1}{n}\sum_{i}\left(s_{i}+b\right)^{2}}+\frac{1}{2}\frac{\frac{1}{n}\sum_{i}e_{i}^{2}}{\sqrt{\frac{1}{n}\sum_{i}\left(s_{i}+b\right)^{2}}}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $s$
+\end_inset
+
+ is the seismic signal,
+ 
+\begin_inset Formula $b$
+\end_inset
+
+ is the sensor's fixed unknown bias,
+ 
+\begin_inset Formula $e$
+\end_inset
+
+ is the error,
+ and the cross term 
+\begin_inset Formula $\sum_{i}s_{i}e_{i}$
+\end_inset
+
+ vanishes when we sum over periods much longer than the dominant part of the spectrum.
+ Since the random error is (as far as we know) Gaussian,
+ this means that 
+\begin_inset Formula $\frac{1}{n}\sum_{i}e_{i}^{2}\sim$
+\end_inset
+
+ the RMS is 
+\begin_inset Formula $\lesssim10^{-7}\frac{mm}{s}$
+\end_inset
+
+,
+ which is universally negligible with respect to the values in our data set.
+ Therefore without doing an independent calibration of the seismographs,
+ 
+\begin_inset Formula $1\%$
+\end_inset
+
+ error is our best estimate of uncertainty for the reported RMS values.
+\end_layout
+
+\begin_layout Plain Layout
+For estimation of the error in individual points,
+ including the reported segment maxima (at least when not representing identifiable events,
+ but the analysis ignores this distinction),
+ we use the independent noise sum rule,
+ i.e.
+ Pythagoras theorem.
+ This is indeed required at least for low-valued maxima since,
+ e.g.,
+ 
+\begin_inset Formula $1\%$
+\end_inset
+
+ of 
+\begin_inset Formula $3\times10^{-3}\frac{mm}{s}$
+\end_inset
+
+ (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:20/1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+) is 
+\begin_inset Formula $3\cdot10^{-5}\frac{mm}{s}$
+\end_inset
+
+,
+ which is comparable to the random error,
+ and they are indeed mutually independent.
+\end_layout
+
+\begin_layout Subsection
+General remarks
+\end_layout
+
+\begin_layout Plain Layout
+During the day,
+ the nearby construction site matched in noise the engine cycle amplitude over the wall,
+ as can be seen e.g.
+ in the graphs for unit 583 (shed) in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:15/1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:18/1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+As we see in fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:21/1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ which was Wednesday,
+ work hours can be rather quieter than what we see in the graphs for earlier days.
+ I didn't document the surrounding activities,
+ but I suggest that this indicates that by far most of the noise that doesn't result from the nearby periodic source comes from the construction site,
+ which was probably inactive at that day.
+\end_layout
+
+\begin_layout Subsection
+Conclusions
+\end_layout
+
+\begin_layout Plain Layout
+All in all,
+ while velocities of above 
+\begin_inset Formula $10\frac{mm}{sec}$
+\end_inset
+
+ were observed (unrelated to my 
+\begin_inset Quotes eld
+\end_inset
+
+markings
+\begin_inset Quotes erd
+\end_inset
+
+),
+ not only is the RMS consistently 2-3 orders of magnitude smaller,
+ but even during the work hours,
+ if there is no building activity nearby,
+ and with sufficient damping,
+ I think we can expect the noise level on the shed's table to be at most hours similar to that of the floor,
+ i.e.,
+ 
+\series bold
+consistently
+\series default
+ below 
+\begin_inset Formula $0.05\frac{mm}{s}$
+\end_inset
+
+,
+ which is negligible compared to our estimated signal of above 
+\begin_inset Formula $10\frac{mm}{s}$
+\end_inset
+
+.
+ Observe fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:20/1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:21th-morning"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ for references.
+ This is 3 orders of magnitude below the expected wedge velocity,
+ which should be of the same order of magnitude as the resulting ripple droplet velocities.
+ Respective accelerations are in the order of 
+\begin_inset Formula $1\frac{m}{s^{2}}$
+\end_inset
+
+ and above,
+ while as seen in section 5,
+ environment accelerations are about 3 orders of magnitude lower even in relatively noisy environments (
+\begin_inset Formula $-60$
+\end_inset
+
+ to 
+\begin_inset Formula $-80dB$
+\end_inset
+
+ in power,
+ see e.g.
+ fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:15/2 dist. work hours"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+).
+ So insofar as we can bring the table vibrations to the level of the floor by adding damping,
+ the error in the experiment resulting from the surrounding mechanical noise should be negligible.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+Transfer function from base to water surface
+\end_layout
+
+\begin_layout Standard
+In the following it is assumed that the mechanical phase velocities in the perspex much higher than the response time scales,
+ and that the wavelengths of the base vibrations are much longer than the aquarium scales,
+ so the walls move rigidly.
+\end_layout
+
+\begin_layout Standard
+Let us set the coordinate system with the water surface as 
+\begin_inset Formula $z=0$
+\end_inset
+
+,
+ and origin at the middle of the horizontal cross section.
+ Let 
+\begin_inset Formula $\aquaHeight$
+\end_inset
+
+ be the aquarium height,
+ 
+\begin_inset Formula $\aquaLength$
+\end_inset
+
+ be its length and 
+\begin_inset Formula $\aquaWidth$
+\end_inset
+
+ be its width,
+ then the edges are at 
+\begin_inset Formula $\pm\frac{\aquaLength}{2}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\pm\frac{\aquaWidth}{2}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\velocityPotential$
+\end_inset
+
+ be the velocity potential,
+ and let 
+\begin_inset Formula 
+\begin{align*}
+u\left(t\right) & =\begin{pmatrix}u_{x}\left(t\right)\\
+u_{y}\left(t\right)\\
+u_{z}\left(t\right)
+\end{pmatrix}
+\end{align*}
+
+\end_inset
+
+ be the walls velocity,
+ which is assumed to be unaffected,
+ to leading order,
+ by the water response and fully determined by the base.
+\end_layout
+
+\begin_layout Standard
+We begin by splitting the velocity field 
+\begin_inset Formula $v$
+\end_inset
+
+ into velocity potential and stream function derived components,
+ 
+\begin_inset Formula $v=\nabla\phi+\nabla\times\psi$
+\end_inset
+
+.
+ Then Navier-Stokes equations take the form
+\begin_inset Formula 
+\begin{align*}
+\nabla\partial_{t}\vPotential+\nabla\times\partial_{t}\vStream & =-\nabla\left(\frac{1}{\rho}p+gz\right)+\nu\nabla\times\left(\nabla^{2}\vStream\right),
+\end{align*}
+
+\end_inset
+
+where we use the incompressibility,
+ or Laplace,
+ condition 
+\begin_inset Formula $\nabla^{2}\vPotential=0$
+\end_inset
+
+.
+ We require that the two components of the velocity field take care separately of each physical effect,
+ then taking 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+ to be the pressure at the surface,
+ it is enough to demand that 
+\begin_inset Formula 
+\begin{align}
+\partial_{t}\vPotential & =-\left(\frac{1}{\rho}\left(p-p_{0}\right)+gz\right),\label{eq:navier-stokes}\\
+\partial_{t}\vStream & =\nu\nabla^{2}\vStream,\nonumber 
+\end{align}
+
+\end_inset
+
+where we in practice chose a gauge.
+ In the following we denote 
+\begin_inset Formula $\delta p=p-p_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The 
+\series bold
+boundary conditions 
+\series default
+are:
+\begin_inset Formula 
+\begin{align*}
+\nabla f\left(x=\pm\frac{\aquaLength}{2}\right) & =\nabla f\left(y=\pm\frac{\aquaWidth}{2}\right)=\nabla f\left(z=-h\right)=\baseVel,\\
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
