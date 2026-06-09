@@ -7,6 +7,7 @@ data_raw/
 notes/*.pdf     
 notes/figures   # All generated pdfs and figures that I want to keep
                 # should be saved to their permanent storage folder.
+notes/**/figures
 .obsidian/
 */sandbox/
 __pycache__/

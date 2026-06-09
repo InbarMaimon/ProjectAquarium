@@ -6,14 +6,19 @@ dependencies = [
     "cmake>=4.2.1",
     "coolprop>=7.2.0",
     "gsw>=3.6.20",
+    "h5py>=3.16.0",
+    "hid>=1.0.9",
     "ipykernel>=7.1.0",
+    "ipywidgets>=8.1.8",
     "marimo[lsp,recommended]>=0.18.4",
     "matplotlib>=3.10.8",
+    "micropython-rp2-stubs>=1.27.0.post1",
+    "mpremote>=1.27.0",
     "notebook>=7.5.1",
     "numpy>=2.4.0",
-    "obspy>=1.4.2",
     "pandas>=2.3.3",
     "pyside6>=6.10.1",
+    "pyusb>=1.3.1",
     "pyyaml>=6.0.3",
     "scipy>=1.16.3",
     "seaborn>=0.13.2",
@@ -24,8 +29,3 @@ dependencies = [
 environments = [
     "sys_platform == 'linux'"
 ]
-
-[[tool.uv.index]]
-name = "pysimplegui"
-url = "https://PySimpleGUI.net/install"
-explicit = false

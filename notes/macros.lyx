@@ -122,6 +122,24 @@ figs-within-sections
 
 \begin_layout Standard
 \begin_inset FormulaMacro
+\newcommand{\surfacePressure}{\pi}
+{\pi}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\sPressure}{\surfacePressure}
+{\surfacePressure}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
 \newcommand{\surfaceWaterDensity}{\rho}
 {\rho}
 \end_inset
@@ -149,7 +167,43 @@ figs-within-sections
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\surfacePressure}{p_{0}}
+\newcommand{\elasticModulusReal}{k_{e}}
+{k_{e}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\eMReal}{\elasticModulusReal}
+{\elasticModulusReal}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\elasticModulusImag}{k_{v}}
+{k_{v}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\eMImag}{\elasticModulusImag}
+{\elasticModulusImag}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\pressureAtSurface}{p_{0}}
 {p_{0}}
 \end_inset
 
@@ -158,8 +212,8 @@ figs-within-sections
 
 \begin_layout Standard
 \begin_inset FormulaMacro
-\newcommand{\sPressure}{\surfacePressure}
-{\surfacePressure}
+\newcommand{\pSurface}{\pressureAtSurface}
+{\pressureAtSurface}
 \end_inset
 
 
@@ -196,6 +250,24 @@ figs-within-sections
 \begin_inset FormulaMacro
 \newcommand{\sSurfCo}{\surfactantSurfaceConcentration}
 {\surfactantSurfaceConcentration}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\complexElasticModulus}{\varepsilon}
+{\varepsilon}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\cEMod}{G}
+{G}
 \end_inset
 
 

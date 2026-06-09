@@ -1,0 +1,835 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsart
+\begin_preamble
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children no
+\language american
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Spectral Characteristics of Gravity-Capillary Waves
+\end_layout
+
+\begin_layout Author
+Nathan J.
+ M.
+ Laxague,
+ Christopher J.
+ Zappa ,
+ Deborah A.
+ LeBel,
+ and Michael L.
+ Banner
+\end_layout
+
+\begin_layout Standard
+They measure slopes,
+ 
+\begin_inset Formula $s_{x}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $s_{y}$
+\end_inset
+
+ using a polarimetric camera,
+ following Zappa's polarimetric slope sensing method.
+ They tamper the bare data sequenece by a Tukey window.
+ Then they compute the power spectrum
+\begin_inset Formula 
+\begin{align*}
+S\left(k_{x},k_{y},\omega\right) & \propto\left|\mathcal{F}\left(s_{x}\right)\right|^{2}+\left|\mathcal{F}\left(s_{y}\right)\right|^{2}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If I understood correctly,
+ in fig.
+ they present 
+\begin_inset Formula $\int_{0}^{\infty}d\omega S\left(k_{x},k_{y},\omega\right)$
+\end_inset
+
+,
+ so as to appreciate the total power per (directionally aware) wave vector.
+ Note the 
+\series bold
+half
+\series default
+-plane integration.
+ But since the Doppler shift + parasitic capillaries mess the dispersion,
+ the logic here highly flawed.
+ They claim that above 
+\begin_inset Formula $\sim0.16cm^{-1}$
+\end_inset
+
+ (
+\begin_inset Formula $100rad/m$
+\end_inset
+
+,
+ which is firmly in the short gravity wave regime) the power spectrum is unreliable - but this consists of most of the data presented in the figure.
+\end_layout
+
+\begin_layout Standard
+That being said,
+ spatial resolution is 
+\begin_inset Formula $\sim4581rad/m$
+\end_inset
+
+ (
+\begin_inset Formula $\sim7.2cm^{-1}$
+\end_inset
+
+),
+ and temporal resolution is 
+\begin_inset Formula $30Hz$
+\end_inset
+
+.
+ So as long as the power of waves near and higher than this frequency is negligible,
+ and if there is 
+\series bold
+small advection 
+\series default
+(at 
+\begin_inset Formula $k<2cm^{-1}$
+\end_inset
+
+,
+ and since the dispersion is concave and frequency at 
+\begin_inset Formula $2cm^{-1}$
+\end_inset
+
+ is 
+\begin_inset Formula $\sim60Hz$
+\end_inset
+
+,
+ we need advection speed 
+\begin_inset Formula $v<\sim30\frac{cm}{s}$
+\end_inset
+
+),
+ one the setup should be able to get an honest appreciation of the 
+\series bold
+directional 
+\series default
+spatial spectrum.
+ Otherwise one can always integrate over the angle to get an omnidirectional spectrum.
+\end_layout
+
+\begin_layout Standard
+They define the 
+\series bold
+dimensionless saturation spectrum 
+\series default
+
+\begin_inset Formula $\mathcal{B}\left(k_{x},k_{y}\right):=k^{2}S$
+\end_inset
+
+ and its omnidirectional counterpart 
+\begin_inset Formula $B\left(k\right)=k\int_{\mathcal{S}\left(k\right)}d\theta\mathcal{B}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+They demarkate the range 
+\begin_inset Formula $\left(112.7,1173\right)\frac{rad}{m}$
+\end_inset
+
+ where the two terms in the naive dispersion 
+\begin_inset Formula $\omega^{2}=gk+\frac{\tau}{\rho}k^{3}$
+\end_inset
+
+ are less than 1 order of magnitude apart,
+ with 
+\begin_inset Formula $k=371\frac{rad}{m}$
+\end_inset
+
+ being the point of equal weight.
+ They take 
+\begin_inset Formula $g=9.81\frac{m}{s^{2}}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\tau=0.072\frac{N}{m}$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho=1030\frac{kg}{m^{3}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Technical analysis
+\end_layout
+
+\begin_layout Subsubsection
+Measuring height
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $N$
+\end_inset
+
+ be the number of pixels,
+ 
+\begin_inset Formula $L$
+\end_inset
+
+ be physical the side length of the image,
+ 
+\begin_inset Formula $\delta z$
+\end_inset
+
+ be the height sensitivity,
+ 
+\begin_inset Formula $f_{0}\equiv\frac{\Omega_{0}}{2\pi}$
+\end_inset
+
+ be the sampling rate and 
+\begin_inset Formula $T$
+\end_inset
+
+ be the film duration.
+ Let 
+\begin_inset Formula $F\left(\omega,k_{x},k_{y}\right)$
+\end_inset
+
+ be the Fourier transform of the video.
+\end_layout
+
+\begin_layout Standard
+After integrating over all directions and positive omegas,
+ the power spectrum is 
+\begin_inset Formula $F\left(k\right)=\int_{+}d\omega\int_{S^{1}}kd\phi F\left(\omega,k,\phi\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+I want to know how 
+\begin_inset Formula $\delta z$
+\end_inset
+
+ correlates with the quality of the spectrum.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $l_{c}\left(k\right)$
+\end_inset
+
+ is the coherence length of a particular wavenumber,
+ and 
+\begin_inset Formula $l_{c}\left(k\right)<L$
+\end_inset
+
+,
+ then doubling
+\series bold
+ the frame length
+\series default
+ 
+\begin_inset Formula $L$
+\end_inset
+
+ sums this component incoherently.
+ On the other hand,
+ since the coherence length is usually above one wavelength,
+ any component 
+\begin_inset Formula $k$
+\end_inset
+
+ than can be measured by the frame gets summed coherently at quadrupling the 
+\series bold
+pixel density 
+\series default
+
+\begin_inset Formula $\frac{N}{L^{2}}$
+\end_inset
+
+.
+ For components with 
+\begin_inset Formula $l_{c}\left(k\right)>2L$
+\end_inset
+
+,
+ the two changes gives a doubling (~
+\begin_inset Formula $\sqrt{N}$
+\end_inset
+
+) improve in 
+\begin_inset Formula $SNR$
+\end_inset
+
+.
+ This improvement carries on until pixel side length is smaller than 
+\begin_inset Formula $\delta z/\bar{s}$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $\overline{s}$
+\end_inset
+
+ is some typical actual water slope,
+ then the quantization noise in adjacent pixels becomes correlated and increasing pixel density does not improve 
+\begin_inset Formula $SNR$
+\end_inset
+
+ either.
+ This halt might also result if the pixel's side length reaches the overall height field correlation length 
+\begin_inset Formula $l\left(f\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Slope statistics
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Subsubsection
+Measuring slope
+\end_layout
+
+\begin_layout Plain Layout
+Let 
+\begin_inset Formula $N$
+\end_inset
+
+ be the number of pixels,
+ 
+\begin_inset Formula $L$
+\end_inset
+
+ be physical the side length of the image,
+ 
+\begin_inset Formula $ds$
+\end_inset
+
+ be the slope sensitivity,
+ 
+\begin_inset Formula $f_{0}\equiv\frac{\Omega_{0}}{2\pi}$
+\end_inset
+
+ be the sampling rate and 
+\begin_inset Formula $T$
+\end_inset
+
+ be the film duration.
+ Let 
+\begin_inset Formula $F\left(\omega,k_{x},k_{y}\right)$
+\end_inset
+
+ be the Fourier transform of the video.
+ Then
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $s\left(k\right):=kA\left(k\right)$
+\end_inset
+
+ be the per 
+\begin_inset Formula $k$
+\end_inset
+
+ slope.
+ The data is discrete,
+ with
+\begin_inset Formula 
+\begin{align*}
+S\left(k_{x},k_{y},\omega\right) & =\frac{1}{Nk_{max}^{2}\Omega_{0}}\left(\left|F\left(k_{x},k_{y},\omega\right)\cdot\frac{dz_{x}}{dx}\right|^{2}+\left|F\left(k_{x},k_{y},\omega\right)\cdot\frac{dz_{y}}{dy}\right|^{2}\right),
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $k_{max}:=\frac{2\pi}{L}\sqrt{N}$
+\end_inset
+
+ is a shorthand notation and 
+\begin_inset Formula $dz_{x}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $dz_{y}$
+\end_inset
+
+ are the 
+\begin_inset Formula $3D$
+\end_inset
+
+ spatiotemporal arrays defined by 
+\begin_inset Formula 
+\begin{align*}
+dz_{x}\left(t,x,y\right) & :=z\left(t,x,y\right)-z\left(t,x-1,y\right),\\
+dz_{y}\left(t,x,y\right) & :=z\left(t,x,y\right)-z\left(t,x,y-1\right).
+\end{align*}
+
+\end_inset
+
+Taking into notice that 
+\begin_inset Formula $dx=dy=2\pi/k_{max}$
+\end_inset
+
+,
+ and taking 
+\begin_inset Formula $F\left(k_{x},k_{y},\omega\right)_{t,x,y}:=\frac{1}{\sqrt{N}}e^{-i\left(\omega t-k_{x}x-k_{y}y\right)}$
+\end_inset
+
+ to be unitary,
+ we find that
+\begin_inset Formula 
+\begin{align*}
+S\left(k_{x},k_{y},\omega\right) & =\frac{1}{\left(2\pi\right)^{2}\Omega_{0}}\left(\left|F\left(k_{x},k_{y},\omega\right)\cdot dz_{x}\right|^{2}+\left|F\left(k_{x},k_{y},\omega\right)\cdot dz_{y}\right|^{2}\right)
+\end{align*}
+
+\end_inset
+
+has units of 
+\begin_inset Formula $m^{2}s$
+\end_inset
+
+.
+ One may define the total slope as 
+\begin_inset Formula $s=\sqrt{s_{x}^{2}+s_{y}^{2}}$
+\end_inset
+
+,
+ then the total slope variance,
+ or 
+\series bold
+mean square slope
+\series default
+,
+ over a dataset is
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\begin{align*}
+\left\langle s^{2}\right\rangle  & =\frac{\sum_{t,x,y}s\left(t,x,y\right)^{2}}{NTf_{0}}\\
+ & =\frac{\sum_{\omega,k_{x},k_{y}}\left(\left|F\cdot s_{x}\right|^{2}+\left|F\cdot s_{y}\right|^{2}\right)}{NTf_{0}}\\
+ & =\frac{1}{NTf_{0}}\cdot Nk_{max}^{2}\Omega_{0}\sum_{\omega,k_{x},k_{y}}S\\
+ & =k_{max}^{2}\sum_{k_{x},k_{y}}\left(k_{x}^{2}+k_{y}^{2}\right)^{-1}\mathcal{B}\left(k_{x},k_{y}\right)\\
+ & \approx k_{max}^{2}\sum_{k,\phi}\left(k_{x}^{2}+k_{y}^{2}\right)^{-1/2}\mathcal{B}\left(k,\phi\right)\\
+ & =N\frac{k_{max}}{\sqrt{N}}\sum_{k}k^{-1}B\left(k\right),
+\end{align*}
+
+\end_inset
+
+where I defined the discrete versions of 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $B$
+\end_inset
+
+ by
+\begin_inset Formula 
+\begin{align*}
+\mathcal{B}\left(k_{x},k_{y}\right) & =\frac{2\pi}{T}k^{2}\sum_{\omega}S,\\
+B\left(k\right) & =\frac{2\pi}{L}\sum_{\phi}\mathcal{B}\left(k,\phi\right)=\frac{k_{max}}{\sqrt{N}}\sum_{\phi}\mathcal{B}\left(k,\phi\right).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Correlation function for slopes
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Subsubsection
+Correlation function for heights
+\end_layout
+
+\begin_layout Plain Layout
+A general sea patch has an average slope,
+ so we may have an RMS plane 
+\begin_inset Formula 
+\begin{align*}
+p\left(t,x,y\right) & =A\left(t\right)x+B\left(t\right)y+C\left(t\right)\\
+\implies p\left(\omega,k_{x},k_{y}\right) & =-\frac{i}{L}A\left(\omega\right)\frac{\left(Lk_{x}\cos\left(k_{x}L/2\right)-2\sin\left(k_{x}L/2\right)\right)}{k_{x}^{2}}\delta_{k_{y},0}\\
+ & -\frac{i}{L}B\left(\omega\right)\frac{\left(Lk_{y}\cos\left(k_{y}L/2\right)-2\sin\left(k_{y}L/2\right)\right)}{k_{y}^{2}}\delta_{k_{x},0}\\
+ & +C\left(\omega\right)\delta_{k_{x},0}\delta_{k_{y},0}
+\end{align*}
+
+\end_inset
+
+We are interested only in finite 
+\begin_inset Formula $k$
+\end_inset
+
+s,
+ so we can also ignore anything 
+\begin_inset Formula $C\left(\omega\right)$
+\end_inset
+
+-related.
+ Then
+\begin_inset Formula 
+\begin{align*}
+p\left(\omega,k_{x},k_{y}\right) & =-\frac{i}{L}A\left(\omega\right)\frac{\left(Lk_{x}\cos\left(k_{x}L/2\right)-2\sin\left(k_{x}L/2\right)\right)}{k_{x}^{2}}\delta_{k_{y},0}\\
+ & -\frac{i}{L}B\left(\omega\right)\frac{\left(Lk_{y}\cos\left(k_{y}L/2\right)-2\sin\left(k_{y}L/2\right)\right)}{k_{y}^{2}}\delta_{k_{x},0}
+\end{align*}
+
+\end_inset
+
+and
+\begin_inset Formula 
+\begin{align*}
+\left|p\left(\omega,k_{x},k_{y}\right)\right|^{2} & =\frac{1}{L^{2}}A\left(\omega\right)^{2}\frac{\left(Lk_{x}\cos\left(k_{x}L/2\right)-2\sin\left(k_{x}L/2\right)\right)^{2}}{k_{x}^{4}}\delta_{k_{y},0}\\
+ & +\frac{1}{L^{2}}B\left(\omega\right)^{2}\frac{\left(Lk_{y}\cos\left(k_{y}L/2\right)-2\sin\left(k_{y}L/2\right)\right)^{2}}{k_{y}^{4}}\delta_{k_{x},0}\\
+ & +2\frac{1}{L^{2}}A\left(\omega\right)B\left(\omega\right)\cancel{\frac{Lk_{y}-\frac{1}{2}Lk_{y}\left(Lk_{y}/2\right)^{2}-2k_{y}L/2+\frac{1}{3}\left(k_{y}L/2\right)^{3}+O\left(k_{y}^{5}\right)}{k_{y}^{2}}}\cdot\cancel{O\left(k_{x}^{3}\right)}\delta_{k_{x},0}\delta_{k_{y},0}\\
+ & =\frac{1}{L^{2}}A\left(\omega\right)^{2}\frac{\left(Lk_{x}\cos\left(k_{x}L/2\right)-2\sin\left(k_{x}L/2\right)\right)^{2}}{k_{x}^{4}}\delta_{k_{y},0}\\
+ & +\frac{1}{L^{2}}B\left(\omega\right)^{2}\frac{\left(Lk_{y}\cos\left(k_{y}L/2\right)-2\sin\left(k_{y}L/2\right)\right)^{2}}{k_{y}^{4}}\delta_{k_{x},0}
+\end{align*}
+
+\end_inset
+
+which in the limits of small/large 
+\begin_inset Formula $kL$
+\end_inset
+
+ takes the form 
+\begin_inset Formula 
+\begin{align*}
+p\left(\omega,k_{x},k_{y}\right) & =\begin{cases}
+\frac{i}{12}L^{2}\left(A\left(\omega\right)k_{x}\delta_{k_{y},0}+B\left(\omega\right)k_{y}\delta_{k_{x},0}\right) & kL\rightarrow0\\
+-iA\left(\omega\right)\frac{\cos\left(k_{x}L/2\right)}{k_{x}}\delta_{k_{y},0}-iB\left(\omega\right)\frac{\cos\left(k_{y}L/2\right)}{k_{y}}\delta_{k_{x},0} & kL\gg1
+\end{cases},\\
+\left|p\left(\omega,k_{x},k_{y}\right)\right|^{2} & =\begin{cases}
+\frac{1}{144}L^{4}\left(\left|A\left(\omega\right)\right|^{2}k_{x}^{2}\delta_{k_{y},0}+\left|B\left(\omega\right)\right|^{2}k_{y}^{2}\delta_{k_{x},0}\right) & kL\rightarrow0\\
+\left|A\left(\omega\right)\right|^{2}\frac{\cos^{2}\left(k_{x}L/2\right)}{k_{x}^{2}}\delta_{k_{y},0}+\left|B\left(\omega\right)\right|^{2}\frac{\cos^{2}\left(k_{y}L/2\right)}{k_{y}^{2}}\delta_{k_{x},0} & kL\gg1
+\end{cases}.
+\end{align*}
+
+\end_inset
+
+So if 
+\begin_inset Formula $\zeta$
+\end_inset
+
+ is the elevation,
+ let us define 
+\begin_inset Formula $e:=\zeta-p$
+\end_inset
+
+ and then over a finite square of size 
+\begin_inset Formula $L^{2}$
+\end_inset
+
+ and duration 
+\begin_inset Formula $T$
+\end_inset
+
+,
+ we find
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+C\left(t,r\right) & :=\int\int dxdye\left(t,x+r_{x},y+r_{y}\right)e\left(t,x,t\right)\\
+\implies C\left(t,r\right) & =\int_{0}^{\infty}\frac{d\omega}{2\pi}\mathcal{F}^{-1}\left(\left|\mathcal{F}\left(e\right)\right|^{2}\right)\left(t,r\right)\\
+ & =\int_{0}^{\infty}\frac{d\omega}{2\pi}\mathcal{F}^{-1}\left(\left|\mathcal{F}\left(\zeta\right)\right|^{2}+2\Re\left(\mathcal{F}\left(\zeta\right)\mathcal{F}\left(p\right)^{*}\right)+\left|\mathcal{F}\left(p\right)\right|^{2}\right)\left(t,r\right)\\
+ & =\int\int\frac{d^{2}k}{\left(2\pi\right)^{2}}e^{i\left(r_{x}k_{x}+r_{y}k_{y}-\omega t\right)}k^{-2}S\left(k_{x},k_{y}\right)\\
+ & +2\int_{0}^{\infty}\frac{d\omega}{2\pi}\mathcal{F}^{-1}\Re\left(\mathcal{F}\left(\zeta\right)\mathcal{F}\left(p\right)^{*}\right)\\
+ & +\int_{0}^{\infty}\frac{d\omega}{2\pi}\mathcal{F}^{-1}\left|\mathcal{F}\left(p\right)\right|^{2}\\
+ & =\int\int\frac{kdkd\phi}{\left(2\pi\right)^{2}}e^{i\left(r_{x}k\cos\phi+r_{y}k\sin\phi-\omega t\right)}k^{-2}S\left(\omega,k,\phi\right)\\
+\implies C\left(r\right) & :=\int_{0}^{\infty}\frac{d\omega}{2\pi}C\left(\omega,r\right)\\
+ & =\frac{1}{\left(2\pi\right)^{2}}\int\frac{dk}{k}\int d\phi e^{i\left(r_{x}k\cos\phi+r_{y}k\sin\phi\right)}S\left(k,\phi\right).
+\end{align*}
+
+\end_inset
+
+In the paper,
+ the 
+\begin_inset Formula $S\left(k,\phi\right)$
+\end_inset
+
+ they measured is anisotropic (fig.
+ 3).
+ We calculate the isotropic approximation:
+\begin_inset Formula 
+\begin{align*}
+C\left(r\right) & \approx\frac{1}{\left(2\pi\right)^{2}}\int\frac{dk}{k}\int d\phi e^{ik\left(r\cos\phi+r_{y}\sin\phi\right)}\int\frac{d\phi'}{2\pi}S\left(k,\phi'\right)\\
+ & =\frac{1}{\left(2\pi\right)^{2}}\int\frac{dk}{k}J_{0}\left(kr\right)S\left(k\right).
+\end{align*}
+
+\end_inset
+
+The discrete counterpart is then
+\begin_inset Formula 
+\begin{align*}
+\frac{C\left(r\right)}{C\left(0\right)} & =\frac{\sum_{k}k^{-1}J_{0}\left(kr\right)S\left(k\right)}{\sum_{k}k^{-1}S\left(k\right)}\\
+ & =\frac{\sum_{k}k^{-3}J_{0}\left(kr\right)B\left(k\right)}{\sum_{k}k^{-3}B\left(k\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+C\left(t,r\right) & :=\int\int dxdys\left(t,x+r_{x},y+r_{y}\right)s\left(t,x,t\right)\\
+\implies C\left(t,r\right) & =\int_{0}^{\infty}\frac{d\omega}{2\pi}\mathcal{F}^{-1}\left(\left|\mathcal{F}\left(s\right)\right|^{2}\right)\left(t,r\right)\\
+ & =\int_{0}^{\infty}\frac{d\omega}{2\pi}\int\int\frac{d^{2}k}{\left(2\pi\right)^{2}}e^{i\left(r_{x}k_{x}+r_{y}k_{y}-\omega t\right)}S\left(\omega,k_{x},k_{y}\right)\\
+ & =\int_{0}^{\infty}\frac{d\omega}{2\pi}\int\int\frac{kdkd\phi}{\left(2\pi\right)^{2}}e^{i\left(r_{x}k\cos\phi+r_{y}k\sin\phi-\omega t\right)}S\left(\omega,k,\phi\right)\\
+\implies C\left(r\right) & :=\int_{0}^{\infty}\frac{d\omega}{2\pi}C\left(\omega,r\right)\\
+ & =\int\frac{kdk}{\left(2\pi\right)^{2}}\int d\phi e^{i\left(r_{x}k\cos\phi+r_{y}k\sin\phi\right)}S\left(k,\phi\right).
+\end{align*}
+
+\end_inset
+
+In the paper,
+ the 
+\begin_inset Formula $S\left(k,\phi\right)$
+\end_inset
+
+ they measured is anisotropic (fig.
+ 3).
+ We calculate the isotropic approximation:
+\begin_inset Formula 
+\begin{align*}
+C\left(r\right) & \approx\int\frac{kdk}{\left(2\pi\right)^{2}}\int d\phi e^{ik\left(r\cos\phi+r_{y}\sin\phi\right)}\int\frac{d\phi'}{2\pi}S\left(k,\phi'\right)\\
+ & =\frac{1}{2\pi}\int\frac{kdk}{2\pi}J_{0}\left(kr\right)S\left(k\right),
+\end{align*}
+
+\end_inset
+
+where we approximated
+\begin_inset Formula 
+\begin{align*}
+S\left(k\right) & :=\int d\phi'S\left(k,\phi'\right).
+\end{align*}
+
+\end_inset
+
+Then
+\begin_inset Formula 
+\begin{align*}
+\sigma^{2}\equiv\frac{C\left(0\right)}{L^{2}} & \approx\frac{1}{L^{2}}\frac{1}{2\pi}\int\frac{kdk}{2\pi}S\left(k\right)\\
+ & =\frac{1}{\left(2\pi L\right)^{2}}\int dkk^{-1}B\left(k\right).
+\end{align*}
+
+\end_inset
+
+The discrete counterpart is then
+\begin_inset Formula 
+\begin{align*}
+\frac{C\left(r\right)}{C\left(0\right)} & =\frac{\sum_{k}kJ_{0}\left(kr\right)S\left(k\right)}{\sum_{k}kS\left(k\right)}\\
+ & =\frac{\sum_{k}k^{-1}J_{0}\left(kr\right)B\left(k\right)}{\sum_{k}k^{-1}B\left(k\right)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This estimation turns out as 
+\begin_inset Formula $2-7cm$
+\end_inset
+
+ in length.
+ The correlation length for heights will be longer,
+ so we can safely set,
+ say,
+ 
+\begin_inset Formula $1cm$
+\end_inset
+
+ as a hard lower bar for the physical resolution.
+\end_layout
+
+\begin_layout Subsubsection
+\start_of_appendix
+Convolution theorem
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathcal{F}\left(f*g\right)\left(k\right) & =\int\int f\left(x\right)g\left(x'-x\right)e^{ikx'}dxdx'\\
+ & =\frac{1}{\left(2\pi\right)^{^{2}}}\int\int\int dk'f\left(k'\right)e^{-ik'x}\int dk''g\left(k''\right)e^{-ik''\left(x'-x\right)}e^{ikx'}dxdx'\\
+ & =\frac{1}{\left(2\pi\right)^{^{2}}}\int dk'f\left(k'\right)\int dk''g\left(k''\right)\int e^{-ik'x}e^{ik''x}dx\int e^{-ik''x'}e^{ikx'}dx'\\
+ & =\frac{1}{\left(2\pi\right)^{^{2}}}\int dk'f\left(k'\right)\int dk''g\left(k''\right)2\pi\delta\left(k'-k''\right)2\pi\delta\left(k-k''\right)\\
+ & =f\left(k\right)g\left(k\right)\\
+\implies\mathcal{F}^{-1}\left(\left|f\left(k\right)\right|^{2}\right) & =f\left(x\right)*f\left(-x\right)\\
+ & =\int dxf\left(x\right)f\left(x-x'\right)dx,\\
+\int f\left(x\right)g\left(x\right)e^{ikx}dx & =\frac{1}{\left(2\pi\right)^{^{2}}}\int\int\int dk'f\left(k'\right)e^{-ik'x}\int dk''g\left(k''\right)e^{-ik''x}e^{ikx}dx\\
+ & =\frac{1}{2\pi}\int dk'f\left(k'\right)g\left(k-k'\right)\\
+\implies\int f\left(x\right)^{2}dx & =\frac{1}{2\pi}\int dk'f\left(k'\right)f\left(-k'\right)\\
+ & =\frac{1}{2\pi}\int dk'\left|f\left(k'\right)\right|^{2},\\
+\sum_{x}f\left(x\right)g\left(x\right)e^{ikx} & =\frac{1}{N}\sum_{x}\sum_{k'}f\left(k'\right)e^{-ik'x}\sum_{k''}g\left(k''\right)e^{-ik''x}e^{ikx}\\
+ & =\sum_{k'}f\left(k'\right)\sum_{k''}g\left(k''\right)\delta_{k'',k-k'}\\
+ & =\sum_{k'}f\left(k'\right)g\left(k-k'\right)\\
+\implies\sum_{x}f\left(x\right)^{2} & =\sum_{k'}\left|f\left(k'\right)\right|^{2}
+\end{align*}
+
+\end_inset
+
+Also if 
+\begin_inset Formula $g\left(x\right):=f\left(-x\right)$
+\end_inset
+
+ then 
+\begin_inset Formula $\mathcal{F}\left(f*g\right)\left(k\right)=\left|f\left(k\right)\right|^{2}$
+\end_inset
+
+ is the power spectrum.
+\end_layout
+
+\end_body
+\end_document

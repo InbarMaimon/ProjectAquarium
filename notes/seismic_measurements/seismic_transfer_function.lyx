@@ -171,7 +171,7 @@ For an irrotational fluid,
 
  be the gravitational acceleration,
  and 
-\begin_inset Formula $\kinematicViscousity$
+\begin_inset Formula $\kinematicViscosity$
 \end_inset
 
  be the kinematic viscosity.
@@ -204,11 +204,11 @@ We require that the two components of the velocity field take care separately of
 \end_inset
 
 Let 
-\begin_inset Formula $\sPressure$
+\begin_inset Formula $\pressureAtSurface$
 \end_inset
 
  be the pressure at the surface and let 
-\begin_inset Formula $\delta p=p-\sPressure$
+\begin_inset Formula $\delta p=p-\pressureAtSurface$
 \end_inset
 
  be the deviation.
@@ -287,12 +287,12 @@ We assume that both the deviations from time averages,
 
  be the first order proportion constant (next order introduces variations).
  Note that 
-\begin_inset Formula $\kappa$
+\begin_inset Formula $\kappa\in\left(0,\infty\right)$
 \end_inset
 
  measures 
 \series bold
-solubility
+insolubility
 \series default
  - a large value means that a large change of concentration at the surface affects but little the concentration in the bulk.
  All of this under the quick adsorption kinetics assumption.
@@ -322,7 +322,7 @@ Therefore
 \begin_inset Formula 
 \begin{align}
 \partial_{t}\delta\sBulkCo & =D\left(\partial_{x}^{2}\delta\sBulkCo+\partial_{y}^{2}\delta\sBulkCo+\partial_{z}^{2}\delta\sBulkCo\right),\label{eq:linearized-concentration}\\
-\kappa\partial_{t}\delta\sBulkCo\left(t,x,y,0\right) & =-s_{0}\partial_{x}\left(\partial_{x}\vPotential\left(t,x,y,0\right)-\partial_{z}\vStream_{y}\left(t,x,y,0\right)+\partial_{y}\psi_{z}\left(t,x,y,0\right)\right)\nonumber \\
+\kappa\partial_{t}\delta\sBulkCo\left(t,x,y,0\right) & =-\sSurfCo_{0}\partial_{x}\left(\partial_{x}\vPotential\left(t,x,y,0\right)-\partial_{z}\vStream_{y}\left(t,x,y,0\right)+\partial_{y}\psi_{z}\left(t,x,y,0\right)\right)\nonumber \\
  & -\sSurfCo_{0}\partial_{y}\left(\partial_{y}\vPotential\left(t,x,y,0\right)+\partial_{z}\psi_{x}\left(t,x,y,0\right)-\partial_{x}\psi_{z}\left(t,x,y,0\right)\right)\nonumber \\
  & -D\partial_{z}\delta\sBulkCo\left(t,x,y,0\right),\nonumber \\
 0 & =\delta\sBulkCo\left(x,y,z=-H\right).\nonumber 
@@ -349,11 +349,11 @@ For an incompressible fluid,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\stressTensor_{ij} & =-p\delta_{ij}+\sDensity\kinematicViscousity\left(\partial_{i}v_{j}+\partial_{j}v_{i}\right)\label{eq:fluid-stress}\\
- & =-p\delta_{ij}+\sDensity\kinematicViscousity\left(2\partial_{i}\partial_{j}\vPotential+\epsilon_{jkl}\partial_{i}\partial_{k}\vStream_{l}+\epsilon_{ikl}\partial_{j}\partial_{k}\vStream_{l}\right)\nonumber \\
-\implies\stressTensor_{xz} & =\sDensity\kinematicViscousity\left(2\partial_{x}\partial_{z}\vPotential+\left(\partial_{x}^{2}-\partial_{z}^{2}\right)\vStream_{y}-\partial_{x}\partial_{y}\vStream_{x}+\partial_{z}\partial_{y}\vStream_{z}\right),\nonumber \\
-\stressTensor_{yz} & =\sDensity\kinematicViscousity\left(2\partial_{y}\partial_{z}\vPotential-\left(\partial_{y}^{2}-\partial_{z}^{2}\right)\vStream_{x}+\partial_{x}\partial_{y}\vStream_{y}-\partial_{x}\partial_{z}\vStream_{z}\right),\nonumber \\
-\stressTensor_{zz} & =-p+2\sDensity\kinematicViscousity\left(\partial_{z}^{2}\vPotential+\partial_{x}\partial_{z}\vStream_{y}-\partial_{y}\partial_{z}\vStream_{x}\right).\nonumber 
+\stressTensor_{ij} & =p\delta_{ij}-\sDensity\kinematicViscosity\left(\partial_{i}v_{j}+\partial_{j}v_{i}\right)\label{eq:fluid-stress}\\
+ & =p\delta_{ij}-\sDensity\kinematicViscosity\left(2\partial_{i}\partial_{j}\vPotential+\epsilon_{jkl}\partial_{i}\partial_{k}\vStream_{l}+\epsilon_{ikl}\partial_{j}\partial_{k}\vStream_{l}\right)\nonumber \\
+\implies\stressTensor_{xz} & =-\sDensity\kinematicViscosity\left(2\partial_{x}\partial_{z}\vPotential+\left(\partial_{x}^{2}-\partial_{z}^{2}\right)\vStream_{y}-\partial_{x}\partial_{y}\vStream_{x}+\partial_{z}\partial_{y}\vStream_{z}\right),\nonumber \\
+\stressTensor_{yz} & =-\sDensity\kinematicViscosity\left(2\partial_{y}\partial_{z}\vPotential-\left(\partial_{y}^{2}-\partial_{z}^{2}\right)\vStream_{x}+\partial_{x}\partial_{y}\vStream_{y}-\partial_{x}\partial_{z}\vStream_{z}\right),\nonumber \\
+\stressTensor_{zz} & =p-2\sDensity\kinematicViscosity\left(\partial_{z}^{2}\vPotential+\partial_{x}\partial_{z}\vStream_{y}-\partial_{y}\partial_{z}\vStream_{x}\right).\nonumber 
 \end{align}
 
 \end_inset
@@ -379,7 +379,7 @@ nolink "false"
 
 \end_inset
 
- with a simpler conservation of mass equation:
+ with a simple conservation of mass equation:
 \begin_inset Formula 
 \begin{align*}
 \sSurfCo dA & =dM=const\\
@@ -401,21 +401,96 @@ I expand the surface tension
 \begin_inset Formula $\left(x,y\right)$
 \end_inset
 
- to linear order in
+ to linear order in the strain 
+\begin_inset Formula $\frac{\delta\sSurfCo}{\sSurfCo_{0}}$
+\end_inset
+
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+and its time derivative 
+\begin_inset Formula $\partial_{t}\frac{\delta\sSurfCo}{\sSurfCo_{0}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+,
+ and let us define the surface pressure (equivalently,
+ the diagonals of a 
+\begin_inset Formula $2D$
+\end_inset
+
+ isotropic stress tensor) 
+\begin_inset Formula $\sPressure:=\sTension_{0}-\sTension$
+\end_inset
+
+,
+ where 
+\begin_inset Formula $\sTension_{0}$
+\end_inset
+
+ is the zeroth order coefficient of the expansion.
+ Then:
 \begin_inset Formula 
 \begin{align}
-\sTension & =\sTension_{0}-k_{e}\frac{\delta\sSurfCo}{\sSurfCo_{0}}\label{eq:surfactant-stress-expansion}\\
- & =\sTension_{0}-k_{e}\kappa\frac{\delta\sBulkCo}{\sSurfCo_{0}},\nonumber 
+\sPressure\left(t,x,y\right) & =\int_{-\infty}^{t}\cEMod\left(t-t'\right)\partial_{t'}\frac{\delta\sSurfCo\left(t',x,y\right)}{\sSurfCo_{0}}dt'\label{eq:surfactant-stress-expansion}\\
+ & =\kappa\sSurfCo_{0}^{-1}\int_{-\infty}^{\infty}\cEMod\left(t-t'\right)\partial_{t'}\delta\sBulkCo\left(t',x,y,0\right)dt',\nonumber 
 \end{align}
 
 \end_inset
 
-where 
-\begin_inset Formula $k_{e}$
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+ & =-\eMReal\frac{\delta\sSurfCo}{\sSurfCo_{0}}-\eMImag\partial_{t}\frac{\delta\sSurfCo}{\sSurfCo_{0}}\\
+ & =-\eMReal\kappa\frac{\delta\sBulkCo}{\sSurfCo_{0}}-\eMImag\kappa\partial_{t}\frac{\delta c}{\sSurfCo_{0}},
+\end{align*}
+
 \end_inset
 
- is the film's dilatational elastic constant,
- which is real.
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+where 
+\begin_inset Formula $\eMReal$
+\end_inset
+
+ is the film's dilatational elasticity constant,
+ and 
+\begin_inset Formula $\elasticModulusImag$
+\end_inset
+
+ is the dilatational vicousity constant.
+\end_layout
+
+\end_inset
+
+where we set 
+\begin_inset Formula $G\left(t\right)=0$
+\end_inset
+
+ for 
+\begin_inset Formula $t<0$
+\end_inset
+
+,
+ so that the integral can be extended to infinity.
  Now if the air above is still (no wind),
  the total force acting tangentially on a unit surfactant area per unit length is
 \end_layout
@@ -423,10 +498,10 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\frac{dF_{x}}{dx} & =-\stressTensor_{xz}dy+\partial_{x}\sTension dy,\\
-\frac{dF_{y}}{dy} & =-\stressTensor_{yz}dx+\partial_{y}\sTension dx\\
-\implies\frac{dF}{dA} & =\begin{pmatrix}-\stressTensor_{xz}+\partial_{x}\sTension\\
--\stressTensor_{yz}+\partial_{y}\sTension
+dF_{x}\left(t,x,y\right) & =\stressTensor_{xz}\left(t,x,y,0\right)dxdy-\partial_{x}\sPressure\left(t,x,y\right)dxdy,\\
+dF_{y}\left(t,x,y\right) & =\stressTensor_{yz}\left(t,x,y,0\right)dxdy-\partial_{y}\sPressure\left(t,x,y\right)dxdy\\
+\implies\frac{dF}{dA}\left(t,x,y\right) & =\begin{pmatrix}\stressTensor_{xz}\left(t,x,y,0\right)-\partial_{x}\sPressure\left(t,x,y\right)\\
+\stressTensor_{yz}\left(t,x,y,0\right)-\partial_{y}\sPressure\left(t,x,y\right)
 \end{pmatrix},
 \end{align*}
 
@@ -444,10 +519,8 @@ This would accelerate the small area of surfactant.
  and
 \begin_inset Formula 
 \begin{align}
-\stressTensor_{xz} & =\partial_{x}\sTension\label{eq:shear-at-boundary}\\
- & =-k_{e}\kappa\sSurfCo_{0}^{-1}\partial_{x}\delta\sBulkCo-k_{v}\kappa\sSurfCo_{0}^{-1}\partial_{x}\partial_{t}\delta\sBulkCo,\nonumber \\
-\stressTensor_{yz} & =\partial_{y}\sTension\nonumber \\
- & =-k_{e}\kappa\sSurfCo_{0}^{-1}\partial_{y}\delta\sBulkCo-k_{v}\kappa\sSurfCo_{0}^{-1}\partial_{y}\partial_{t}\delta\sBulkCo.\nonumber 
+\stressTensor_{xz}\left(t,x,y,0\right) & =\partial_{x}\sPressure\left(t,x,y\right)\label{eq:shear-at-boundary}\\
+\stressTensor_{yz}\left(\omega,m,n,0\right) & =\partial_{y}\sPressure\left(t,x,y\right)\nonumber 
 \end{align}
 
 \end_inset
@@ -457,7 +530,8 @@ Similarly,
  For linear ripples the local slopes are small and we approximate
 \begin_inset Formula 
 \begin{align}
-\stressTensor_{zz} & =-\sPressure-\sDensity g\zeta+\sTension_{0}\partial_{x}^{2}\zeta+\sTension_{0}\partial_{y}^{2}\zeta.\label{eq:pressure-at-boundary}
+\stressTensor_{zz}\left(t,x,y,0\right) & =\pSurface+\sDensity g\zeta-\sTension\partial_{x}^{2}\zeta-\sTension\partial_{y}^{2}\zeta\label{eq:pressure-at-boundary}\\
+ & =\pSurface+\sDensity g\zeta-\left(\sTension_{0}-\sPressure_{0}\right)\partial_{x}^{2}\zeta-\left(\sTension_{0}-\sPressure_{0}\right)\partial_{y}^{2}\zeta\nonumber 
 \end{align}
 
 \end_inset
@@ -471,23 +545,24 @@ Recap
 
 \begin_layout Standard
 To sum up,
- we have now a bunch of equations we should mingle together:
+ we have now a bunch of equations we should mingle together,
+ which in time-space domain take the form
 \begin_inset Formula 
 \begin{align}
 0 & =\partial_{x}^{2}\phi+\partial_{y}^{2}\vPotential+\partial_{z}^{2}\vPotential,\label{eq:modified-Hansen's-model}\\
-\frac{1}{\kinematicViscousity}\partial_{t}\vStream & =\partial_{x}^{2}\vStream+\partial_{y}^{2}\vStream+\partial_{z}^{2}\vStream,\nonumber \\
+\frac{1}{\kinematicViscosity}\partial_{t}\vStream & =\partial_{x}^{2}\vStream+\partial_{y}^{2}\vStream+\partial_{z}^{2}\vStream,\nonumber \\
 \frac{1}{D}\partial_{t}\delta\sBulkCo & =\partial_{x}^{2}\delta c+\partial_{y}^{2}\delta\sBulkCo+\partial_{z}^{2}\delta c,\nonumber \\
 \kappa\partial_{t}\delta\sBulkCo\left(t,x,y,0\right) & =-\sSurfCo_{0}\partial_{x}\left(\partial_{x}\vPotential\left(t,x,y,0\right)-\partial_{z}\vStream_{y}\left(t,x,y,0\right)+\partial_{y}\psi_{z}\left(t,x,y,0\right)\right)\nonumber \\
  & -\sSurfCo_{0}\partial_{y}\left(\partial_{y}\vPotential\left(t,x,y,0\right)+\partial_{z}\psi_{x}\left(t,x,y,0\right)-\partial_{x}\psi_{z}\left(t,x,y,0\right)\right)\nonumber \\
  & -D\partial_{z}\delta\sBulkCo\left(t,x,y,0\right),\nonumber \\
-0 & =\sDensity\kinematicViscousity\left(2\partial_{x}\partial_{z}\vPotential\left(t,x,y,0\right)+\left(\partial_{x}^{2}-\partial_{z}^{2}\right)\vStream_{y}\left(t,x,y,0\right)-\partial_{x}\partial_{y}\vStream_{x}\left(t,x,y,0\right)+\partial_{z}\partial_{y}\vStream_{z}\left(t,x,y,0\right)\right)\nonumber \\
- & +k_{e}\kappa\sSurfCo_{0}^{-1}\partial_{x}\delta\sBulkCo\left(t,x,y,0\right),\nonumber \\
-0 & =\sDensity\kinematicViscousity\left(2\partial_{y}\partial_{z}\vPotential\left(t,x,y,0\right)-\left(\partial_{y}^{2}-\partial_{z}^{2}\right)\vStream_{x}\left(t,x,y,0\right)+\partial_{x}\partial_{y}\vStream_{y}\left(t,x,y,0\right)-\partial_{x}\partial_{z}\vStream_{z}\left(t,x,y,0\right)\right)\nonumber \\
- & +k_{e}\kappa\sSurfCo_{0}^{-1}\partial_{y}\delta\sBulkCo\left(t,x,y,0\right)+k_{v}\kappa\sSurfCo_{0}^{-1}\partial_{y}\partial_{t}\delta\sBulkCo\left(t,x,y,0\right),\nonumber \\
-0 & =\sDensity\partial_{t}\vPotential\left(t,x,y,0\right)+2\sDensity\kinematicViscousity\left(\partial_{z}^{2}\vPotential\left(t,x,y,0\right)+\partial_{x}\partial_{z}\vStream_{y}\left(t,x,y,0\right)-\partial_{y}\partial_{z}\vStream_{x}\left(t,x,y,0\right)\right)\nonumber \\
+0 & =\sDensity\kinematicViscosity\left(2\partial_{x}\partial_{z}\vPotential\left(t,x,y,0\right)+\left(\partial_{x}^{2}-\partial_{z}^{2}\right)\vStream_{y}\left(t,x,y,0\right)-\partial_{x}\partial_{y}\vStream_{x}\left(t,x,y,0\right)+\partial_{z}\partial_{y}\vStream_{z}\left(t,x,y,0\right)\right)\nonumber \\
+ & +\kappa\sSurfCo_{0}^{-1}\int_{-\infty}^{\infty}\cEMod\left(t-t'\right)\partial_{t'}\partial_{x}\delta\sBulkCo\left(t',x,y,0\right)dt',\nonumber \\
+0 & =\sDensity\kinematicViscosity\left(2\partial_{y}\partial_{z}\vPotential\left(t,x,y,0\right)-\left(\partial_{y}^{2}-\partial_{z}^{2}\right)\vStream_{x}\left(t,x,y,0\right)+\partial_{x}\partial_{y}\vStream_{y}\left(t,x,y,0\right)-\partial_{x}\partial_{z}\vStream_{z}\left(t,x,y,0\right)\right)\nonumber \\
+ & +\kappa\sSurfCo_{0}^{-1}\int_{-\infty}^{\infty}\cEMod\left(t-t'\right)\partial_{t'}\partial_{y}\delta\sBulkCo\left(t',x,y,0\right)dt',\nonumber \\
+0 & =\sDensity\partial_{t}\vPotential\left(t,x,y,0\right)+2\sDensity\kinematicViscosity\left(\partial_{z}^{2}\vPotential\left(t,x,y,0\right)+\partial_{x}\partial_{z}\vStream_{y}\left(t,x,y,0\right)-\partial_{y}\partial_{z}\vStream_{x}\left(t,x,y,0\right)\right)\nonumber \\
  & +\sDensity g\int_{-\infty}^{t}\left(\partial_{z}\vPotential\left(t,x,y,0\right)+\partial_{x}\vStream_{y}\left(t,x,y,0\right)-\partial_{y}\vStream_{x}\left(t,x,y,0\right)\right)dt\nonumber \\
- & -\sTension_{0}\partial_{x}^{2}\int_{-\infty}^{t}\left(\partial_{z}\vPotential\left(t,x,y,0\right)+\partial_{x}\vStream_{y}\left(t,x,y,0\right)-\partial_{y}\vStream_{x}\left(t,x,y,0\right)\right)dt\nonumber \\
- & -\sTension_{0}\partial_{y}^{2}\int_{-\infty}^{t}\left(\partial_{z}\vPotential\left(t,x,y,0\right)+\partial_{x}\vStream_{y}\left(t,x,y,0\right)-\partial_{y}\vStream_{x}\left(t,x,y,0\right)\right)dt\nonumber 
+ & -\sTension\partial_{x}^{2}\int_{-\infty}^{t}\left(\partial_{z}\vPotential\left(t,x,y,0\right)+\partial_{x}\vStream_{y}\left(t,x,y,0\right)-\partial_{y}\vStream_{x}\left(t,x,y,0\right)\right)dt\nonumber \\
+ & -\sTension\partial_{y}^{2}\int_{-\infty}^{t}\left(\partial_{z}\vPotential\left(t,x,y,0\right)+\partial_{x}\vStream_{y}\left(t,x,y,0\right)-\partial_{y}\vStream_{x}\left(t,x,y,0\right)\right)dt\nonumber 
 \end{align}
 
 \end_inset
@@ -663,9 +738,9 @@ We begin by Fourier transforming the DoFs we're interested in,
 \begin_inset Formula 
 \begin{align*}
 \partial_{z}^{2}\vPotential & =k^{2}\phi,\\
-\partial_{z}^{2}\vStream & =\left(k^{2}-i\frac{\omega}{\kinematicViscousity}\right)\vStream,\\
+\partial_{z}^{2}\vStream & =\left(k^{2}-i\frac{\omega}{\kinematicViscosity}\right)\vStream,\\
 \partial_{z}^{2}\delta c & =\left(k^{2}-i\frac{\omega}{D}\right)\delta\sBulkCo,\\
-\implies\alpha & =\sqrt{k^{2}-i\frac{\omega}{\kinematicViscousity}},\Re\left(\alpha\right)>0,\\
+\implies\alpha & =\sqrt{k^{2}-i\frac{\omega}{\kinematicViscosity}},\Re\left(\alpha\right)>0,\\
 \beta & =\sqrt{k^{2}-i\frac{\omega}{D}},\Re\left(\alpha\right)>0,\\
 \vPotential\left(\omega,m,n,z\right) & =A_{\vPotential}\left(\omega,m,n\right)e^{kz}+B_{\vPotential}\left(\omega,m,n\right)e^{-k\left(z+H\right)},\\
 \vStream\left(\omega,m,n,z\right) & =A_{\vStream}\left(\omega,m,n\right)e^{\alpha z}+B_{\vStream}\left(\omega,m,n\right)e^{-\alpha\left(z+H\right)},\\
@@ -792,14 +867,14 @@ The free surface BCs take the form
 for the material flux balance,
 \begin_inset Formula 
 \begin{align*}
-0 & =\sDensity\kinematicViscousity\left(2ik_{x}\partial_{z}\vPotential\left(\omega,m,n,0\right)+\left(-k_{x}^{2}-\partial_{z}^{2}\right)\vStream_{y}\left(\omega,m,n,0\right)+k_{x}k_{y}\vStream_{x}\left(\omega,m,n,0\right)+ik_{y}\partial_{z}\vStream_{z}\left(\omega,m,n,0\right)\right)\\
- & +i\kappa k_{e}k_{x}\sSurfCo_{0}^{-1}\delta\sBulkCo\left(\omega,m,n,0\right),\\
-0 & =\sDensity\kinematicViscousity\left(2ik_{y}\partial_{z}\vPotential\left(\omega,m,n,0\right)+\left(k_{y}^{2}+\partial_{z}^{2}\right)\vStream_{x}\left(\omega,m,n,0\right)-k_{x}k_{y}\vStream_{y}\left(\omega,m,n,0\right)-ik_{x}\partial_{z}\vStream_{z}\left(\omega,m,n,0\right)\right)\\
- & +\kappa\left(ik_{e}+k_{v}\omega\right)k_{y}\sSurfCo_{0}^{-1}\delta\sBulkCo\left(\omega,m,n,0\right)\\
+0 & =\sDensity\kinematicViscosity\left(2ik_{x}\partial_{z}\vPotential\left(\omega,m,n,0\right)+\left(-k_{x}^{2}-\partial_{z}^{2}\right)\vStream_{y}\left(\omega,m,n,0\right)+k_{x}k_{y}\vStream_{x}\left(\omega,m,n,0\right)+ik_{y}\partial_{z}\vStream_{z}\left(\omega,m,n,0\right)\right)\\
+ & +\cEMod\left(\omega\right)k_{x}\omega\kappa\sSurfCo_{0}^{-1}\delta\sBulkCo\left(\omega,m,n,0\right),\\
+0 & =\sDensity\kinematicViscosity\left(2ik_{y}\partial_{z}\vPotential\left(\omega,m,n,0\right)+\left(k_{y}^{2}+\partial_{z}^{2}\right)\vStream_{x}\left(\omega,m,n,0\right)-k_{x}k_{y}\vStream_{y}\left(\omega,m,n,0\right)-ik_{x}\partial_{z}\vStream_{z}\left(\omega,m,n,0\right)\right)\\
+ & +\cEMod\left(\omega\right)k_{y}\omega\kappa\sSurfCo_{0}^{-1}\delta\sBulkCo\left(\omega,m,n,0\right)\\
 \implies0 & =ik\partial_{z}\vStream_{z}\left(\omega,m,n,0\right)-\partial_{z}^{2}\vStream_{t}\left(\omega,m,n,0\right)\\
  & =\left(k^{2}-\partial_{z}^{2}\right)\vStream_{t}\left(\omega,m,n,0\right),\\
-0 & =\sDensity\kinematicViscousity\left(i2k\partial_{z}\vPotential\left(\omega,m,n,0\right)+\left(k^{2}+\partial_{z}^{2}\right)\vStream_{p}\left(\omega,m,n,0\right)\right)\\
- & +i\kappa k_{e}k\sSurfCo_{0}^{-1}\delta\sBulkCo\left(\omega,m,n,0\right)
+0 & =\sDensity\kinematicViscosity\left(i2k\partial_{z}\vPotential\left(\omega,m,n,0\right)+\left(k^{2}+\partial_{z}^{2}\right)\vStream_{p}\left(\omega,m,n,0\right)\right)\\
+ & +\cEMod\left(\omega\right)k\omega\kappa\sSurfCo_{0}^{-1}\delta\sBulkCo\left(\omega,m,n,0\right)
 \end{align*}
 
 \end_inset
@@ -808,8 +883,19 @@ for the vertical shear stress balance,
  and
 \begin_inset Formula 
 \begin{align*}
-0 & =\left(2\sDensity\kinematicViscousity\omega\partial_{z}^{2}+i\left(\sDensity g+\sTension_{0}k^{2}\right)\partial_{z}-i\sDensity\omega^{2}\right)\vPotential\left(\omega,m,n,0\right)\\
- & +k\left(-i2\sDensity\kinematicViscousity\omega\partial_{z}+\left(\sDensity g+\sTension_{0}k^{2}\right)\right)\vStream_{p}\left(\omega,m,n,0\right)
+0 & =\sDensity\partial_{t}\vPotential\left(t,x,y,0\right)+2\sDensity\kinematicViscosity\left(\partial_{z}^{2}\vPotential\left(t,x,y,0\right)+\partial_{x}\partial_{z}\vStream_{y}\left(t,x,y,0\right)-\partial_{y}\partial_{z}\vStream_{x}\left(t,x,y,0\right)\right)\\
+ & +\sDensity g\int_{-\infty}^{t}\left(\partial_{z}\vPotential\left(t,x,y,0\right)+\partial_{x}\vStream_{y}\left(t,x,y,0\right)-\partial_{y}\vStream_{x}\left(t,x,y,0\right)\right)dt\\
+ & -\sTension\partial_{x}^{2}\int_{-\infty}^{t}\left(\partial_{z}\vPotential\left(t,x,y,0\right)+\partial_{x}\vStream_{y}\left(t,x,y,0\right)-\partial_{y}\vStream_{x}\left(t,x,y,0\right)\right)dt\\
+ & -\sTension\partial_{y}^{2}\int_{-\infty}^{t}\left(\partial_{z}\vPotential\left(t,x,y,0\right)+\partial_{x}\vStream_{y}\left(t,x,y,0\right)-\partial_{y}\vStream_{x}\left(t,x,y,0\right)\right)dt
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+0 & =\left(2\sDensity\kinematicViscosity\omega\partial_{z}^{2}+i\left(\sDensity g+\sTension k^{2}\right)\partial_{z}-i\sDensity\omega^{2}\right)\vPotential\left(\omega,m,n,0\right)\\
+ & +k\left(-i2\sDensity\kinematicViscosity\omega\partial_{z}+\left(\sDensity g+\sTension k^{2}\right)\right)\vStream_{p}\left(\omega,m,n,0\right)
 \end{align*}
 
 \end_inset
@@ -907,13 +993,16 @@ Then we have five equations left so far.
 \implies0 & =A_{\vPotential}\left(\omega,m,n\right)e^{-Hk}+B_{\vPotential}\left(\omega,m,n\right)\\
  & -i\frac{\alpha}{k}\left(A_{p}\left(\omega,m,n\right)e^{-H\alpha}-B_{p}\left(\omega,m,n\right)\right),\\
 0 & =A_{\vPotential}\left(\omega,m,n\right)e^{-Hk}-B_{\vPotential}\left(\omega,m,n\right)\\
- & -i\left(A_{p}\left(\omega,m,n\right)e^{-H\alpha}+B_{p}\left(\omega,m,n\right)\right)\\
-\implies0 & =2e^{-Hk}A_{\vPotential}\left(\omega,m,n\right)\\
- & -i\left(\frac{\alpha}{k}+1\right)e^{-H\alpha}A_{p}\left(\omega,m,n\right)\\
- & +i\left(\frac{\alpha}{k}-1\right)B_{p}\left(\omega,m,n\right)\\
-0 & =2B_{\vPotential}\left(\omega,m,n\right)\\
- & -i\left(\frac{\alpha}{k}-1\right)e^{-H\alpha}A_{p}\left(\omega,m,n\right)\\
- & +i\left(\frac{\alpha}{k}+1\right)B_{p}\left(\omega,m,n\right)
+ & -i\left(A_{p}\left(\omega,m,n\right)e^{-H\alpha}+B_{p}\left(\omega,m,n\right)\right),
+\end{align*}
+
+\end_inset
+
+so that
+\begin_inset Formula 
+\begin{align*}
+\implies A_{\vPotential}\left(\omega,m,n\right) & =i\frac{1}{2}\left(\frac{\alpha}{k}+1\right)e^{-H\left(\alpha-k\right)}A_{p}\left(\omega,m,n\right)-i\frac{1}{2}\left(\frac{\alpha}{k}-1\right)e^{Hk}B_{p}\left(\omega,m,n\right)\\
+B_{\vPotential}\left(\omega,m,n\right) & =i\frac{1}{2}\left(\frac{\alpha}{k}-1\right)e^{-H\alpha}A_{p}\left(\omega,m,n\right)-i\frac{1}{2}\left(\frac{\alpha}{k}+1\right)B_{p}\left(\omega,m,n\right),
 \end{align*}
 
 \end_inset
@@ -926,12 +1015,12 @@ then three free boundary conditions,
 \begin_inset Formula 
 \begin{align*}
 0 & =2\left(A_{\vPotential}\left(\omega,m,n\right)-B_{\vPotential}\left(\omega,m,n\right)e^{-Hk}\right)\\
- & -i\left(1+\frac{\alpha^{2}}{k^{2}}\right)\left(A_{p}\left(\omega,m,n\right)+B_{p}\left(\omega,m,n\right)e^{-H\alpha}\right)\\
- & +\frac{1}{\sDensity\kinematicViscousity D}\frac{k_{e}}{k}\left(1+e^{-2\beta H}\right)\tilde{A}_{\delta\sBulkCo}\left(\omega,m,n\right),\\
-0 & =\left(\frac{2\sDensity\kinematicViscousity}{\sTension_{0}}\frac{\omega}{k}-i\left(\frac{\sDensity}{\sTension_{0}k}\left(\frac{\omega}{k}\right)^{2}-\frac{\sDensity g}{\sTension_{0}k^{2}}-1\right)\right)A_{\vPotential}\left(\omega,m,n\right)\\
- & +\left(\frac{2\sDensity\kinematicViscousity}{\sTension_{0}}\frac{\omega}{k}-i\left(\frac{\sDensity}{\sTension_{0}k}\left(\frac{\omega}{k}\right)^{2}+\frac{\sDensity g}{\sTension_{0}k^{2}}+1\right)\right)e^{-Hk}B_{\vPotential}\left(\omega,m,n\right)\\
- & +\left(-i\frac{2\sDensity\kinematicViscousity}{\sTension_{0}}\frac{\omega}{k}\frac{\alpha}{k}+\left(\frac{\sDensity g}{\sTension_{0}k^{2}}+1\right)\right)A_{p}\left(\omega,m,n\right)\\
- & +\left(i\frac{2\sDensity\kinematicViscousity}{\sTension_{0}}\frac{\omega}{k}\frac{\alpha}{k}+\left(\frac{\sDensity g}{\sTension_{0}k^{2}}+1\right)\right)e^{-H\alpha}B_{p}\left(\omega,m,n\right),\\
+ & -i\left(\left(1+\frac{\alpha^{2}}{k^{2}}\right)A_{p}\left(\omega,m,n\right)+\left(1+\frac{\alpha^{2}}{k^{2}}\right)B_{p}\left(\omega,m,n\right)e^{-H\alpha}\right)\\
+ & -i\frac{1}{\sDensity\kinematicViscosity D}\frac{\cEMod\left(\omega\right)\omega}{k}\left(1+e^{-2\beta H}\right)\tilde{A}_{\delta\sBulkCo}\left(\omega,m,n\right)\\
+0 & =\left(\frac{2\sDensity\kinematicViscosity}{\sTension_{0}}\frac{\omega}{k}-i\left(\frac{\sDensity}{\sTension_{0}k}\left(\frac{\omega}{k}\right)^{2}-\frac{\sDensity g}{\sTension_{0}k^{2}}-1\right)\right)A_{\vPotential}\left(\omega,m,n\right)\\
+ & +\left(\frac{2\sDensity\kinematicViscosity}{\sTension_{0}}\frac{\omega}{k}-i\left(\frac{\sDensity}{\sTension_{0}k}\left(\frac{\omega}{k}\right)^{2}+\frac{\sDensity g}{\sTension_{0}k^{2}}+1\right)\right)e^{-Hk}B_{\vPotential}\left(\omega,m,n\right)\\
+ & +\left(-i\frac{2\sDensity\kinematicViscosity}{\sTension_{0}}\frac{\omega}{k}\frac{\alpha}{k}+\left(\frac{\sDensity g}{\sTension_{0}k^{2}}+1\right)\right)A_{p}\left(\omega,m,n\right)\\
+ & +\left(i\frac{2\sDensity\kinematicViscosity}{\sTension_{0}}\frac{\omega}{k}\frac{\alpha}{k}+\left(\frac{\sDensity g}{\sTension_{0}k^{2}}+1\right)\right)e^{-H\alpha}B_{p}\left(\omega,m,n\right),\\
 0 & =-\left(A_{\vPotential}\left(\omega,m,n\right)+e^{-Hk}B_{\vPotential}\left(\omega,m,n\right)\right)\\
  & +i\frac{\alpha}{k}\left(A_{p}\left(\omega,m,n\right)-e^{-H\alpha}B_{p}\left(\omega,m,n\right)\right)\\
  & +\frac{1}{k^{2}}\left(\frac{1}{\kappa}\beta\left(1-e^{-2\beta H}\right)-i\frac{1}{D}\omega\left(1+e^{-2\beta H}\right)\right)\tilde{A}_{\delta\sBulkCo}\left(\omega,m,n\right)
@@ -970,14 +1059,14 @@ where I defined
 \begin_inset Formula 
 \begin{align*}
 0 & =\left(\left(\frac{\alpha^{2}}{k^{2}}+1\right)e^{-Hk}-\left(\frac{\alpha}{k}+1\right)e^{-H\alpha}+\left(\frac{\alpha}{k}-1\right)e^{-H\left(\alpha+2k\right)}\right)A_{p}\left(\omega,m,n\right)\\
- & +\left(\left(\frac{\alpha}{k}-1\right)-\left(\frac{\alpha}{k}+1\right)e^{-2Hk}+\left(\frac{\alpha^{2}}{k^{2}}+1\right)e^{-H\left(\alpha+k\right)}\right)B_{p}\left(\omega,m,n\right)\\
- & +i\frac{1}{\sDensity\kinematicViscousity D}\left(\frac{k_{e}-ik_{v}\omega}{k}\right)\left(1+e^{-2\beta H}\right)e^{-Hk}\tilde{A}_{\delta\sBulkCo}\left(\omega,m,n\right),\\
-0 & =\frac{1}{2}\left(\frac{2\sDensity\kinematicViscousity}{\sTension_{0}}\frac{\omega}{k}+i\left(-\frac{\sDensity}{\sTension_{0}k}\left(\frac{\omega}{k}\right)^{2}+\frac{\sDensity g}{\sTension_{0}k^{2}}+1\right)\right)\left(\frac{\alpha}{k}+1\right)e^{-H\alpha}A_{p}\left(\omega,m,n\right)\\
- & +\frac{1}{2}\left(\frac{2\sDensity\kinematicViscousity}{\sTension_{0}}\frac{\omega}{k}-i\left(\frac{\sDensity}{\sTension_{0}k}\left(\frac{\omega}{k}\right)^{2}+\frac{\sDensity g}{\sTension_{0}k^{2}}+1\right)\right)\left(\frac{\alpha}{k}-1\right)e^{-H\left(\alpha+2k\right)}A_{p}\left(\omega,m,n\right)\\
- & -\left(\frac{2\sDensity\kinematicViscousity}{\sTension_{0}}\frac{\omega}{k}\frac{\alpha}{k}+i\left(\frac{\sDensity g}{\sTension_{0}k^{2}}+1\right)\right)e^{-Hk}A_{p}\left(\omega,m,n\right)\\
- & -\frac{1}{2}\left(\frac{2\sDensity\kinematicViscousity}{\sTension_{0}}\frac{\omega}{k}+i\left(-\frac{\sDensity}{\sTension_{0}k}\left(\frac{\omega}{k}\right)^{2}+\frac{\sDensity g}{\sTension_{0}k^{2}}+1\right)\right)\left(\frac{\alpha}{k}-1\right)B_{p}\left(\omega,m,n\right)\\
- & -\frac{1}{2}\left(\frac{2\sDensity\kinematicViscousity}{\sTension_{0}}\frac{\omega}{k}-i\left(\frac{\sDensity}{\sTension_{0}k}\left(\frac{\omega}{k}\right)^{2}+\frac{\sDensity g}{\sTension_{0}k^{2}}+1\right)\right)\left(\frac{\alpha}{k}+1\right)e^{-2Hk}B_{p}\left(\omega,m,n\right)\\
- & +\left(\frac{2\sDensity\kinematicViscousity}{\sTension_{0}}\frac{\omega}{k}\frac{\alpha}{k}-i\left(\frac{\sDensity g}{\sTension_{0}k^{2}}+1\right)\right)e^{-H\left(\alpha+k\right)}B_{p}\left(\omega,m,n\right),\\
+ & +\left(\left(\frac{\alpha^{2}}{k^{2}}+1\right)e^{-H\left(\alpha+k\right)}+\left(\frac{\alpha}{k}-1\right)-\left(\frac{\alpha}{k}+1\right)e^{-2Hk}\right)B_{p}\left(\omega,m,n\right)\\
+ & +\frac{1}{\sDensity\kinematicViscosity D}\frac{\cEMod\left(\omega\right)\omega}{k}\left(1+e^{-2\beta H}\right)e^{-Hk}\tilde{A}_{\delta\sBulkCo}\left(\omega,m,n\right),\\
+0 & =\frac{1}{2}\left(\frac{2\sDensity\kinematicViscosity}{\sTension}\frac{\omega}{k}+i\left(-\frac{\sDensity}{\sTension k}\left(\frac{\omega}{k}\right)^{2}+\frac{\sDensity g}{\sTension k^{2}}+1\right)\right)\left(\frac{\alpha}{k}+1\right)e^{-H\alpha}A_{p}\left(\omega,m,n\right)\\
+ & +\frac{1}{2}\left(\frac{2\sDensity\kinematicViscosity}{\sTension}\frac{\omega}{k}-i\left(\frac{\sDensity}{\sTension k}\left(\frac{\omega}{k}\right)^{2}+\frac{\sDensity g}{\sTension k^{2}}+1\right)\right)\left(\frac{\alpha}{k}-1\right)e^{-H\left(\alpha+2k\right)}A_{p}\left(\omega,m,n\right)\\
+ & -\left(\frac{2\sDensity\kinematicViscosity}{\sTension}\frac{\omega}{k}\frac{\alpha}{k}+i\left(\frac{\sDensity g}{\sTension k^{2}}+1\right)\right)e^{-Hk}A_{p}\left(\omega,m,n\right)\\
+ & -\frac{1}{2}\left(\frac{2\sDensity\kinematicViscosity}{\sTension}\frac{\omega}{k}+i\left(-\frac{\sDensity}{\sTension k}\left(\frac{\omega}{k}\right)^{2}+\frac{\sDensity g}{\sTension k^{2}}+1\right)\right)\left(\frac{\alpha}{k}-1\right)B_{p}\left(\omega,m,n\right)\\
+ & -\frac{1}{2}\left(\frac{2\sDensity\kinematicViscosity}{\sTension}\frac{\omega}{k}-i\left(\frac{\sDensity}{\sTension k}\left(\frac{\omega}{k}\right)^{2}+\frac{\sDensity g}{\sTension k^{2}}+1\right)\right)\left(\frac{\alpha}{k}+1\right)e^{-2Hk}B_{p}\left(\omega,m,n\right)\\
+ & +\left(\frac{2\sDensity\kinematicViscosity}{\sTension}\frac{\omega}{k}\frac{\alpha}{k}-i\left(\frac{\sDensity g}{\sTension k^{2}}+1\right)\right)e^{-H\left(\alpha+k\right)}B_{p}\left(\omega,m,n\right),\\
 0 & =\left(\left(\frac{\alpha}{k}+1\right)e^{-H\alpha}+\left(\frac{\alpha}{k}-1\right)e^{-H\left(\alpha+2k\right)}-2\frac{\alpha}{k}e^{-Hk}\right)A_{p}\left(\omega,m,n\right)\\
  & -\left(\left(\frac{\alpha}{k}-1\right)+\left(\frac{\alpha}{k}+1\right)e^{-2Hk}-2\frac{\alpha}{k}e^{-H\left(\alpha+k\right)}\right)B_{p}\left(\omega,m,n\right)\\
  & +i2\left(\frac{1}{\kappa}\beta\left(1-e^{-2\beta H}\right)-i\frac{1}{D}\omega\left(1+e^{-2\beta H}\right)\right)\frac{1}{k^{2}}e^{-Hk}\tilde{A}_{\delta\sBulkCo}\left(\omega,m,n\right).
@@ -991,7 +1080,7 @@ Let us define
 
 ,
  
-\begin_inset Formula $\tilde{E}_{0}\left(\omega\right):=\frac{k_{e}}{\sDensity\kinematicViscousity D}$
+\begin_inset Formula $\tilde{E}_{0}\left(\omega\right):=\frac{\cEMod\left(\omega\right)\omega}{\sDensity\kinematicViscosity D}$
 \end_inset
 
 ,
@@ -1001,12 +1090,12 @@ Let us define
 
 ,
  
-\begin_inset Formula $\gamma_{c}=\frac{\sTension_{0}k}{\sDensity\kinematicViscousity}$
+\begin_inset Formula $\gamma_{c}=\frac{\sTension k}{\sDensity\kinematicViscosity}$
 \end_inset
 
 ,
  
-\begin_inset Formula $\omega_{cp}^{2}=\frac{\sTension_{0}k^{3}}{\sDensity}$
+\begin_inset Formula $\omega_{cp}^{2}=\frac{\sTension k^{3}}{\sDensity}$
 \end_inset
 
 ,
@@ -1020,7 +1109,7 @@ Let us define
 \begin{align}
 0 & =\left(\left(r^{2}+1\right)e^{-Hk}-\left(r+1\right)e^{-H\alpha}+\left(r-1\right)e^{-H\left(\alpha+2k\right)}\right)A_{p}\left(\omega,m,n\right)\label{eq:model-final-form}\\
  & +\left(\left(r-1\right)-\left(r+1\right)e^{-2Hk}+\left(r^{2}+1\right)e^{-H\left(\alpha+k\right)}\right)B_{p}\left(\omega,m,n\right)\nonumber \\
- & +i\frac{\tilde{E}_{0}\left(\omega\right)}{k}\left(1+e^{-2\beta H}\right)e^{-Hk}\tilde{A}_{\delta\sBulkCo}\left(\omega,m,n\right),\nonumber \\
+ & -\frac{\tilde{E}_{0}\left(\omega\right)}{k}\left(1+e^{-2\beta H}\right)e^{-Hk}\tilde{A}_{\delta\sBulkCo}\left(\omega,m,n\right),\nonumber \\
 0 & =\frac{1}{2}\left(2\frac{\omega}{\gamma_{c}}+i\frac{-\omega^{2}+\omega_{0}^{2}}{\omega_{cp}^{2}}\right)\left(r+1\right)e^{-H\alpha}A_{p}\left(\omega,m,n\right)\nonumber \\
  & +\frac{1}{2}\left(2\frac{\omega}{\gamma_{c}}-i\frac{\omega^{2}+\omega_{0}^{2}}{\omega_{cp}^{2}}\right)\left(r-1\right)e^{-H\left(\alpha+2k\right)}A_{p}\left(\omega,m,n\right)\nonumber \\
  & -\left(2r\frac{\omega}{\gamma_{c}}+i\frac{\omega_{0}^{2}}{\omega_{cp}^{2}}\right)e^{-Hk}A_{p}\left(\omega,m,n\right)\nonumber \\
@@ -1044,7 +1133,7 @@ x_{113} & =r-1\\
 x_{121} & =r-1\\
 x_{122} & =-\left(r+1\right)\\
 x_{123} & =r^{2}+1\\
-x_{131} & =i\frac{\tilde{E}_{0}\left(\omega\right)}{k}\left(1+e^{-2\beta H}\right)\\
+x_{131} & =\frac{\tilde{E}_{0}\left(\omega\right)}{k}\left(1+e^{-2\beta H}\right)\\
 x_{211} & =-\left(2r\frac{\omega}{\gamma_{c}}+i\frac{\omega_{0}^{2}}{\omega_{cp}^{2}}\right)\\
 x_{212} & =\frac{1}{2}\left(2\frac{\omega}{\gamma_{c}}+i\frac{-\omega^{2}+\omega_{0}^{2}}{\omega_{cp}^{2}}\right)\left(r+1\right)\\
 x_{213} & =\frac{1}{2}\left(2\frac{\omega}{\gamma_{c}}-i\frac{\omega^{2}+\omega_{0}^{2}}{\omega_{cp}^{2}}\right)\left(r-1\right)\\
@@ -1115,7 +1204,7 @@ x_{311}+x_{312}e^{-H\left(\alpha-k\right)}+x_{313}e^{-H\left(\alpha+k\right)} & 
  & =\frac{i}{\omega_{cp}^{2}}x_{131}\left(r-1\right)\left(r\omega^{2}-\left(r-1\right)\omega_{0}^{2}\right)\\
  & +\frac{i}{\omega_{cp}^{2}}x_{131}\left(r+1\right)\left(r\omega^{2}+\left(r+1\right)\omega_{0}^{2}\right)e^{-2Hk}\\
  & -\frac{i}{\omega_{cp}^{2}}x_{131}8r\omega_{0}^{2}e^{-H\left(\alpha+k\right)}\\
- & -\frac{i}{\omega_{cp}^{2}}x_{131}\left(r+1\right)r\omega^{2}-\left(r+1\right)\omega_{0}^{2}e^{-2H\alpha}\\
+ & -\frac{i}{\omega_{cp}^{2}}x_{131}\left(r+1\right)\left(r\omega^{2}-\left(r+1\right)\omega_{0}^{2}\right)e^{-2H\alpha}\\
  & -\frac{i}{\omega_{cp}^{2}}x_{131}\left(r-1\right)\left(r\omega^{2}+\left(r-1\right)\omega_{0}^{2}\right)e^{-2H\left(\alpha+k\right)}\\
  & +ix_{331}\frac{1}{2}\left(r-1\right)\left(\frac{\left(r^{2}+1\right)\omega^{2}-\left(r^{2}-1\right)\omega_{0}^{2}}{\omega_{cp}^{2}}+i2\left(r-1\right)^{2}\frac{\omega}{\gamma_{c}}\right)\\
  & +ix_{331}\frac{1}{2}\left(r+1\right)\left(\frac{\left(r^{2}+1\right)\omega^{2}+\left(r^{2}-1\right)\omega_{0}^{2}}{\omega_{cp}^{2}}+i2\left(r+1\right)^{2}\frac{\omega}{\gamma_{c}}\right)e^{-2Hk}\\
@@ -1127,6 +1216,10 @@ x_{311}+x_{312}e^{-H\left(\alpha-k\right)}+x_{313}e^{-H\left(\alpha+k\right)} & 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Limit models
 \end_layout
 
 \begin_layout Subsubsection
@@ -1198,10 +1291,18 @@ For reference,
 r & =\frac{\alpha}{k}\\
 \gamma_{d} & =\frac{D}{\kappa}\beta\\
 \gamma_{\kinematicViscosity} & =\kinematicViscosity k^{2}\\
-\gamma_{e} & =\frac{k_{e}}{\sDensity\kinematicViscosity}k\\
+\gamma_{\cEMod} & =\frac{1}{\sDensity\kinematicViscosity}k\omega\cEMod\left(\omega\right)\\
 \Lambda & =\kappa\frac{k^{2}}{\beta}\\
-\omega_{cp}^{2} & =\frac{\sTension_{0}k^{3}}{\sDensity}\\
+\omega_{cp}^{2} & =\frac{\sTension}{\sDensity}k^{3}\\
 \omega_{0}^{2} & =gk+\omega_{cp}^{2}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\omega_{0}^{2} & =gk+\frac{\sTension}{\sDensity}k^{3}
 \end{align*}
 
 \end_inset
@@ -1217,12 +1318,12 @@ where
 
  is the internal damping rate of the water wave,
  
-\begin_inset Formula $\gamma_{s}$
+\begin_inset Formula $\gamma_{l}$
 \end_inset
 
  is the internal damping rate of the film,
  
-\begin_inset Formula $\gamma_{e}$
+\begin_inset Formula $\gamma_{\cEMod}$
 \end_inset
 
  is the damping rate of the film through loss to the bulk,
@@ -1232,7 +1333,7 @@ where
 
  is a dimensionless parameter that is factored out in this limit.
  Note that the ratio 
-\begin_inset Formula $\frac{\gamma_{e}}{\gamma_{d}}$
+\begin_inset Formula $\frac{\gamma_{\cEMod}}{\gamma_{d}}$
 \end_inset
 
  is a Marangoni number - it is the ratio of the horizontal dilatational relaxation rate to the vertical diffusive relaxation rate.
@@ -1246,10 +1347,10 @@ In the limit of a deep container (shallow ripples/large
 ),
  all but the exponent-free terms vanish and we are left with
 \begin_inset Formula 
-\begin{align*}
--\frac{\Lambda\omega_{cp}^{2}}{r-1}p\left(\omega\right) & =\frac{\gamma_{e}}{\gamma_{d}}\left(r\omega^{2}-\left(r-1\right)\omega_{0}^{2}\right)\\
- & +\left(1-i\frac{\omega}{\gamma_{d}}\right)\left(\left(r^{2}+1\right)\omega^{2}+i2\left(r-1\right)^{2}\gamma_{\kinematicViscosity}\omega-\left(r^{2}-1\right)\omega_{0}^{2}\right)
-\end{align*}
+\begin{align}
+-\frac{\Lambda\omega_{cp}^{2}}{r-1}p\left(\omega\right) & =-i\frac{\gamma_{\cEMod}}{\gamma_{d}}\left(r\omega^{2}-\left(r-1\right)\omega_{0}^{2}\right)\label{eq:dispersion-equation}\\
+ & +\left(1-i\frac{\omega}{\gamma_{d}}\right)\left(\left(r^{2}+1\right)\omega^{2}-\left(r^{2}-1\right)\omega_{0}^{2}+i2\left(r-1\right)^{2}\gamma_{\kinematicViscosity}\omega\right)\nonumber 
+\end{align}
 
 \end_inset
 
@@ -1263,131 +1364,47 @@ in polluted cases,
 \end_inset
 
 in the clean case.
-\end_layout
+ Also,
+ if we neglect the bulk diffusive part,
+ i.e.
+ take the insoluble limit,
+ we get
+\begin_inset Formula 
+\begin{align*}
+i\frac{\Lambda\omega_{cp}^{2}\sDensity\kinematicViscosity\omega k}{\left(r-1\right)^{2}\left(1-i\frac{\omega}{\gamma_{d}}\right)}p\left(\omega\right) & =i\frac{\sDensity\kinematicViscosity\omega k}{r-1}\cdot i\frac{\gamma_{E}}{\omega}\left(r\omega^{2}-\left(r-1\right)\omega_{0}^{2}\right)\\
+ & -i\frac{\sDensity\kinematicViscosity\omega k}{r-1}\cdot\left(\left(r^{2}+1\right)\omega^{2}-\left(r^{2}-1\right)\omega_{0}^{2}+i2\left(r-1\right)^{2}\gamma_{\kinematicViscosity}\omega\right)\\
+ & =\left(-\sDensity\kinematicViscosity k\gamma_{E}-i\sDensity\kinematicViscosity\left(r+1\right)k\omega\right)\left(\omega^{2}-\omega_{0}^{2}+\frac{1}{r-1}\omega^{2}\right)\\
+ & -i\sDensity\kinematicViscosity\omega k\cdot\left(i2\left(r-1\right)\kinematicViscosity k^{2}\omega-\omega^{2}\right)\\
+ & =\left(-E\left(\omega\right)k^{2}-i\sDensity\kinematicViscosity\left(\alpha+k\right)\omega\right)\left(\omega^{2}-\omega_{0}^{2}+i\kinematicViscosity\left(\alpha+k\right)k\omega\right)\\
+ & -\sDensity\kinematicViscosity^{2}k\left(\alpha-k\right)^{2}\omega^{2},
+\end{align*}
 
-\begin_layout Subsubsection
-Order of magnitude estimations
+\end_inset
+
+which reproduces Jayalakshmi et al.
+ (1994).
 \end_layout
 
 \begin_layout Standard
-Let us define 
+We may also put the polluted dispersion equation in the following form:
 \begin_inset Formula 
 \begin{align*}
-q\left(x\right) & =\frac{\gamma_{e}}{\gamma_{d}}\left(rx^{2}-\left(r-1\right)x_{0}^{2}\right)\\
- & +\left(1-i\frac{x}{\gamma_{d}}\right)\left(\left(r^{2}+1\right)x^{2}+i2\left(r-1\right)^{2}\gamma_{\kinematicViscousity}x-\left(r^{2}-1\right)x_{0}^{2}\right).
+0 & =\left(-i\left(r-1\right)\frac{\gamma_{\cEMod}}{\gamma_{d}}+\left(r^{2}-1\right)\left(1-i\frac{\omega}{\gamma_{d}}\right)\right)\left(\omega^{2}-\omega_{0}^{2}\right)\\
+ & -i\frac{\gamma_{\cEMod}}{\gamma_{d}}\omega^{2}\\
+ & +\left(1-i\frac{\omega}{\gamma_{d}}\right)\left(i2\left(r-1\right)^{2}\gamma_{\kinematicViscosity}\omega+2\omega^{2}\right)
 \end{align*}
 
 \end_inset
 
-We are interested in the leading order 
-\end_layout
-
-\begin_layout Standard
-For 
-\begin_inset Formula $\sDensity\sim1000\frac{kg}{m^{3}}$
+which emphasizes the components that are responsible to making the real part of the dispersion more or less similar to 
+\begin_inset Formula $\omega_{0}$
 \end_inset
 
-,
- 
-\begin_inset Formula $\sTension_{0}\sim0.1\frac{N}{m}$
-\end_inset
-
-,
- 
-\begin_inset Formula $k_{e}\sim0.01\frac{N}{m}$
-\end_inset
-
-,
- 
-\begin_inset Formula $\kinematicViscousity\sim10^{-6}\frac{m^{2}}{s}$
-\end_inset
-
-,
- 
-\begin_inset Formula $D\sim10^{-10}\frac{m^{2}}{s}$
-\end_inset
-
-,
- 
-\begin_inset Formula $\kappa\sim10^{-5}m$
-\end_inset
-
-,
- and estimating around 
-\begin_inset Formula $K:=400\frac{rad}{m}$
-\end_inset
-
-,
- 
-\begin_inset Formula $\Omega:100\frac{rad}{s}$
-\end_inset
-
- (
-\begin_inset Formula $\sim15Hz$
-\end_inset
-
-,
- about the gravity-capillary crossover),
- 
-\begin_inset Formula $\tilde{\omega}=\frac{\omega}{\Omega}$
-\end_inset
-
-,
- 
-\begin_inset Formula $\tilde{k}=\frac{k}{K}$
-\end_inset
-
-,
- we find
-\begin_inset Formula 
-\begin{align*}
-r & \sim\left(1-i\right)\frac{1}{\sqrt{\kinematicViscousity}}\frac{\sqrt{\omega}}{k}\sim20\left(1-i\right)\frac{\sqrt{\tilde{\omega}}}{\tilde{k}},\\
-r^{2} & \sim\frac{1}{\kinematicViscousity}\frac{\omega}{k^{2}}\sim400\frac{\tilde{\omega}}{\tilde{k}^{2}},\\
-\gamma_{d} & \sim10\left(1-i\right)s^{-1}\sqrt{\tilde{\omega}}\\
-\gamma_{\kinematicViscousity} & \sim10^{-1}s^{-1}\tilde{k}^{2}\\
-\gamma_{e} & \sim4\cdot10^{3}s^{-1}\tilde{k}\\
-\omega_{0}^{2} & \sim4\cdot10^{3}s^{-2}\tilde{k}+6\cdot10^{3}s^{-2}\tilde{k}^{3}
-\end{align*}
-
-\end_inset
-
-and since we expect 
-\begin_inset Formula $\frac{\sqrt{\tilde{\omega}}}{\tilde{k}}$
-\end_inset
-
- to be approximately in the range 
-\begin_inset Formula $\left(0.1,10\right)$
-\end_inset
-
-,
- we may neglect the 1 in 
-\begin_inset Formula $r$
-\end_inset
-
- expressions,
- and solve the simplified equation
-\begin_inset Formula 
-\begin{align*}
-0 & \sim\left(\frac{\gamma_{e}}{\gamma_{d}}+\left(1-i\frac{\omega}{\gamma_{d}}\right)r\right)\left(\omega^{2}-\omega_{0}^{2}\right)+2\gamma_{\kinematicViscousity}\left(\frac{\omega}{\gamma_{d}}+i\right)r\omega\\
- & \sim4\cdot10^{2}\left(10-i\left(1+\left(1-i\right)10\sqrt{\tilde{\omega}}\right)\right)\left(\tilde{\omega}^{2}-\left(0.4\tilde{k}+0.6\tilde{k}^{3}\right)\right)+\left(1+10\left(1-i\right)\sqrt{\tilde{\omega}}\right)\tilde{\omega}^{2}
-\end{align*}
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{align*}
-0 & \sim10^{6}\left(6\left(1+\left(1-i\right)10\sqrt{\tilde{\omega}}\right)\frac{\tilde{\omega}}{\tilde{k}^{2}}+1\right)\left(10^{4}\tilde{\omega}^{2}-4\cdot10^{3}\tilde{k}-6\cdot10^{3}\tilde{k}^{3}\right)\\
- & +i10^{7}\left(1+\left(1-i\right)10\sqrt{\tilde{\omega}}\right)\tilde{\omega}^{2}
-\end{align*}
-
-\end_inset
-
-
+.
 \end_layout
 
 \begin_layout Subsubsection
-Elastic modulus
+Viscoelastic modulus
 \end_layout
 
 \begin_layout Standard
@@ -1467,26 +1484,180 @@ nolink "false"
 ,
 \begin_inset Formula 
 \begin{align*}
-\pi:=\sTension_{0}-\sTension & =\frac{k_{e}}{D}\tilde{\delta\sBulkCo}\left(z=0\right)\\
-\implies\pi\left(\omega,m,n\right) & =\frac{k_{e}}{D}\tilde{\delta\sBulkCo}\left(\omega,m,n,0\right).
+\sPressure\left(t,x,y\right) & =\kappa\sSurfCo_{0}^{-1}\int_{-\infty}^{\infty}\cEMod\left(t-t'\right)\partial_{t'}\delta\sBulkCo\left(t',x,y,0\right)dt'\\
+\implies\sPressure\left(\omega,m,n\right) & =-i\omega\kappa\sSurfCo_{0}^{-1}\cEMod\left(\omega\right)\delta\sBulkCo\left(\omega,m,n,0\right)
 \end{align*}
 
 \end_inset
 
-Plugging in the functional form we now find
+Plugging in the functional form,
+ in the deep water approximation,
+ we now find
 \begin_inset Formula 
 \begin{align*}
-\tilde{A}_{\delta\sBulkCo}\left(\omega,m,n\right) & =\frac{i\omega}{\frac{1}{\kappa}\beta\left(1-e^{-2\beta H}\right)-i\frac{1}{D}\omega\left(1+e^{-2\beta H}\right)}u\left(\omega,m,n\right)\\
-\implies\pi\left(\omega,m,n\right) & =\frac{k_{e}}{D}\left(1+e^{-2\beta H}\right)\tilde{A}_{\delta\sBulkCo}\left(\omega,m,n\right)\\
- & =\frac{i\omega k_{e}\left(1+e^{-2\beta H}\right)}{\frac{D}{\kappa}\beta\left(1-e^{-2\beta H}\right)-i\omega\left(1+e^{-2\beta H}\right)}u\left(\omega,m,n\right)
+\tilde{A}_{\delta\sBulkCo}\left(\omega,m,n\right) & =-\frac{i\omega}{\frac{1}{\kappa}\beta-i\frac{1}{D}\omega}u\left(\omega,m,n\right)\\
+\implies\pi\left(\omega,m,n\right) & =-i\frac{\omega}{D}\cEMod\left(\omega\right)\tilde{A}_{\delta\sBulkCo}\left(\omega,m,n\right)\\
+ & =\frac{\omega^{2}}{\gamma_{d}-i\omega}\cEMod\left(\omega\right)u\left(\omega,m,n\right).
 \end{align*}
 
 \end_inset
 
-Hence we define the complex elastic modulus
+Next,
+ we need a model for 
+\begin_inset Formula $\cEMod\left(\omega\right)$
+\end_inset
+
+.
+ We will take the crudest assumption,
+ 
+\begin_inset Formula $\cEMod\left(t\right)=\Theta\left(t\right)\eMReal$
+\end_inset
+
+ with 
+\begin_inset Formula $\eMReal$
+\end_inset
+
+ a real constant.
+ That's called the
+\series bold
+ Gibbs elasticity 
+\series default
+model.
+ Then
 \begin_inset Formula 
 \begin{align*}
-E\left(\omega\right) & =\frac{i\omega k_{e}\left(1+e^{-2\beta H}\right)}{\frac{D}{\kappa}\beta\left(1-e^{-2\beta H}\right)-i\omega\left(1+e^{-2\beta H}\right)}.
+\sPressure\left(t,x,y\right) & =\int_{-\infty}^{t}\eMReal\partial_{t'}\frac{\delta\sSurfCo\left(t',x,y\right)}{\sSurfCo_{0}}dt'\\
+ & =\eMReal\frac{\delta\sSurfCo\left(t,x,y\right)}{\sSurfCo_{0}},
+\end{align*}
+
+\end_inset
+
+where we took the system to be at equilibrium at 
+\begin_inset Formula $t=-\infty$
+\end_inset
+
+,
+ which crudely accounts for lossy memory (e.g.
+ nonlinear effects).
+ Then the correct kernel's transform is 
+\begin_inset Formula 
+\begin{align*}
+\cEMod\left(\omega\right) & =\frac{\eMReal}{-i\omega}.
+\end{align*}
+
+\end_inset
+
+We will consider a slightly heavier model,
+ with 
+\begin_inset Formula $\cEMod\left(t\right)=\Theta\left(t\right)\eMReal+\delta\left(t\right)\eMImag$
+\end_inset
+
+.
+ So 
+\begin_inset Formula 
+\begin{align*}
+\sPressure\left(t,x,y\right) & =\eMReal\frac{\delta\sSurfCo\left(t,x,y\right)}{\sSurfCo_{0}}+\eMImag\partial_{t}\frac{\delta\sSurfCo\left(t,x,y\right)}{\sSurfCo_{0}}\\
+\implies\cEMod\left(\omega\right) & =\frac{\eMReal}{-i\omega}+\eMImag.
+\end{align*}
+
+\end_inset
+
+Letting 
+\begin_inset Formula $\gamma_{e}:=\frac{\eMReal}{\sDensity\kinematicViscosity}k$
+\end_inset
+
+ and 
+\begin_inset Formula $\gamma_{l}:=\frac{\eMReal}{\eMImag}$
+\end_inset
+
+,
+ the dispersion then becomes
+\begin_inset Formula 
+\begin{align}
+0 & =\frac{\gamma_{e}}{\gamma_{d}}\left(1-i\frac{\omega}{\gamma_{l}}\right)\left(r\omega^{2}-\left(r-1\right)\omega_{0}^{2}\right)\label{eq:dispersion_final}\\
+ & +\left(1-i\frac{\omega}{\gamma_{d}}\right)\left(\left(r^{2}+1\right)\omega^{2}-\left(r^{2}-1\right)\omega_{0}^{2}+i2\left(r-1\right)^{2}\gamma_{\kinematicViscosity}\omega\right)\nonumber \\
+ & =\left(\frac{\gamma_{e}}{\gamma_{d}}\left(1-i\frac{\omega}{\gamma_{l}}\right)r+\left(1-i\frac{\omega}{\gamma_{d}}\right)\left(r^{2}-1\right)\right)\left(\omega^{2}-\omega_{0}^{2}\right)\nonumber \\
+ & +\frac{\gamma_{e}}{\gamma_{d}}\left(1-i\frac{\omega}{\gamma_{l}}\right)\omega_{0}^{2}\nonumber \\
+ & +i4\gamma_{\kinematicViscosity}\left(1-i\frac{\omega}{\gamma_{d}}\right)\left(r-1\right)r\omega\nonumber 
+\end{align}
+
+\end_inset
+
+Expansion should lead to a decrease in stress,
+ so checking at 
+\begin_inset Formula $\gamma_{d}\rightarrow0$
+\end_inset
+
+ e.g.
+ in the simplest model we see that
+\begin_inset Formula 
+\begin{align*}
+\pi\left(\omega,m,n\right) & =i\frac{\omega^{2}}{\omega}\cEMod\left(\omega\right)u\left(\omega,m,n\right)\\
+ & =-\eMReal u\left(\omega,m,n\right),
+\end{align*}
+
+\end_inset
+
+so we define the (
+\begin_inset Quotes eld
+\end_inset
+
+dressed
+\begin_inset Quotes erd
+\end_inset
+
+) elastic modulus
+\begin_inset Formula 
+\begin{align*}
+E\left(\omega\right) & =-\frac{\omega^{2}}{\gamma_{d}-i\omega}\cEMod\left(\omega\right),
+\end{align*}
+
+\end_inset
+
+so that
+\begin_inset Formula 
+\begin{align*}
+\eMReal-i\omega\eMImag & =\left(1+i\frac{\gamma_{d}}{\omega}\right)E\left(\omega\right).
+\end{align*}
+
+\end_inset
+
+In the low dissipation limit we find
+\begin_inset Formula 
+\begin{align*}
+\beta & \approx\frac{1-i}{\sqrt{2}}\sqrt{\frac{\omega}{D}}\\
+\implies\eMReal-i\omega\eMImag & \approx\left(1+\frac{1+i}{\sqrt{2}}\sqrt{\frac{D}{\omega\kappa^{2}}}\right)E\left(\omega\right)\\
+ & \approx E\left(\omega\right),
+\end{align*}
+
+\end_inset
+
+that is,
+ with zero dissipation there is no dressing (no interaction between surface and bulk fields) and the dressed modulus is the bare modulus.
+\end_layout
+
+\begin_layout Standard
+As a last note,
+ let's plug 
+\begin_inset Formula $E$
+\end_inset
+
+ back into the dispersion relation.
+ Let 
+\begin_inset Formula 
+\begin{align*}
+\gamma_{E} & :=\frac{E\left(\omega\right)}{\sDensity\kinematicViscosity}k\\
+ & =-\frac{\omega}{\gamma_{d}-i\omega}\gamma_{\cEMod}\\
+\implies\gamma_{\cEMod} & =-\gamma_{d}\frac{1-i\frac{\omega}{\gamma_{d}}}{\omega}\gamma_{E},
+\end{align*}
+
+\end_inset
+
+then the dispersion relation is
+\begin_inset Formula 
+\begin{align*}
+0 & =i\gamma_{E}\left(r\omega^{2}-\left(r-1\right)\omega_{0}^{2}\right)\\
+ & +\omega\left(\left(r^{2}+1\right)\omega^{2}-\left(r^{2}-1\right)\omega_{0}^{2}+i2\left(r-1\right)^{2}\gamma_{\kinematicViscosity}\omega\right),
 \end{align*}
 
 \end_inset
@@ -1494,24 +1665,427 @@ E\left(\omega\right) & =\frac{i\omega k_{e}\left(1+e^{-2\beta H}\right)}{\frac{D
 
 \end_layout
 
+\begin_layout Subsubsection
+Compare to Bock's model
+\end_layout
+
 \begin_layout Standard
-In the deep water approximation we then find
+Bock's model is
 \begin_inset Formula 
 \begin{align*}
-\pi\left(\omega,m,n\right) & =\frac{i\omega k_{e}}{\frac{D}{\kappa}\beta-i\omega}u\left(\omega,m,n\right)
+0 & =\begin{vmatrix}\sDensity\omega^{2}-\sDensity gk+2i\omega\sDensity\kinematicViscosity k^{2}-\sTension k^{3} & -i\sDensity gk-2\omega\sDensity\kinematicViscosity\alpha k-i\sTension k^{3}\\
+2\omega\sDensity\kinematicViscosity k^{2}+i\epsilon k^{3} & i\omega\sDensity\kinematicViscosity\left(k^{2}+\alpha^{2}\right)-\cEMod\alpha k^{2}
+\end{vmatrix}\\
+\implies0 & =\left(\omega^{2}+i2\kinematicViscosity\omega k^{2}-\omega_{0}^{2}\right)\left(\omega\left(1+r^{2}\right)+i\frac{\cEMod}{\sDensity\kinematicViscosity}\alpha\right)\\
+ & -\left(i2\kinematicViscosity\omega\alpha k-\omega_{0}^{2}\right)\left(2\omega+i\frac{\cEMod}{\sDensity\kinematicViscosity}k\right)\\
+\implies0 & =\gamma_{\cEMod}\left(r\omega^{2}-\left(r-1\right)\omega_{0}^{2}\right)\\
+ & -i\omega\left(\left(1+r^{2}\right)\omega^{2}+i2\gamma_{\kinematicViscosity}\left(r-1\right)^{2}\omega-\left(r^{2}-1\right)\omega_{0}^{2}\right)
 \end{align*}
 
 \end_inset
 
-and the elastic modulus is therefore
+which is exactly the insoluble limit,
+ 
+\begin_inset Formula $\kappa\rightarrow\infty$
+\end_inset
+
+,
+ (or 
+\begin_inset Formula $\gamma_{d}\rightarrow0$
+\end_inset
+
+) of the effective dispersion equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dispersion-equation"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ with 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ being the complex modulus in 
+\begin_inset Formula $\left(\omega,k\right)$
+\end_inset
+
+ space.
+\end_layout
+
+\begin_layout Subsubsection
+Analytical approximation
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Subsubsection
+Order of magnitude estimations
+\end_layout
+
+\begin_layout Plain Layout
+First,
+ let 
+\begin_inset Formula $K=363.8\frac{rad}{m}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\Omega=84.45\frac{rad}{s}$
+\end_inset
+
+ be some reference,
+ and let 
+\begin_inset Formula $\tilde{\omega}=\frac{\omega}{\Omega}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\tilde{k}=\frac{k}{K}$
+\end_inset
+
+.
+ The wisdom is that in the range,
+ say 
+\begin_inset Formula $\left(5,50\right)Hz$
+\end_inset
+
+,
+ which roughly corresponds to the range where surface tension and gravity are of the same order of magnitude in contribution to the naive dispersion,
+ the ratio 
+\begin_inset Formula $\frac{\sqrt{\tilde{\omega}}}{\tilde{k}}\in\left(\frac{1}{3},3\right)$
+\end_inset
+
+ (actually even tighter),
+ while 
+\begin_inset Formula $\frac{\sqrt{\omega}}{k}>0.01\frac{\sqrt{Hz}}{rad/m}$
+\end_inset
+
+,
+ so if the kinematic viscosity is 
+\begin_inset Formula $\kinematicViscosity\approx10^{-6}\frac{m^{2}}{s}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\frac{\omega}{\kinematicViscosity k^{2}}>100$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha=k\sqrt{1-i\frac{\omega}{\kinematicViscosity k^{2}}}\approx\frac{1-i}{2}\sqrt{\frac{\omega}{\kinematicViscosity}}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $D$
+\end_inset
+
+ is much smaller in MKS,
+ so we can safely take 
+\begin_inset Formula $\beta\approx\frac{1-i}{2}\sqrt{\frac{\omega}{D}}$
+\end_inset
+
+.
+ I will also approximate here 
+\begin_inset Formula $\cEMod\left(\omega\right)=\cEMod_{r}$
+\end_inset
+
+,
+ a constant.
+ Then 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We are interested in the leading order expansion of the above expression in every physical parameter.
+\end_layout
+
+\begin_layout Plain Layout
+For 
+\begin_inset Formula $\sDensity\sim1000\frac{kg}{m^{3}}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\sTension_{0}\sim0.1\frac{N}{m}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $k_{e}\sim0.01\frac{N}{m}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\kinematicViscosity\sim10^{-6}\frac{m^{2}}{s}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $D\sim10^{-10}\frac{m^{2}}{s}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\kappa\sim10^{-5}m$
+\end_inset
+
+,
+ and estimating around 
+\begin_inset Formula $K:=400\frac{rad}{m}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\Omega:100\frac{rad}{s}$
+\end_inset
+
+ (
+\begin_inset Formula $\sim15Hz$
+\end_inset
+
+,
+ about the gravity-capillary crossover),
+ 
+\begin_inset Formula $\tilde{\omega}=\frac{\omega}{\Omega}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\tilde{k}=\frac{k}{K}$
+\end_inset
+
+,
+ we find
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{align*}
-E\left(\omega\right) & =\frac{i\omega k_{e}}{\frac{D}{\kappa}\beta-i\omega}.
+r & =\frac{1-i}{\sqrt{2}}\sqrt{\frac{\omega}{\kinematicViscosity k^{2}}}\approx\frac{1-i}{\sqrt{2}}\sqrt{\frac{\Omega}{\kinematicViscosity K^{2}}}\frac{\sqrt{\tilde{\omega}}}{\tilde{k}},\\
+r^{2} & \approx-i\frac{\Omega}{\kinematicViscosity K^{2}}\frac{\tilde{\omega}}{\tilde{k}^{2}},\\
+\gamma_{d} & \approx\frac{1-i}{\sqrt{2}}\frac{\sqrt{D\Omega}}{\kappa}\sqrt{\tilde{\omega}},\\
+\gamma_{\kinematicViscosity} & =\kinematicViscosity K^{2}\tilde{k}^{2},\\
+\gamma_{\cEMod} & =\frac{\cEMod_{r}K}{\sDensity\kinematicViscosity}\tilde{k},\\
+\omega_{0}^{2} & =gK\tilde{k}+\frac{\sTension_{0}K^{3}}{\sDensity}\tilde{k}^{3},
+\end{align*}
+
+\end_inset
+
+so since 
+\begin_inset Formula $\frac{\Omega}{\kinematicViscosity K^{2}}\sim500$
+\end_inset
+
+,
+ we take the leading order approximation 
+\begin_inset Formula $r^{2}\pm1\approx r^{2}$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\nospellcheck off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+,
+ and
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\nospellcheck default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ the dispersion equation becomes
+\begin_inset Formula 
+\begin{align}
+0 & \approx\left(\frac{\gamma_{\cEMod}}{\gamma_{d}}+r\right)\left(\omega^{2}-\omega_{0}^{2}\right)\label{eq:approx-dispersion}\\
+ & +\frac{\gamma_{\cEMod}}{\gamma_{d}}\frac{1}{r}\omega_{0}^{2}\nonumber \\
+ & +i2\gamma_{\kinematicViscosity}\left(1-i\frac{\omega}{\gamma_{d}}\right)\left(r-2\right)\omega\nonumber \\
+\implies0 & \approx\left(\frac{\cEMod_{r}\kappa}{\sDensity\sqrt{\kinematicViscosity^{3}D}}-i\left(1+\frac{1-i}{\sqrt{2}}\sqrt{\frac{\kappa^{2}\Omega}{D}}\sqrt{\tilde{\omega}}\right)\frac{\Omega}{\kinematicViscosity K^{2}}\frac{\tilde{\omega}}{\tilde{k}^{2}}\right)\left(\tilde{\omega}^{2}-\frac{\omega_{0}^{2}}{\Omega^{2}}\right)\nonumber \\
+ & +\frac{1+i}{\sqrt{2}}\frac{\cEMod_{r}\kappa}{\sDensity\sqrt{\kinematicViscosity^{3}D}}\sqrt{\frac{\kinematicViscosity K^{2}}{\Omega}}\frac{\tilde{k}}{\sqrt{\tilde{\omega}}}\frac{\omega_{0}^{2}}{\Omega^{2}}\nonumber \\
+ & +2\left(1+\frac{1-i}{\sqrt{2}}\sqrt{\frac{\kappa^{2}\Omega}{D}}\sqrt{\tilde{\omega}}\right)\left(1-2\frac{1+i}{\sqrt{2}}\sqrt{\frac{\kinematicViscosity K^{2}}{\Omega}}\frac{\tilde{k}}{\sqrt{\tilde{\omega}}}\right)\tilde{\omega}^{2},\nonumber 
+\end{align}
+
+\end_inset
+
+and the viscoelastic modulus takes the form
+\begin_inset Formula 
+\begin{align*}
+\cEMod & \approx-\frac{\sDensity\kinematicViscosity}{K\tilde{k}}\frac{\left(\frac{1-i}{\sqrt{2}}\sqrt{\frac{\Omega}{\kinematicViscosity K^{2}}}\frac{\sqrt{\tilde{\omega}}}{\tilde{k}}+1\right)\left(\tilde{\omega}^{2}-\frac{\omega_{0}^{2}}{\Omega^{2}}\right)+i4\frac{1-i}{\sqrt{2}}\sqrt{\frac{\Omega}{\kinematicViscosity}}\sqrt{\tilde{\omega}}\kinematicViscosity K\tilde{k}\frac{\tilde{\omega}}{\Omega}}{\tilde{\omega}^{2}-\frac{\omega_{0}^{2}}{\Omega^{2}}+i\left(\frac{1-i}{\sqrt{2}}\sqrt{\frac{\Omega}{\kinematicViscosity K^{2}}}\frac{\sqrt{\tilde{\omega}}}{\tilde{k}}+1\right)\kinematicViscosity K^{2}\tilde{k}^{2}\frac{\tilde{\omega}}{\Omega}}\left(\frac{D}{\kappa}\frac{1-i}{2}\sqrt{\frac{\Omega\tilde{\omega}}{D}}-i\Omega\tilde{\omega}\right).
+\end{align*}
+
+\end_inset
+
+Next I evaluate the coefficients.
+\begin_inset Formula 
+\begin{align*}
+\frac{\kappa\cEMod_{r}}{\sDensity\sqrt{\kinematicViscosity^{3}D}} & \approx2\cdot10^{4},\\
+\sqrt{\frac{\kappa^{2}\Omega}{D}} & \approx9,\\
+\frac{\Omega}{\kinematicViscosity K^{2}} & \approx640\\
+\implies\sqrt{\frac{\Omega}{\kinematicViscosity K^{2}}} & \approx25\cdot,\\
+g\frac{K}{\Omega^{2}} & \approx0.5,\\
+\frac{\sTension_{0}}{\sDensity}\frac{K^{3}}{\Omega^{2}} & \approx0.5,
+\end{align*}
+
+\end_inset
+
+so we arrive at
+\begin_inset Formula 
+\begin{align*}
+0 & \approx\left(2\cdot10^{4}-i\left(1+\frac{1-i}{\sqrt{2}}9\sqrt{\tilde{\omega}}\right)640\frac{\tilde{\omega}}{\tilde{k}^{2}}\right)\left(\tilde{\omega}^{2}-0.5\left(\tilde{k}+\tilde{k}^{3}\right)\right)\\
+ & +\frac{1+i}{\sqrt{2}}\cdot400\frac{\tilde{k}}{\sqrt{\tilde{\omega}}}\left(\tilde{k}+\tilde{k}^{3}\right)\\
+ & +2\left(1+\frac{1-i}{\sqrt{2}}9\sqrt{\tilde{\omega}}\right)\left(1-2\frac{1+i}{\sqrt{2}}\frac{1}{8\sqrt{10}}\frac{\tilde{k}}{\sqrt{\tilde{\omega}}}\right)\tilde{\omega}^{2}
+\end{align*}
+
+\end_inset
+
+and for the elastic modulus
+\begin_inset Formula 
+\begin{align*}
+\cEMod & \approx-\frac{10^{-3}\Omega}{360}\frac{\left(\frac{1-i}{\sqrt{2}}25\frac{\sqrt{\tilde{\omega}}}{\tilde{k}}+1\right)\left(\tilde{\omega}^{2}-0.5\tilde{k}-0.5\tilde{k}^{3}\right)+i4\frac{1-i}{\sqrt{2}}\frac{1}{25}\tilde{k}\tilde{\omega}^{3/2}}{\tilde{\omega}^{2}-0.5\tilde{k}-0.5\tilde{k}^{3}+i\left(\frac{1-i}{\sqrt{2}}25\frac{\sqrt{\tilde{\omega}}}{\tilde{k}}+1\right)\frac{1}{640}\tilde{k}^{2}\tilde{\omega}}\cdot\frac{\frac{1-i}{2}\sqrt{\frac{D}{\kappa^{2}\Omega}}\sqrt{\tilde{\omega}}-i\tilde{\omega}}{\tilde{k}}.
+\end{align*}
+
+\end_inset
+
+(We are interested in 
+\begin_inset Formula $\tilde{\omega}\in\left(1/4,4\right)$
+\end_inset
+
+.)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Looking at the dispersion relation in its second form,
+ if the first line is large w.r.t.
+ the other two,
+ then up to sign,
+ 
+\begin_inset Formula $\omega\approx\omega_{0}$
+\end_inset
+
+.
+ I perturb about this root,
+ on top of 
+\begin_inset Formula $r\approx\frac{1-i}{\sqrt{2}}\sqrt{\frac{\omega}{\kinematicViscosity k^{2}}}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\beta\approx\frac{1-i}{\sqrt{2}}\sqrt{\frac{\omega}{D}}$
+\end_inset
+
+ approximations:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\omega & =\omega_{0}\left(1+\epsilon\right)\\
+\implies r & =\frac{1-i}{\sqrt{2}}\sqrt{\frac{\omega_{0}}{\gamma_{\kinematicViscosity}}}\left(1+\frac{1}{2}\epsilon\right),\\
+r^{2}-1 & =-i\frac{\omega_{0}}{\gamma_{\kinematicViscosity}}\left(1+\epsilon\right),\\
+\gamma_{d} & =\frac{1-i}{\sqrt{2}}\sqrt{\frac{D\omega_{0}}{\kappa^{2}}}\left(1+\frac{1}{2}\epsilon\right)\\
+0 & =\left(\frac{\gamma_{e}}{\gamma_{d}}\left(1-i\frac{\omega}{\gamma_{l}}\right)r+\left(1-i\frac{\omega}{\gamma_{d}}\right)\left(r^{2}-1\right)\right)2\epsilon\\
+ & +\frac{\gamma_{e}}{\gamma_{d}}\left(\frac{\omega_{0}}{\omega}-i\frac{\omega_{0}}{\gamma_{l}}\right)\\
+ & +i4\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}\left(1-i\frac{\omega}{\gamma_{d}}\right)\left(r-1\right)r\\
+ & =\left(\frac{\gamma_{e}}{\omega_{0}}\left(1-i\frac{\omega}{\gamma_{l}}\right)r\right)2\epsilon\\
+ & +\frac{1-i}{\sqrt{2}}\sqrt{\frac{D}{\kappa^{2}\omega_{0}}}\left(-i\frac{\omega_{0}}{\gamma_{\kinematicViscosity}}+3-2\frac{1+i}{\sqrt{2}}\sqrt{\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}}+i\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}\right)2\epsilon\\
+ & +\left(-\frac{\omega_{0}}{\gamma_{\kinematicViscosity}}-i4-3\frac{1-i}{\sqrt{2}}\sqrt{\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}}+2\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}\right)2\epsilon\\
+ & +\frac{\gamma_{e}}{\omega_{0}}\left(1-\epsilon-i\frac{\omega_{0}}{\gamma_{l}}\right)\\
+ & +4\left(\frac{1-i}{\sqrt{2}}\sqrt{\frac{D}{\kappa^{2}\omega_{0}}}-i\right)\left(1-\frac{1+i}{\sqrt{2}}\sqrt{\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}}+i\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}\right)\\
+\\ & =\frac{\gamma_{e}}{\omega_{0}}\left(\left(1-i\frac{\omega}{\gamma_{l}}\right)r-1\right)2\epsilon\\
+ & +\frac{1-i}{\sqrt{2}}\sqrt{\frac{D}{\kappa^{2}\omega_{0}}}\left(-i\frac{\omega_{0}}{\gamma_{\kinematicViscosity}}+3-2\frac{1+i}{\sqrt{2}}\sqrt{\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}}+i\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}\right)2\epsilon\\
+ & +\left(-\frac{\omega_{0}}{\gamma_{\kinematicViscosity}}-i4-3\frac{1-i}{\sqrt{2}}\sqrt{\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}}+2\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}\right)2\epsilon\\
+ & +\frac{\gamma_{e}}{\omega_{0}}\left(1-i\frac{\omega_{0}}{\gamma_{l}}\right)\\
+ & +4\left(\frac{1-i}{\sqrt{2}}\sqrt{\frac{D}{\kappa^{2}\omega_{0}}}-i\right)\left(1-\frac{1+i}{\sqrt{2}}\sqrt{\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}}+i\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}\right)\\
+\implies\epsilon & =-\frac{1}{2}\frac{\frac{\gamma_{e}}{\omega_{0}}\left(1-i\frac{\omega_{0}}{\gamma_{l}}\right)+4\left(\frac{1-i}{\sqrt{2}}\sqrt{\frac{D}{\kappa^{2}\omega_{0}}}-i\right)\left(1-\frac{1+i}{\sqrt{2}}\sqrt{\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}}+i\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}\right)}{\frac{\gamma_{e}}{\omega_{0}}\left(\left(1-i\frac{\omega_{0}}{\gamma_{l}}\right)\frac{1-i}{\sqrt{2}}\sqrt{\frac{\omega_{0}}{\gamma_{\kinematicViscosity}}}-1\right)-\frac{\omega_{0}}{\gamma_{\kinematicViscosity}}-i4-3\frac{1-i}{\sqrt{2}}\sqrt{\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}}+2\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}+\frac{1+i}{\sqrt{2}}\sqrt{\frac{D}{\kappa^{2}\omega_{0}}}\left(-\frac{\omega_{0}}{\gamma_{\kinematicViscosity}}-i3-2\frac{1-i}{\sqrt{2}}\sqrt{\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}}+\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}\right)}
+\end{align*}
+
+\end_inset
+
+For small 
+\begin_inset Formula $k$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\omega$
+\end_inset
+
+ we have then
+\begin_inset Formula 
+\begin{align*}
+\epsilon & =-\frac{1}{2}\sqrt{\frac{\gamma_{\kinematicViscosity}}{\omega_{0}}}\frac{\frac{\gamma_{e}}{\omega_{0}}-i4\left(1+\frac{1+i}{\sqrt{2}}\sqrt{\frac{D}{\kappa^{2}\omega_{0}}}\right)}{\frac{1-i}{\sqrt{2}}\frac{\gamma_{e}}{\omega_{0}}-\left(1+\frac{1+i}{\sqrt{2}}\sqrt{\frac{D}{\kappa^{2}\omega_{0}}}\right)\sqrt{\frac{\omega_{0}}{\gamma_{\kinematicViscosity}}}}
 \end{align*}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+Crossing points
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+As far as the first term in the numerator is much larger than the second,
+ we have two regimes.
+ At low frequencies (
+\begin_inset Formula $f<\sim5Hz$
+\end_inset
+
+),
+ the nonelastic terms in the
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We are interested in points where various restoring forces switch dominance role in determining the frequency at a given wavelength.
+ Since 
+\begin_inset Formula $\omega_{0}$
+\end_inset
+
+ appears as a complete parameter in the updated dispersion,
+ the crossing point between gravity and water's surface tension stays the same,
+ up to an isolated (though maybe significant) adjustment by the static surface pressure 
+\begin_inset Formula $\sPressure_{0}$
+\end_inset
+
+.
+ As for other cross points,
+ since we know that the dispersion is 
 \end_layout
 
 \begin_layout Subsection

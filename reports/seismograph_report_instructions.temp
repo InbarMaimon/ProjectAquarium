@@ -1,0 +1,11 @@
+table:
+rms per seismograph per position 
+rms in the shed with no chiller
+
+graphs:
+distribution per seismograph per position per day part
+
+table: quantiles (25% 50% 75% 90% 95% 99%)
+
+discussion - important numbers, issues with the setup etc.
+a person who comes to repeat the measurement - what do they need to know? dos and don'ts

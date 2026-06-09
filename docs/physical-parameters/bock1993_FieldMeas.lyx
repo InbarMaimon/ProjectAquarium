@@ -1,0 +1,196 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsart
+\begin_preamble
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children no
+\language american
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Static and Dynamic Response of Natural Multicomponent Oceanic Surface Films to Compression and Dilation:
+ Laboratoryand Field Observation
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Subsection
+marine surfactants
+\end_layout
+
+\begin_layout Standard
+Mechanisms that control the dynamics of the biofilms:
+\end_layout
+
+\begin_layout Enumerate
+Sources and sinks (biological activity,
+ e.g.
+ microbial turnover and photochemical degradation)
+\end_layout
+
+\begin_layout Enumerate
+Currents and waves (both internal and surface)
+\end_layout
+
+\begin_layout Enumerate
+Wave breaking
+\end_layout
+
+\begin_layout Enumerate
+Wind
+\end_layout
+
+\begin_layout Enumerate
+Aerosol formation (bubbles)
+\end_layout
+
+\begin_layout Subsection
+Surface Properties of Multicomponent Films
+\end_layout
+
+\begin_layout Standard
+Relaxation timescales:
+\end_layout
+
+\begin_layout Enumerate
+Longest:
+ phase transitions and collapse.
+ Adsorption and desorption to solid particles floating in the water,
+ aggregation and gelation;
+ actual rearrangments of the 2D matrix were not observed - no plateau in the pi-A curve.
+\end_layout
+
+\begin_layout Enumerate
+Moderate:
+ adsorption and desorption.
+ Competing molecules may add or detach from the sea surface.
+\end_layout
+
+\begin_layout Enumerate
+Shortest:
+ orientational changes at the molecular level.
+\end_layout
+
+\begin_layout Subsection
+Effects of Films on Waves
+\end_layout
+
+\begin_layout Standard
+Seems that the damping of waves caused by surfactants is maximal in the frequency range between few to few hundred Hz.
+\end_layout
+
+\begin_layout Section
+Experimental methods
+\end_layout
+
+\begin_layout Standard
+[skipping]
+\end_layout
+
+\begin_layout Section
+Results and discussion
+\end_layout
+
+\begin_layout Standard
+I ended up taking from here only the single value 
+\begin_inset Formula $0.5mN/m$
+\end_inset
+
+,
+ which is what Bock claims to be a rather typical deviation of surface tension from the corresponding film-free seawater value.
+\end_layout
+
+\end_body
+\end_document

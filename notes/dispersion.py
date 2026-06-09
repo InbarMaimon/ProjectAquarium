@@ -10,7 +10,8 @@ Physical setup
   rho   : fluid density                          [kg/m³]
   nu    : kinematic viscosity                    [m²/s]
   g     : gravitational acceleration             [m/s²]
-  T0    : clean surface tension                  [N/m]
+  sig0  : clean surface tension                  [N/m]
+  sig   : polluted surface tension               [N/m]
   H     : tank depth                             [m]
   k_e   : dilatational elasticity                [N/m]
   D     : bulk diffusivity                       [m²/s]
@@ -107,6 +108,8 @@ import pandas as pd
 from pathlib import Path
 import logging
 
+import warnings
+from matplotlib.lines import Line2D
 
 # ---------------------------------------------------------------------------
 # Default physical parameters (SI)
@@ -125,12 +128,14 @@ DEFAULT_PARAMS = dict(
     rho   = seasurface_density,   # kg/m³
     nu    = kinematic_viscosity,     # m²/s
     g     = sp.constants.g,     # m/s², At sea level
-    T0    = seawater_surface_tension,    # N/m
+    sig0    = seawater_surface_tension,    # N/m
+    delsig = 0.005,
     H     = 0.20,     # m       
     k_e   = 2e-2,     # N/m
     D     = 1e-9,     # m²/s
     kappa = 1e-4,     # m, D, kappa should be typical for sea surfactants
 )
+DEFAULT_PARAMS['sig'] = DEFAULT_PARAMS['sig0'] - DEFAULT_PARAMS['delsig']
 
 # other constants
 EXP_CUTOFF = 36     # machine precision
@@ -144,9 +149,9 @@ def _sqrt_rp(z):
     return -s if s.real < 0 else s
 
 
-def _w_gc(k, rho, g, T0, H):
+def _w_gc(k, rho, g, sig, H):
     """Inviscid gravity-capillary angular frequency."""
-    return float(np.sqrt((g*k + T0*k**3/rho) * np.tanh(k*H)))
+    return float(np.sqrt((g*k + sig*k**3/rho) * np.tanh(k*H)))
 
 def _gc_root(roots):
     """Pick the forward-propagating gc branch: Re(ω) > 0, Im(ω) < 0."""
@@ -171,6 +176,24 @@ def setup_logging(session_dir, debug_mode=False):
 # ---------------------------------------------------------------------------
 # Dispersion relation, finite depth
 # ---------------------------------------------------------------------------
+def E_modulus(omega, k, params):
+    """Effective complex dilatational modulus E(omega).  Convention: dt -> -i*omega.
+    p['E_model']:
+      'gibbs'    -> E = k_e                       (real; insoluble elastic limit)
+      'two_step' -> diffusional (LvdT, step 1) x [elastic + structural Maxwell (step 2)]
+      'custom'   -> p['E_func'](omega, k, p)
+    """
+    model = params.get('E_model', 'gibbs')
+
+    if model == 'gibbs':
+        return params['k_e'] + 0j
+
+    if model == 'custom':
+        return params['E_func'](omega, k, params)
+
+    raise ValueError(f"unknown E_model {model!r}")
+
+
 def det_dispersion(w, k, params):
     """
     Dispersion relation determinant for viscous capillary-gravity waves
@@ -188,16 +211,17 @@ def det_dispersion(w, k, params):
     rho   : float    - fluid density
     nu    : float    - kinematic viscosity
     g     : float    - gravitational acceleration
-    sigma0: float    - equilibrium surface tension
+    sig   : float    - equilibrium surface tension
     D     : float    - bulk diffusivity
     kappa : float    - surface/bulk partition length
-    k_e   : float    - Gibbs elasticity (= -Gamma_0 d sigma / d Gamma)
+    k_e   : float    - Gibbs elasticity (= d sigma / d ln Gamma)
+    k_v   : float    - surfactant internal viscosity
     """
     w = complex(w)
-    rho = params['rho'];  nu = params['nu'];      T0 = params['T0'];
+    rho = params['rho'];  nu = params['nu'];      sig = params['sig'];
     g   = params['g'];    H = params['H']
     D = params['D'];      kappa = params['kappa']
-    k_e = params['k_e']
+    k_e = params['k_e'];  k_v = params['k_v']
 
     # Eigenvalues (with convention partial_t -> -i omega)
     a = _sqrt_rp(k**2 - 1j * w / nu)
@@ -206,8 +230,8 @@ def det_dispersion(w, k, params):
     # Physical frequency/rate scales
     r = a / k
     gamma_d = D * b / kappa         # diffusive frequency
-    gamma_c = T0 * k / (rho * nu)   # capillary-viscous decay rate
-    w_cp_sq = T0 * k**3 / rho       # capillary frequency squared
+    gamma_c = sig * k / (rho * nu)   # capillary-viscous decay rate
+    w_cp_sq = sig * k**3 / rho       # capillary frequency squared
     w0_sq = g * k + w_cp_sq        # gravity-capillary frequency squared
     
     # Decaying exponentials (all <= 1 in magnitude)
@@ -243,9 +267,13 @@ def det_dispersion(w, k, params):
     )
 
     # Explicit inviscid limit
-    if (k_e == 0):
+    if (k_e == 0):      # Assume nonsense in case that k_e == 0 and k_v != 0.
         return TxN
     
+    # Internal viscosity
+    gamma_l = np.inf if k_v == 0 else k_e / k_v
+    visc    = 1 - 1j * w / gamma_l 
+
     # Marangoni wavenumber (frequency-dependent)
     E_tilde = k_e / (rho * nu * D)
  
@@ -278,7 +306,7 @@ def det_dispersion(w, k, params):
     # Result from the seismic_transfer_function file was multiplied by -1 for 
     # convenience.
     # ------------------------------------------------------------------
-    return surf_stress * NxF + surf_flux * TxN
+    return surf_stress * visc * NxF + surf_flux * TxN
 
 
 # ---------------------------------------------------------------------------
@@ -297,13 +325,13 @@ def det_dispersion_deep(w, k, params):
     ----------
     w     : complex  - angular frequency
     k     : float    - wavenumber magnitude
-    params: dict     - keys rho, nu, g, T0, D, kappa, k_e
+    params: dict     - keys rho, nu, g, sig, D, kappa, k_e
     """
     w = complex(w)
-    rho = params['rho'];  nu = params['nu'];     T0 = params['T0']
+    rho = params['rho'];  nu = params['nu'];     sig = params['sig']
     g   = params['g']
     D   = params['D'];    kappa = params['kappa']
-    k_e = params['k_e']
+    k_e = params['k_e'];  k_v = params['k_v']
 
     # Eigenvalues (convention partial_t -> -i omega)
     a = _sqrt_rp(k**2 - 1j * w / nu)
@@ -313,10 +341,9 @@ def det_dispersion_deep(w, k, params):
     r        = a / k
     gamma_d  = D * b / kappa            # surface-bulk diffusive exchange rate
     gamma_nu = nu * k**2                # bulk vorticity decay rate
-    w0_sq    = g * k + T0 * k**3 / rho  # gravity-capillary frequency squared
+    w0_sq    = g * k + sig * k**3 / rho  # gravity-capillary frequency squared
 
-    rsq  = r**2
-    w_sq = w**2
+    rsq  = r**2;    w_sq = w**2
 
     # ------------------------------------------------------------------
     # T x N cross product: clean-water bracket (only exponent-free term)
@@ -325,8 +352,6 @@ def det_dispersion_deep(w, k, params):
 
     # Explicit clean-surface (no surfactant) limit
     if k_e == 0:
-        diff = 1 - 1j * w / gamma_d         # diffusive surface-bulk exchange factor
-        # print(f"ke = {k_e}\nMa * NxF = 0\ndiff * TxN = {diff * TxN}\n")
         return TxN
 
     # ------------------------------------------------------------------
@@ -335,22 +360,24 @@ def det_dispersion_deep(w, k, params):
     NxF = r * w_sq - (r - 1) * w0_sq
 
     # Coupling prefactors (deep-limit reductions of surf_stress, surf_flux)
-    # Ma(w) = (gamma_e/gamma_d)(1 - i w / gamma_s) -- complex Marangoni number;
+    # Ma(w) = (gamma_e/gamma_d) -- Marangoni number;
     # computed as k_e * k * kappa / (rho*nu*D*b).
     Ma   = k_e * k * kappa / (rho * nu * D * b)
+    gamma_l = np.inf if k_v == 0 else k_e / k_v
+    visc    = 1 - 1j * w / gamma_l
     diff = 1 - 1j * w / gamma_d         # diffusive surface-bulk exchange factor
     # print(f"ke = {k_e}\nMa * NxF = {Ma * NxF}\ndiff * TxN = {diff * TxN}\n")
-    return Ma * NxF + diff * TxN
+    return Ma * visc * NxF + diff * TxN
 
 
 def inviscid_guess(k, params):
     """
-    Inviscid gravity-capillary frequency: w0^2 = (g*k + T0*k^3/rho) * tanh(k*H).
+    Inviscid gravity-capillary frequency: w0^2 = (g*k + sig*k^3/rho) * tanh(k*H).
     Returns (w0, -w0) as starting guesses for the two propagating branches.
     """
-    g = params['g']; T0 = params['T0']; H = params['H']; nu = params['nu']
+    g = params['g']; sig = params['sig']; H = params['H']; nu = params['nu']
     rho = params['rho']
-    w0_sq = (g * k + T0 * k**3 / rho) * np.tanh(k * H)
+    w0_sq = (g * k + sig * k**3 / rho) * np.tanh(k * H)
     w0 = np.sqrt(w0_sq)
     gamma = 2 * nu * k**2  # leading-order viscous damping
     return [w0 - 1j * gamma, -w0 - 1j * gamma]
@@ -498,7 +525,7 @@ def dispersion_curve(k_array, params, tol=1e-12, continuate=True, method='newton
     -------
     roots : array of shape (len(k_array), n_branches) - complex frequencies
     """
-    print(f"mode = {mode}")
+    # print(f"mode = {mode}")
 
     all_roots = []
     prev_roots = None
@@ -511,7 +538,7 @@ def dispersion_curve(k_array, params, tol=1e-12, continuate=True, method='newton
                 guesses = inviscid_guess(k, params)
             roots = find_roots_newton(k, params, guesses=guesses, tol=tol, mode=mode)
         elif method == 'contour':
-            w0 = np.sqrt((params['g'] * k + params['T0'] * k**3 / params['rho'])
+            w0 = np.sqrt((params['g'] * k + params['sig'] * k**3 / params['rho'])
                          * np.tanh(k * params['H']))
             gamma = 2 * params['nu'] * k**2
             roots = find_roots_contour(k, params,
@@ -545,19 +572,22 @@ def run_sanity_checks(params=None):
 
     Check 3 — surface tension limit:
       For large k, the dispersion should approach the capillary wave
-      limit ω ~ sqrt(T0/rho) · k^(3/2).
+      limit ω ~ sqrt(sig/rho) · k^(3/2).
     """
     if params is None:
         params = DEFAULT_PARAMS
 
-    rho, g, T0, H = params['rho'], params['g'], params['T0'], params['H']
+    rho = params['rho']
+    g = params['g']
+    sig = params['sig']
+    H = params['H']
     k_test = np.array([1e0, 2e0, 5e0, 2e1, 5e1, 1e2, 2e2, 1e3])
 
     print("=" * 64)
     print("Check 1: inviscid limit  (k_e=, ν=1e-10)")
     p = dict(params, k_e=0.0, nu=1e-10)
     all_roots = dispersion_curve(k_test, p, continuate=False)
-    w_gc = np.array([_w_gc(k, rho, g, T0, H) for k in k_test])
+    w_gc = np.array([_w_gc(k, rho, g, sig, H) for k in k_test])
     print(f"  {'k':>8}  {'ω_gc':>12}  {'Re(ω)':>12}  {'Re(ω)/ω_gc':>12}")
     for k, wgc, roots in zip(k_test, w_gc, all_roots):
         w = _gc_root(roots)
@@ -586,7 +616,7 @@ def run_sanity_checks(params=None):
     p = dict(params, k_e=0.0, g=0.0, H=10.0)
     k_cap = np.array([50., 100., 200., 500.])
     all_roots = dispersion_curve(k_cap, p, continuate=False)
-    w_cap = np.sqrt(T0 / rho) * k_cap**1.5
+    w_cap = np.sqrt(sig / rho) * k_cap**1.5
     print(f"  {'k':>8}  {'ω_cap':>12}  {'Re(ω)':>12}  {'Re(ω)/ω_cap':>12}")
     for k, wc, roots in zip(k_cap, w_cap, all_roots):
         w = _gc_root(roots)
@@ -631,9 +661,9 @@ if __name__ == '__main__':
     # print(f"Roots found: {n_found}/{len(k_values)}\n")
 
     # print(f"  {'k [m⁻¹]':>10}  {'Re(ω) [rad/s]':>16}  {'Im(ω) [rad/s]':>16}  {'Re/ω_gc':>10}")
-    # rho,g,T0,H = DEFAULT_PARAMS['rho'],DEFAULT_PARAMS['g'],DEFAULT_PARAMS['T0'],DEFAULT_PARAMS['H']
+    # rho,g,sig,H = DEFAULT_PARAMS['rho'],DEFAULT_PARAMS['g'],DEFAULT_PARAMS['sig'],DEFAULT_PARAMS['H']
     # for k, roots in zip(k_values[::10], omegas[::10]):
-    #     wgc = _w_gc(k,rho,g,T0,H)
+    #     wgc = _w_gc(k,rho,g,sig,H)
     #     if np.isfinite(roots[0]):
     #         print(f"  {k:10.3f}  {roots[0].real:16.5f}  {roots[0].imag:16.7f}  {roots[0].real/wgc:10.6f}")
     #     else:
